@@ -1,0 +1,20 @@
+schema_version = 1
+
+[project]
+name = "Oracle"
+kind = "cli"
+stage = "beta"
+audience = "developer"
+
+[stack]
+prefer_rust = true
+language = "Rust"
+rationale = "A small native offline CLI with typed configuration, bounded inspection, and portable agent-facing output."
+
+[repository]
+max_tracked_mib = 10
+max_file_mib = 2
+
+[policy]
+required = []
+evidence_max_age_days = 30

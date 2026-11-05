@@ -1,0 +1,4 @@
+/target/
+/.oracle/
+/dist/
+.DS_Store

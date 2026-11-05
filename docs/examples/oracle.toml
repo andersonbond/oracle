@@ -1,0 +1,30 @@
+schema_version = 1
+
+[project]
+name = "inventory-desk"
+kind = "web-app"
+stage = "prototype"
+audience = "enterprise"
+
+[stack]
+prefer_rust = true
+language = "Rust backend + TypeScript browser UI"
+rationale = "Native backend service with a mature browser UI ecosystem."
+
+[ux]
+density = "compact"
+primary_workflow = "Search stock, compare quantities, and update multiple rows."
+rationale = "Desktop operators need dense comparisons, keyboard access, and readable controls."
+
+[data]
+personal_data = true
+database = true
+private_user_records = true
+
+[repository]
+max_tracked_mib = 100
+max_file_mib = 50
+
+[policy]
+required = []
+evidence_max_age_days = 30

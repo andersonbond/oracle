@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title description">
+  <title id="title">Oracle's prototype-to-release workflow</title>
+  <desc id="description">Understand the project, choose a priority, let the coding agent build, and review evidence. Changes loop back into assessment. The developer owns decisions; Oracle checks the provenance and freshness of supplied evidence.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#087f71" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1200" height="440" rx="24" fill="#f5f7f6"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="40" y="43" fill="#087f71" font-size="14" font-weight="700" letter-spacing="2">ORACLE / FROM PROTOTYPE TO RELEASE</text>
+    <text x="40" y="93" fill="#172421" font-size="34" font-weight="700">Make the next right engineering decision.</text>
+    <g fill="#fff" stroke="#d5dfdb" stroke-width="1.5">
+      <rect x="40" y="131" width="256" height="164" rx="16"/>
+      <rect x="328" y="131" width="256" height="164" rx="16"/>
+      <rect x="616" y="131" width="256" height="164" rx="16"/>
+      <rect x="904" y="131" width="256" height="164" rx="16"/>
+    </g>
+    <g fill="#087f71" font-size="13" font-weight="700" letter-spacing="1.2">
+      <text x="64" y="161">01 / CONTEXT</text>
+      <text x="352" y="161">02 / GUIDANCE</text>
+      <text x="640" y="161">03 / ACTION</text>
+      <text x="928" y="161">04 / EVIDENCE</text>
+    </g>
+    <g fill="#172421" font-size="27" font-weight="700">
+      <text x="64" y="202">Understand</text>
+      <text x="352" y="202">Choose</text>
+      <text x="640" y="202">Build</text>
+      <text x="928" y="202">Verify</text>
+    </g>
+    <g fill="#465c54" font-size="17">
+      <text x="64" y="238">Read the project.</text>
+      <text x="64" y="264">Confirm its constraints.</text>
+      <text x="352" y="238">See the next priority.</text>
+      <text x="352" y="264">Understand the trade-offs.</text>
+      <text x="640" y="238">Give your agent a task.</text>
+      <text x="640" y="264">Review what it changes.</text>
+      <text x="928" y="238">Check the outcome.</text>
+      <text x="928" y="264">Keep the proof.</text>
+    </g>
+    <g fill="none" stroke="#087f71" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M301 213 H320"/>
+      <path d="M589 213 H608"/>
+      <path d="M877 213 H896"/>
+      <path d="M1032 307 V344 H168 V309"/>
+    </g>
+    <rect x="329" y="327" width="542" height="32" rx="16" fill="#f5f7f6"/>
+    <text x="600" y="348" text-anchor="middle" fill="#087f71" font-size="17">Changed code or assumptions? Revisit the evidence.</text>
+    <text x="40" y="405" fill="#465c54" font-size="16">You own the decisions. Your agent writes the code. Oracle connects guidance to evidence.</text>
+  </g>
+</svg>
