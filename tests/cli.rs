@@ -101,7 +101,7 @@ fn help_version_and_rules_are_available_without_a_project() {
     assert!(
         String::from_utf8(ok(root.path(), &["--version"]).stdout)
             .unwrap()
-            .contains("1.0.0")
+            .contains(oracle_guide::VERSION)
     );
     ok(root.path(), &["--help"]);
     let rules: Value =
@@ -404,7 +404,12 @@ fn evidence_cannot_override_direct_checks_or_escape_the_project() {
 #[test]
 fn skill_install_is_idempotent_and_remove_preserves_unrelated_files() {
     let root = tempfile::tempdir().unwrap();
-    for (client, dir) in [("codex", ".agents"), ("claude", ".claude")] {
+    let source = Path::new(env!("CARGO_MANIFEST_DIR")).join("skills/oracle");
+    for (client, dir) in [
+        ("codex", ".agents"),
+        ("claude", ".claude"),
+        ("generic", ".agents"),
+    ] {
         write(root.path(), &format!("{dir}/keep.txt"), "user data");
         ok(root.path(), &["agent", "install", client, "--dry-run"]);
         assert!(
@@ -415,11 +420,23 @@ fn skill_install_is_idempotent_and_remove_preserves_unrelated_files() {
         );
         ok(root.path(), &["agent", "install", client]);
         ok(root.path(), &["agent", "install", client]);
-        assert!(
-            root.path()
-                .join(format!("{dir}/skills/oracle/SKILL.md"))
-                .exists()
-        );
+        let installed = root.path().join(format!("{dir}/skills/oracle"));
+        // A binary-only install must include the complete portable package,
+        // including references and images, without needing the source checkout.
+        for entry in walkdir::WalkDir::new(&source) {
+            let entry = entry.unwrap();
+            if entry.file_type().is_file() {
+                let relative = entry.path().strip_prefix(&source).unwrap();
+                assert_eq!(
+                    fs::read(installed.join(relative)).unwrap(),
+                    fs::read(entry.path()).unwrap(),
+                    "missing or changed bundled resource: {}",
+                    relative.display()
+                );
+            }
+        }
+        ok(root.path(), &["agent", "remove", client, "--dry-run"]);
+        assert!(installed.join("references/compact-ui.md").exists());
         ok(root.path(), &["agent", "remove", client]);
         assert!(!root.path().join(format!("{dir}/skills/oracle")).exists());
         assert_eq!(
@@ -431,27 +448,91 @@ fn skill_install_is_idempotent_and_remove_preserves_unrelated_files() {
 
 #[test]
 fn skill_conflicts_are_preflighted_without_partial_installation() {
+    for resource in [
+        "references/workflow.md",
+        "references/compact-ui.md",
+        "assets/adaptive-workspace.svg",
+    ] {
+        let root = tempfile::tempdir().unwrap();
+        let destination = format!(".agents/skills/oracle/{resource}");
+        write(root.path(), &destination, "user-authored resource");
+        assert_eq!(
+            run(root.path(), &["agent", "install", "codex"])
+                .status
+                .code(),
+            Some(2)
+        );
+        assert!(!root.path().join(".agents/skills/oracle/SKILL.md").exists());
+        assert_eq!(
+            fs::read_to_string(root.path().join(destination)).unwrap(),
+            "user-authored resource"
+        );
+    }
+}
+
+#[test]
+fn removing_skill_preserves_modified_and_unrelated_visual_assets() {
     let root = tempfile::tempdir().unwrap();
-    write(
-        root.path(),
-        ".agents/skills/oracle/references/workflow.md",
-        "user-authored guide",
-    );
+    ok(root.path(), &["agent", "install", "claude"]);
+    let installed = root.path().join(".claude/skills/oracle");
+    let asset = installed.join("assets/compact-workspace.svg");
+    let original = fs::read(&asset).unwrap();
+    fs::write(&asset, "custom illustration").unwrap();
     assert_eq!(
-        run(root.path(), &["agent", "install", "codex"])
+        run(root.path(), &["agent", "remove", "claude"])
             .status
             .code(),
         Some(2)
     );
-    assert!(!root.path().join(".agents/skills/oracle/SKILL.md").exists());
+    assert!(installed.join("SKILL.md").exists());
+    assert!(installed.join("references/compact-ui.md").exists());
+    assert_eq!(fs::read_to_string(&asset).unwrap(), "custom illustration");
+    fs::write(&asset, original).unwrap();
+    fs::write(installed.join("assets/custom.svg"), "user asset").unwrap();
+    ok(root.path(), &["agent", "remove", "claude"]);
+    assert!(!installed.join("SKILL.md").exists());
+    assert!(!asset.exists());
     assert_eq!(
-        fs::read_to_string(
-            root.path()
-                .join(".agents/skills/oracle/references/workflow.md")
-        )
-        .unwrap(),
-        "user-authored guide"
+        fs::read_to_string(installed.join("assets/custom.svg")).unwrap(),
+        "user asset"
     );
+}
+
+#[test]
+fn previous_ux_rule_evidence_requires_a_new_review() {
+    let root = fixture();
+    configure(root.path(), |c| c.project.stage = Stage::Beta);
+    write(
+        root.path(),
+        ".oracle/reports/ux.txt",
+        "Synthetic UX review fixture.",
+    );
+    ok(
+        root.path(),
+        &[
+            "evidence",
+            "record",
+            "UX-002",
+            "--result",
+            "pass",
+            "--summary",
+            "Synthetic review for testing evidence version changes",
+            "--artifact",
+            ".oracle/reports/ux.txt",
+        ],
+    );
+    assert_eq!(finding(&assess(root.path()), "UX-002")["status"], "pass");
+    let path = fs::read_dir(root.path().join(".oracle/evidence/UX-002"))
+        .unwrap()
+        .next()
+        .unwrap()
+        .unwrap()
+        .path();
+    let mut record: Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+    assert_eq!(record["rule_version"], 2);
+    record["rule_version"] = 1.into();
+    fs::write(path, serde_json::to_vec(&record).unwrap()).unwrap();
+    assert_eq!(finding(&assess(root.path()), "UX-002")["status"], "stale");
 }
 
 #[test]

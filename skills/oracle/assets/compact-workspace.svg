@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="title desc">
+<title id="title">Oracle compact UI: a desktop inventory workspace</title><desc id="desc">Illustrative inventory layout with search and warehouse filters, eight aligned rows, two selected low-stock records, and an explicit review-adjustment action. Synthetic data, not a product screenshot.</desc>
+<g font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+<rect x="0" y="0" width="960" height="660" rx="12" fill="#f5f8f6"/>
+<text x="24" y="32" font-size="24" fill="#17342f" font-weight="650" text-anchor="start">A workspace for comparison</text>
+<text x="24" y="55" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Desktop inventory · frequent tasks and relevant records share the same view</text>
+<rect x="24" y="78" width="912" height="486" rx="8" fill="white" stroke="#d8e4df"/>
+<rect x="25" y="79" width="150" height="484" rx="7" fill="#edf3ef"/>
+<text x="44" y="114" font-size="23" fill="#146653" font-weight="700" text-anchor="start">oracle</text>
+<text x="44" y="140" font-size="11" fill="#526b65" font-weight="650" text-anchor="start">WORKSPACE</text>
+<rect x="36" y="152" width="126" height="34" rx="5" fill="#e4f4ee"/>
+<text x="48" y="174" font-size="14" fill="#146653" font-weight="650" text-anchor="start">Inventory</text>
+<text x="48" y="208" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Adjustments</text>
+<text x="48" y="242" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Warehouses</text>
+<text x="48" y="276" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Activity</text>
+<text x="44" y="540" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Inventory desk</text>
+<text x="212" y="116" font-size="22" fill="#17342f" font-weight="650" text-anchor="start">Inventory</text>
+<text x="914" y="112" font-size="13" fill="#146653" font-weight="600" text-anchor="end">Density: Compact</text>
+<rect x="212" y="138" width="244" height="36" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="224" y="161" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Search items or SKU</text>
+<rect x="466" y="138" width="184" height="36" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="558.0" y="161.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Warehouse: All</text>
+<rect x="660" y="138" width="116" height="36" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="718.0" y="161.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Status: All</text>
+<rect x="786" y="138" width="128" height="36" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="850.0" y="161.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Columns</text>
+<rect x="212" y="188" width="702" height="36" rx="5" fill="#e4f4ee"/>
+<text x="224" y="211" font-size="14" fill="#146653" font-weight="600" text-anchor="start">2 selected</text>
+<text x="330" y="211" font-size="14" fill="#146653" font-weight="400" text-anchor="start">Clear selection</text>
+<rect x="726" y="190" width="184" height="32" rx="5" fill="#146653"/>
+<text x="818.0" y="211.0" font-size="14" fill="white" font-weight="600" text-anchor="middle">Review adjustment</text>
+<rect x="212" y="238" width="702" height="32" rx="0" fill="#f5f8f6"/>
+<text x="264" y="259" font-size="13" fill="#526b65" font-weight="600" text-anchor="start">Item / SKU</text>
+<text x="520" y="259" font-size="13" fill="#526b65" font-weight="600" text-anchor="start">Warehouse</text>
+<text x="710" y="259" font-size="13" fill="#526b65" font-weight="600" text-anchor="end">On hand</text>
+<text x="746" y="259" font-size="13" fill="#526b65" font-weight="600" text-anchor="start">Status</text>
+<rect x="212" y="270" width="702" height="32" rx="0" fill="#eff8f3"/>
+<rect x="228" y="278" width="16" height="16" rx="3" fill="#146653" stroke="#146653"/>
+<path d="M232 286l3 3 6-7" fill="none" stroke="white" stroke-width="2"/>
+<text x="264" y="291" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">USB-C cable</text>
+<text x="500" y="291" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">CBL-014</text>
+<text x="520" y="291" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">Harbor</text>
+<text x="710" y="291" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">18</text>
+<text x="746" y="291" font-size="14" fill="#86520b" font-weight="400" text-anchor="start">Low stock</text>
+<path d="M212 302H914" stroke="#d8e4df"/>
+<rect x="228" y="310" width="16" height="16" rx="3" fill="white" stroke="#7b918a"/>
+<text x="264" y="323" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">USB-C dock</text>
+<text x="500" y="323" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">DCK-021</text>
+<text x="520" y="323" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">Harbor</text>
+<text x="710" y="323" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">84</text>
+<text x="746" y="323" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Ready</text>
+<path d="M212 334H914" stroke="#d8e4df"/>
+<rect x="212" y="334" width="702" height="32" rx="0" fill="#eff8f3"/>
+<rect x="228" y="342" width="16" height="16" rx="3" fill="#146653" stroke="#146653"/>
+<path d="M232 350l3 3 6-7" fill="none" stroke="white" stroke-width="2"/>
+<text x="264" y="355" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Power adapter</text>
+<text x="500" y="355" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">PWR-008</text>
+<text x="520" y="355" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">North</text>
+<text x="710" y="355" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">6</text>
+<text x="746" y="355" font-size="14" fill="#86520b" font-weight="400" text-anchor="start">Low stock</text>
+<path d="M212 366H914" stroke="#d8e4df"/>
+<rect x="228" y="374" width="16" height="16" rx="3" fill="white" stroke="#7b918a"/>
+<text x="264" y="387" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Laptop stand</text>
+<text x="500" y="387" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">STD-003</text>
+<text x="520" y="387" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">North</text>
+<text x="710" y="387" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">32</text>
+<text x="746" y="387" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Ready</text>
+<path d="M212 398H914" stroke="#d8e4df"/>
+<rect x="228" y="406" width="16" height="16" rx="3" fill="white" stroke="#7b918a"/>
+<text x="264" y="419" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">USB-C cable</text>
+<text x="500" y="419" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">CBL-014</text>
+<text x="520" y="419" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">North</text>
+<text x="710" y="419" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">120</text>
+<text x="746" y="419" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Ready</text>
+<path d="M212 430H914" stroke="#d8e4df"/>
+<rect x="228" y="438" width="16" height="16" rx="3" fill="white" stroke="#7b918a"/>
+<text x="264" y="451" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Display cable</text>
+<text x="500" y="451" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">DSP-019</text>
+<text x="520" y="451" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">Harbor</text>
+<text x="710" y="451" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">47</text>
+<text x="746" y="451" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Ready</text>
+<path d="M212 462H914" stroke="#d8e4df"/>
+<rect x="228" y="470" width="16" height="16" rx="3" fill="white" stroke="#7b918a"/>
+<text x="264" y="483" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Keyboard</text>
+<text x="500" y="483" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">KEY-002</text>
+<text x="520" y="483" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">North</text>
+<text x="710" y="483" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">23</text>
+<text x="746" y="483" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Ready</text>
+<path d="M212 494H914" stroke="#d8e4df"/>
+<rect x="228" y="502" width="16" height="16" rx="3" fill="white" stroke="#7b918a"/>
+<text x="264" y="515" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Wireless mouse</text>
+<text x="500" y="515" font-size="11" fill="#526b65" font-weight="400" text-anchor="end">MSE-011</text>
+<text x="520" y="515" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">Harbor</text>
+<text x="710" y="515" font-size="14" fill="#17342f" font-weight="600" text-anchor="end">65</text>
+<text x="746" y="515" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Ready</text>
+<path d="M212 526H914" stroke="#d8e4df"/>
+<text x="212" y="549" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">8 of 128 items</text>
+<rect x="748" y="532" width="76" height="24" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="786.0" y="549.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Previous</text>
+<rect x="834" y="532" width="80" height="24" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="874.0" y="549.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Next</text>
+<text x="24" y="596" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Compare at a glance</text>
+<text x="24" y="619" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Aligned columns and readable values.</text>
+<text x="340" y="596" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Act in context</text>
+<text x="340" y="619" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Visible selection and a scoped action.</text>
+<text x="654" y="596" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Keep the work close</text>
+<text x="654" y="619" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">A short heading and one useful toolbar.</text>
+<text x="24" y="646" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Illustration · synthetic data · density is adjustable</text>
+</g>
+</svg>

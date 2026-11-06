@@ -20,6 +20,18 @@ const FILES: &[(&str, &[u8])] = &[
         "references/workflow.md",
         include_bytes!("../skills/oracle/references/workflow.md"),
     ),
+    (
+        "references/compact-ui.md",
+        include_bytes!("../skills/oracle/references/compact-ui.md"),
+    ),
+    (
+        "assets/compact-workspace.svg",
+        include_bytes!("../skills/oracle/assets/compact-workspace.svg"),
+    ),
+    (
+        "assets/adaptive-workspace.svg",
+        include_bytes!("../skills/oracle/assets/adaptive-workspace.svg"),
+    ),
 ];
 
 fn directory(client: Client) -> PathBuf {
@@ -64,7 +76,7 @@ pub fn install(root: &Path, client: Client, remove: bool, dry_run: bool) -> Resu
         if remove {
             let parent = project::safe_path(root, &dir)?;
             // Only remove empty package-owned directories, never client roots.
-            for path in [parent.join("references"), parent] {
+            for path in [parent.join("references"), parent.join("assets"), parent] {
                 let _ = fs::remove_dir(path);
             }
         }

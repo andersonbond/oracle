@@ -20,8 +20,12 @@ The CLI is in `src/main.rs`; configuration, inspection, rules, evidence, and ski
 
 A card needs an explicit criterion, applicability, useful next action, acceptance criteria, an authoritative source, and honest verification limits. Bump its rule version if the meaning changes. Evidence also becomes stale across Oracle versions. Do not count a configuration declaration as behavioral verification or convert an accepted risk into a pass.
 
+Oracle's UI recommendations live in `skills/oracle/references/compact-ui.md`, alongside the bundled visual examples in `skills/oracle/assets/`. Keep recommendations independent of frontend frameworks and distinguish illustrative layouts from tested product behavior.
+
 ## Pull requests
 
 Describe the problem, resulting behavior, and validation. Include a small reproduction for bugs. Do not include build directories, credentials, private reports, large generated artifacts, or unrelated formatting changes. Keep the friendly identity and compact, readable documentation.
+
+Commit messages and public documentation should describe the product change and relevant validation. Keep private conversations, internal planning notes, and local working reports out of commits and packages. Store local working material under the ignored `.oracle/` directory.
 
 Contributions are accepted under the repository's MIT License. The current v1 is a local CLI; proposed hosted services or new integrations need a demonstrated use case.

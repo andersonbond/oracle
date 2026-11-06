@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — 2026-11-06
+
+- Oracle compact UI guidance with desktop and adaptive layout examples, bundled for offline agent use.
+- Updated UX guidance cards while retaining advisory density choices and existing stage policies.
+- Public configuration and CLI reference in `REFERENCE.md`, with the sample specification in `examples/`.
+
 ## 1.0.0 — 2026-11-06
 
 - Rust CLI with validated TOML context, human-readable and JSON output.

@@ -4,9 +4,9 @@
 <h1 align="center">Oracle</h1>
 <p align="center"><strong>Build with intuition. Ship with evidence.</strong></p>
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
-<p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="docs/V1.md">Reference</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
+<p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="REFERENCE.md">Reference</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.0 · MIT · Local and offline · No model API key required**
+**v1.0.1 · MIT · Local and offline · No model API key required**
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** It combines 13 versioned guidance cards, project context, repository inspection, and evidence tracking in a small native CLI.
 
@@ -22,7 +22,15 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 | Prototype work gets buried under process | **Prototype → beta → production** profiles introduce checks gradually. Assessment is advisory; blocking checks require `--strict`. |
 | An agent says “done” without evidence | Record a sanitized artifact, outcome, and scope. Mark evidence stale after inspected project contents, artifacts, versions, or freshness change. |
 
-Oracle guides projects written in other languages too. Rust preference is a starting point for a decision, not a requirement to rewrite working software. Compact interfaces still need accessible interaction. See the [Rust guidance](https://rust-lang.org/what/cli/), [Carbon density guidance](https://carbondesignsystem.com/components/data-table/usage/), and [WCAG target-size guidance](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) behind these choices.
+Oracle guides projects written in other languages too. Rust preference is a starting point for a decision, not a requirement to rewrite working software. See the [Rust guidance](https://rust-lang.org/what/cli/) and [Oracle compact UI guide](skills/oracle/references/compact-ui.md) behind these choices.
+
+## Compact UI, built around the work
+
+Bring the records and actions people need into view. Use clear alignment, readable text, a restrained toolbar, and details on demand. Density should adapt to the task, input method, and user preference. Oracle's recommendations work with any frontend stack and do not prescribe a component library or enforce pixel budgets.
+
+![Illustrative desktop inventory workspace with search and filters above a compact table, visible selection, and a nearby bulk action.](skills/oracle/assets/compact-workspace.svg)
+
+The [compact UI guide and visual examples](skills/oracle/references/compact-ui.md) cover desktop comparison, narrow-screen review, editable details, accessibility, and a practical review scenario. The guide and both SVG examples are bundled with the installed agent skill for offline use.
 
 ## Get started
 
@@ -90,7 +98,7 @@ primary_workflow = "Search stock, compare quantities, and update multiple rows."
 rationale = "Desktop operators compare many records; keep keyboard access and readable controls."
 ```
 
-See the [complete example](docs/examples/oracle.toml) and [configuration reference](docs/V1.md#configuration). A recorded stack or density decision is not proof that the architecture or screen is good; separate evidence cards address behavior and usability.
+See the [complete example](examples/oracle.toml) and [configuration reference](REFERENCE.md#configuration). A recorded stack or density decision is not proof that the architecture or screen is good; separate evidence cards address behavior and usability.
 
 ## Commands
 
@@ -151,7 +159,7 @@ flowchart LR
 
 The core stays offline. Only explicit `init`, `agent install/remove`, and `evidence record` operations write project files. Assessments do not run project scripts, install dependencies, call model APIs, deploy, delete caches, or rewrite Git history.
 
-Repository measurements cover Git-tracked and unignored working-tree files. Local `.oracle/` state and secret contents are excluded from the source fingerprint; attached artifacts are hashed separately. Git history, remote GitHub/LFS storage, ignored source, submodules, and unsafe/unreadable paths have documented coverage limits. See the [v1 reference](docs/V1.md#inspection-and-trust-boundaries).
+Repository measurements cover Git-tracked and unignored working-tree files. Local `.oracle/` state and secret contents are excluded from the source fingerprint; attached artifacts are hashed separately. Git history, remote GitHub/LFS storage, ignored source, submodules, and unsafe/unreadable paths have documented coverage limits. See the [v1 reference](REFERENCE.md#inspection-and-trust-boundaries).
 
 ## Development and scope
 
@@ -162,8 +170,8 @@ cargo test --locked
 cargo build --release --locked
 ```
 
-The first implementation is validated locally on Apple Silicon macOS. CI is configured for Linux, macOS, Windows, and Rust 1.85 compatibility; a workflow configuration is not evidence that those remote jobs have already passed. The [validation record](docs/VALIDATION.md) lists what was actually exercised.
+CI runs behavioral tests and release builds on Linux, macOS, and Windows, including a Rust 1.85 compatibility job. Stable-toolchain jobs also check formatting and linting. See the [workflow and current run results](https://github.com/andersonbond/oracle/actions/workflows/ci.yml) for each revision.
 
-V1 provides general engineering guidance and bounded local checks. Database, security, performance, and operations cards accept supplied evidence; they are not live scanners or infrastructure integrations. Future improvements should follow real usage: sharper applicability, structured report importers, and more precise evidence invalidation. See the [original design record](docs/PROJECT_PLAN.md) for context.
+V1 provides general engineering guidance and bounded local checks. Database, security, performance, and operations cards accept supplied evidence; they are not live scanners or infrastructure integrations. Future improvements should follow real usage: sharper applicability, structured report importers, and more precise evidence invalidation.
 
 Contribute concrete failure scenarios and evidence methods via [CONTRIBUTING.md](CONTRIBUTING.md). Report security concerns according to [SECURITY.md](SECURITY.md). Code, guidance, and bundled assets are provided under the [MIT License](LICENSE).

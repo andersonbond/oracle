@@ -1,13 +1,13 @@
 [package]
 name = "oracle-guide"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2024"
 rust-version = "1.85"
 description = "An engineering guide for vibe coders and their coding agents"
 license = "MIT"
 repository = "https://github.com/andersonbond/oracle"
 readme = "README.md"
-include = ["src/**", "tests/**", "skills/**", "docs/**", "assets/**", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "oracle.toml"]
+include = ["src/**", "tests/**", "skills/**", "examples/**", "REFERENCE.md", "assets/**", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "oracle.toml"]
 
 [[bin]]
 name = "oracle"

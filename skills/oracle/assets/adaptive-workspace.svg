@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="700" viewBox="0 0 960 700" role="img" aria-labelledby="title desc">
+<title id="title">Oracle compact UI: adapt to the task and input</title><desc id="desc">Two illustrations of the same inventory task: a narrow screen reviews one item with larger actions; a desktop detail panel keeps list context while editing a single record. Synthetic data, not interactive controls.</desc>
+<g font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+<rect x="0" y="0" width="960" height="700" rx="12" fill="#f5f8f6"/>
+<text x="24" y="32" font-size="24" fill="#17342f" font-weight="650" text-anchor="start">Keep the task clear as the layout changes</text>
+<text x="24" y="55" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Narrow review and desktop editing · the same item, with a different interaction</text>
+<text x="24" y="93" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Focused review</text>
+<text x="410" y="93" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Details alongside the list</text>
+<rect x="24" y="110" width="342" height="480" rx="8" fill="white" stroke="#d8e4df"/>
+<text x="42" y="140" font-size="20" fill="#17342f" font-weight="650" text-anchor="start">Inventory</text>
+<rect x="280" y="116" width="68" height="44" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="314.0" y="143.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Menu</text>
+<rect x="42" y="166" width="306" height="44" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="56" y="194" font-size="16" fill="#526b65" font-weight="400" text-anchor="start">Search items or SKU</text>
+<text x="42" y="237" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">1 of 12 low-stock items</text>
+<path d="M42 254H348" stroke="#d8e4df"/>
+<text x="42" y="286" font-size="20" fill="#17342f" font-weight="650" text-anchor="start">USB-C cable</text>
+<text x="42" y="311" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">CBL-014 · Harbor warehouse</text>
+<text x="42" y="348" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">On hand</text>
+<text x="348" y="349" font-size="18" fill="#17342f" font-weight="650" text-anchor="end">18 units</text>
+<text x="42" y="384" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Status</text>
+<text x="348" y="384" font-size="14" fill="#86520b" font-weight="600" text-anchor="end">Low stock</text>
+<path d="M42 405H348" stroke="#d8e4df"/>
+<rect x="42" y="424" width="306" height="44" rx="5" fill="#146653"/>
+<text x="195.0" y="451.0" font-size="14" fill="white" font-weight="600" text-anchor="middle">Review item</text>
+<rect x="42" y="480" width="306" height="44" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="195.0" y="507.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Next item</text>
+<text x="42" y="562" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Details remain one explicit action away.</text>
+<rect x="410" y="110" width="526" height="480" rx="8" fill="white" stroke="#d8e4df"/>
+<text x="426" y="141" font-size="20" fill="#17342f" font-weight="650" text-anchor="start">Inventory</text>
+<text x="426" y="172" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Low stock</text>
+<rect x="426" y="190" width="158" height="55" rx="5" fill="#e4f4ee"/>
+<text x="438" y="213" font-size="14" fill="#146653" font-weight="600" text-anchor="start">USB-C cable</text>
+<text x="438" y="234" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Harbor · 18 units</text>
+<text x="438" y="274" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Power adapter</text>
+<text x="438" y="295" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">North · 6 units</text>
+<text x="438" y="338" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Display cable</text>
+<text x="438" y="359" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">East · 9 units</text>
+<path d="M602 111L602 589" stroke="#d8e4df"/>
+<text x="620" y="145" font-size="18" fill="#17342f" font-weight="650" text-anchor="start">Review item</text>
+<text x="620" y="172" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">USB-C cable · CBL-014</text>
+<text x="620" y="208" font-size="13" fill="#17342f" font-weight="600" text-anchor="start">Warehouse</text>
+<rect x="620" y="219" width="298" height="36" rx="5" fill="#f5f8f6" stroke="#d8e4df"/>
+<text x="632" y="242" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Harbor</text>
+<text x="620" y="282" font-size="13" fill="#17342f" font-weight="600" text-anchor="start">Reorder threshold (units)</text>
+<rect x="620" y="293" width="298" height="36" rx="5" fill="white" stroke="#146653"/>
+<text x="632" y="316" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">24</text>
+<rect x="617" y="290" width="304" height="42" rx="7" fill="none" stroke="#146653"/>
+<text x="620" y="356" font-size="13" fill="#17342f" font-weight="600" text-anchor="start">Note</text>
+<rect x="620" y="367" width="298" height="60" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="632" y="390" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">Review next shipment</text>
+<text x="620" y="454" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">On hand remains 18 units.</text>
+<rect x="620" y="480" width="146" height="36" rx="5" fill="#146653"/>
+<text x="693.0" y="503.0" font-size="14" fill="white" font-weight="600" text-anchor="middle">Save changes</text>
+<rect x="778" y="480" width="140" height="36" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="848.0" y="503.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Cancel</text>
+<text x="620" y="562" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Selection stays visible while editing.</text>
+<text x="24" y="623" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Adapt controls and information order</text>
+<text x="24" y="647" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Use larger targets for touch. Preserve identifiers, key values, and access to the complete record.</text>
+<text x="24" y="680" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Illustration · synthetic data · keep a comparison view when side-by-side values are essential</text>
+</g>
+</svg>

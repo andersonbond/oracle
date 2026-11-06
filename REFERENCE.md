@@ -31,6 +31,8 @@ The context is user-declared. Oracle does not infer that a project has no databa
 
 Rust is preferred for a new service or tool when its ecosystem, deployment, and delivery costs fit. A browser UI may use another language, and an established stack should not be rewritten simply to satisfy a preference. Likewise, enterprise compactness is a useful starting point; a recorded comfortable/adaptive choice with a rationale is valid.
 
+The [Oracle compact UI guide](skills/oracle/references/compact-ui.md) provides framework-independent recommendations and illustrative layouts. Its spacing suggestions are adjustable starting points, not additional schema fields or automated pass/fail criteria. `UX-001` checks the recorded decision; `UX-002` accepts a supplied review of the actual workflow.
+
 ## Checks and stages
 
 | Rule | Earliest stage | Required by default in strict mode | Evaluator |
@@ -110,7 +112,7 @@ oracle agent install codex
 oracle agent install claude
 ```
 
-Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds both the short skill and its workflow reference. It does not require a source checkout at runtime. Both adapters share the same instructions and respect the user's scope.
+Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow and compact-UI references, and two SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
 
 Every destination is preflighted. Exact matches are left alone; different contents cause an error before mutation. This also protects user edits during removal. `oracle agent remove CLIENT` removes only files identical to the current binary's embedded package and then attempts to remove empty package-owned directories. It leaves client roots and unrelated files alone.
 
@@ -122,4 +124,4 @@ For upgrades with changed skill content, review and back up your existing skill,
 
 CI is configured on Linux, macOS, and Windows with an additional Rust 1.85 compatibility job. Manual workflow runs upload native binary artifacts. There is no automatic registry publish, GitHub release, deployment, or Git history modification. Publishing is a separate maintainer action.
 
-The [validation record](VALIDATION.md) distinguishes local verification from configured but unexecuted remote checks. The original project plan remains a historical design document; pilot-user outcomes and live-client behavior need real usage before they can be claimed.
+Check the [CI results](https://github.com/andersonbond/oracle/actions/workflows/ci.yml) for a particular revision. Filesystem adapter tests do not establish live agent behavior, and illustrative layouts do not establish usability in a real application.

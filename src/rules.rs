@@ -34,9 +34,14 @@ pub struct Rule {
 
 macro_rules! card {
     ($id:literal, $title:literal, $why:literal, $action:literal, $done:literal, $source:literal, $start:ident, $required:expr, $evidence:literal) => {
+        card!(
+            1, $id, $title, $why, $action, $done, $source, $start, $required, $evidence
+        )
+    };
+    ($version:literal, $id:literal, $title:literal, $why:literal, $action:literal, $done:literal, $source:literal, $start:ident, $required:expr, $evidence:literal) => {
         Rule {
             id: $id,
-            version: 1,
+            version: $version,
             title: $title,
             why: $why,
             action: $action,
@@ -62,12 +67,13 @@ pub const RULES: &[Rule] = &[
         false
     ),
     card!(
+        2,
         "UX-001",
         "Match interface density to the user's work",
         "Enterprise users often need to compare many records and repeat actions quickly. Large decorative gaps can hide useful information. Compactness must preserve readable type, keyboard access, and usable targets.",
-        "For enterprise tools, start with compact tables, a restrained toolbar, clear hierarchy, and progressive disclosure. Offer comfortable/adaptive layouts when touch input or the task calls for them. Record project.audience, ux.density, ux.primary_workflow, and ux.rationale. Do not apply marketing-page spacing to an operational screen by default.",
+        "Use Oracle's compact UI guide and bundled layout examples to organize the primary task: comparison tables, nearby search/filter/actions, and details on demand. Adapt density to input method and user preference; comfortable/adaptive choices are valid. Preserve readable text, keyboard access, and usable targets. Record project.audience, ux.density, ux.primary_workflow, and ux.rationale. Spacing suggestions are advisory, not pixel-based gates or a frontend-stack requirement.",
         "Audience, density, workflow, and rationale are recorded. Actual usability remains a separate review under UX-002.",
-        "https://carbondesignsystem.com/components/data-table/usage/",
+        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/compact-ui.md",
         Prototype,
         None,
         false
@@ -106,12 +112,13 @@ pub const RULES: &[Rule] = &[
         false
     ),
     card!(
+        2,
         "UX-002",
         "Review the real workflow and accessibility",
         "A density setting cannot prove a screen is usable. Review the actual task with realistic data and error states.",
-        "Exercise the primary workflow at the intended desktop and mobile sizes. Check visible record count, scanning, search/filter/bulk actions where useful, keyboard order, focus, labels, zoom, target sizes, and loading/empty/error states. Attach a short review with observations and screenshots when helpful; do not infer usability from CSS padding alone.",
+        "Use Oracle's compact UI guide to review the implemented primary task with realistic data at intended viewport sizes and input methods. Check comparison, selection scope, search/filter/actions, access to details, keyboard order, focus, labels, zoom/reflow, target sizes, and loading/empty/error states. Treat visible record count as context, not a score to maximize. Attach observations and remaining issues; illustrations and spacing values do not prove usability or accessibility.",
         "A current review artifact describes the scenario, viewport/input methods, observations, and remaining limitations.",
-        "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/compact-ui.md#review-the-implemented-screen",
         Beta,
         Some(Stage::Beta),
         true
