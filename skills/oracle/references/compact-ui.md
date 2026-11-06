@@ -1,6 +1,6 @@
 # Oracle compact UI guide
 
-Help people see the information they need and complete their work with fewer unnecessary steps. For enterprise screens, begin with a compact workspace, then adjust it for the actual task, input method, and user preference.
+Help people see the information they need and complete their work with fewer unnecessary steps. For enterprise screens centered on comparing records or repeated operations, begin with a compact workspace, then adjust it for the actual task, input method, and user preference. For a public page or small single-purpose app, start with the [simple-project guide](simple-projects.md). Choose per screen rather than applying one density to an entire product.
 
 This is Oracle's framework-independent guidance. It does not require a UI library, create new configuration fields, or impose pixel-based release gates. A comfortable or adaptive layout with a clear rationale is a valid choice. The illustrations use synthetic data and demonstrate layout intent; they are not interactive components or usability-test results.
 

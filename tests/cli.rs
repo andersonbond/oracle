@@ -215,6 +215,43 @@ fn documented_non_rust_and_comfortable_ui_choices_are_respected() {
 }
 
 #[test]
+fn simple_site_example_stays_light_without_bypassing_release_or_data_checks() {
+    let root = fixture();
+    write(
+        root.path(),
+        "oracle.toml",
+        include_str!("../examples/simple-site/oracle.toml"),
+    );
+    let report = assess(root.path());
+    assert_eq!(finding(&report, "STACK-001")["status"], "pass");
+    assert_eq!(finding(&report, "UX-001")["status"], "pass");
+    assert_eq!(finding(&report, "UX-002")["status"], "deferred");
+    for id in ["DATA-001", "DATA-002", "SEC-002"] {
+        assert_eq!(finding(&report, id)["status"], "not_applicable");
+    }
+    ok(root.path(), &["check", "--strict"]);
+    configure(root.path(), |c| c.project.stage = Stage::Production);
+    let report = assess(root.path());
+    for id in ["UX-002", "TEST-001", "OPS-001", "OPS-002"] {
+        assert_eq!(finding(&report, id)["status"], "unknown");
+        assert_eq!(finding(&report, id)["required"], true);
+    }
+    assert_eq!(
+        run(root.path(), &["check", "--strict"]).status.code(),
+        Some(1)
+    );
+    configure(root.path(), |c| {
+        c.data.database = true;
+        c.data.private_user_records = true;
+    });
+    let report = assess(root.path());
+    for id in ["DATA-001", "DATA-002", "SEC-002"] {
+        assert_eq!(finding(&report, id)["status"], "unknown");
+        assert_eq!(finding(&report, id)["required"], true);
+    }
+}
+
+#[test]
 fn disabling_rust_preference_changes_the_next_action_without_passing_the_decision() {
     let root = fixture();
     let preferred = assess(root.path());
@@ -451,6 +488,8 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
     for resource in [
         "references/workflow.md",
         "references/compact-ui.md",
+        "references/simple-projects.md",
+        "assets/simple-projects.svg",
         "assets/adaptive-workspace.svg",
     ] {
         let root = tempfile::tempdir().unwrap();
@@ -529,8 +568,8 @@ fn previous_ux_rule_evidence_requires_a_new_review() {
         .unwrap()
         .path();
     let mut record: Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
-    assert_eq!(record["rule_version"], 2);
-    record["rule_version"] = 1.into();
+    assert_eq!(record["rule_version"], 3);
+    record["rule_version"] = 2.into();
     fs::write(path, serde_json::to_vec(&record).unwrap()).unwrap();
     assert_eq!(finding(&assess(root.path()), "UX-002")["status"], "stale");
 }

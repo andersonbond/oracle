@@ -31,7 +31,9 @@ The context is user-declared. Oracle does not infer that a project has no databa
 
 Rust is preferred for a new service or tool when its ecosystem, deployment, and delivery costs fit. A browser UI may use another language, and an established stack should not be rewritten simply to satisfy a preference. Likewise, enterprise compactness is a useful starting point; a recorded comfortable/adaptive choice with a rationale is valid.
 
-The [Oracle compact UI guide](skills/oracle/references/compact-ui.md) provides framework-independent recommendations and illustrative layouts. Its spacing suggestions are adjustable starting points, not additional schema fields or automated pass/fail criteria. `UX-001` checks the recorded decision; `UX-002` accepts a supplied review of the actual workflow.
+The [simple-project guide](skills/oracle/references/simple-projects.md) covers small websites and apps; the [compact UI guide](skills/oracle/references/compact-ui.md) covers comparison and repeated operations. Choose per task and screen, not audience alone. Both provide framework-independent recommendations and illustrative layouts, not extra schema fields or automated pixel checks. `UX-001` checks the recorded decision; `UX-002` accepts a supplied review of the actual workflow.
+
+In v1, `web-app` also covers static websites and does not require a server or database. See the [simple-site example](examples/simple-site/oracle.toml). A site's size does not determine its stage: use `production` when that is its actual deployment stage. Declare data features accurately; small apps with databases or private records still need the corresponding evidence. No separate simple-project mode bypasses the existing applicability or stage policies.
 
 ## Checks and stages
 
@@ -112,7 +114,7 @@ oracle agent install codex
 oracle agent install claude
 ```
 
-Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow and compact-UI references, and two SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
+Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow and UI guides, and three SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
 
 Every destination is preflighted. Exact matches are left alone; different contents cause an error before mutation. This also protects user edits during removal. `oracle agent remove CLIENT` removes only files identical to the current binary's embedded package and then attempts to remove empty package-owned directories. It leaves client roots and unrelated files alone.
 

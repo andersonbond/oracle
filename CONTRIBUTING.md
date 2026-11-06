@@ -20,7 +20,7 @@ The CLI is in `src/main.rs`; configuration, inspection, rules, evidence, and ski
 
 A card needs an explicit criterion, applicability, useful next action, acceptance criteria, an authoritative source, and honest verification limits. Bump its rule version if the meaning changes. Evidence also becomes stale across Oracle versions. Do not count a configuration declaration as behavioral verification or convert an accepted risk into a pass.
 
-Oracle's UI recommendations live in `skills/oracle/references/compact-ui.md`, alongside the bundled visual examples in `skills/oracle/assets/`. Keep recommendations independent of frontend frameworks and distinguish illustrative layouts from tested product behavior.
+Oracle's UI recommendations live in `skills/oracle/references/simple-projects.md` and `skills/oracle/references/compact-ui.md`, alongside bundled visual examples in `skills/oracle/assets/`. Keep recommendations independent of frontend frameworks and distinguish illustrative layouts from tested product behavior.
 
 ## Pull requests
 

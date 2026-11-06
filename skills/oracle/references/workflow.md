@@ -8,6 +8,12 @@ The CLI is local and offline. It does not run project scripts, call model APIs, 
 
 Prototype checks focus on stack decisions, UI intent, repository size/hygiene, and secret-candidate filenames. Beta introduces workflow review, builds/tests, relevant authorization and migrations. Production adds restore, deployment recovery, and health signals. `policy.required` can activate named rules sooner. Applicability follows the declared project kind and data; inspect those assumptions before trusting a not-applicable result.
 
+## Choose the UI for the task
+
+For a portfolio, informational site, or small single-purpose app, use [simple-project guidance](simple-projects.md): clear content, a main action, and a short working journey. For screens where comparing records and repeating actions matters, use [compact UI guidance](compact-ui.md). Choose per screen; an enterprise audience does not automatically need a dense interface, and a consumer app can have complex workflows.
+
+Both guides are advisory. Use the existing `ux` fields to record the decision and review the actual behavior under `UX-002`. Static websites use `project.kind = "web-app"` in v1. Declare data needs accurately, and use the actual release stage; a small public site can be production software.
+
 ## Evidence
 
 Run or review the relevant scenario using the project's tools within the existing authorization. Save a minimal sanitized report under `.oracle/reports/` describing commands or review steps, environment, scenario, outcomes, and limitations. Do not collect credentials or private user data. Oracle does not execute those steps for you.

@@ -1,0 +1,22 @@
+schema_version = 1
+
+[project]
+name = "small-portfolio"
+kind = "web-app"
+stage = "prototype"
+audience = "consumer"
+
+[stack]
+prefer_rust = true
+language = "HTML + CSS with minimal JavaScript"
+rationale = "A static portfolio needs no application server; consider Rust if a future feature needs a service."
+
+[ux]
+density = "comfortable"
+primary_workflow = "Read the introduction, browse selected work, and open a project detail."
+rationale = "Readable copy and project imagery benefit from intentional whitespace and simple navigation."
+
+[data]
+personal_data = false
+database = false
+private_user_records = false

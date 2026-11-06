@@ -25,6 +25,14 @@ const FILES: &[(&str, &[u8])] = &[
         include_bytes!("../skills/oracle/references/compact-ui.md"),
     ),
     (
+        "references/simple-projects.md",
+        include_bytes!("../skills/oracle/references/simple-projects.md"),
+    ),
+    (
+        "assets/simple-projects.svg",
+        include_bytes!("../skills/oracle/assets/simple-projects.svg"),
+    ),
+    (
         "assets/compact-workspace.svg",
         include_bytes!("../skills/oracle/assets/compact-workspace.svg"),
     ),

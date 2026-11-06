@@ -56,10 +56,11 @@ macro_rules! card {
 
 pub const RULES: &[Rule] = &[
     card!(
+        2,
         "STACK-001",
         "Choose the stack deliberately; consider Rust first",
         "Rust is the preferred starting point for new services, CLIs, and systems components. Ownership, explicit errors, and native deployment can help agents build maintainable software. Ecosystem fit and the team's constraints still decide the choice.",
-        "For a new backend or CLI, evaluate Rust first. For a browser interface, use a suitable web stack; use Rust/Wasm when a concrete need justifies it. Compare library maturity, delivery time, deployment, and team skills. Keep an effective existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale; prefer_rust=false opts out of the preference.",
+        "Choose the smallest implementation that serves the actual feature. A static website may need only HTML, CSS, and minimal JavaScript; do not add a backend solely to use Rust. When a new backend or CLI is needed, evaluate Rust first. Use a suitable browser stack and consider Rust/Wasm when a concrete need justifies it. Compare library maturity, delivery time, deployment, and team skills. Keep an effective existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale; prefer_rust=false opts out of the preference.",
         "A language and meaningful rationale are recorded. This checks the decision record, not architectural correctness.",
         "https://rust-lang.org/what/cli/",
         Prototype,
@@ -67,13 +68,13 @@ pub const RULES: &[Rule] = &[
         false
     ),
     card!(
-        2,
+        3,
         "UX-001",
-        "Match interface density to the user's work",
-        "Enterprise users often need to compare many records and repeat actions quickly. Large decorative gaps can hide useful information. Compactness must preserve readable type, keyboard access, and usable targets.",
-        "Use Oracle's compact UI guide and bundled layout examples to organize the primary task: comparison tables, nearby search/filter/actions, and details on demand. Adapt density to input method and user preference; comfortable/adaptive choices are valid. Preserve readable text, keyboard access, and usable targets. Record project.audience, ux.density, ux.primary_workflow, and ux.rationale. Spacing suggestions are advisory, not pixel-based gates or a frontend-stack requirement.",
+        "Match the interface to its purpose",
+        "A portfolio, small utility, and inventory desk serve different tasks. Content and a clear main action help simple websites and apps; comparison and repeated operations benefit from compact workspaces. Audience alone does not determine complexity or density.",
+        "Choose per screen using Oracle's simple-project and compact UI guides. For a simple website or small app, prioritize clear content, a primary action, responsive layouts, and intentional whitespace. For operational screens, bring comparison data and repeated actions close together. Adapt density to input method and user preference; compact, comfortable, and adaptive choices are valid. Preserve readable text, keyboard access, and usable targets. Record project.audience, ux.density, ux.primary_workflow, and ux.rationale. Suggestions are advisory, not pixel-based gates or a frontend-stack requirement.",
         "Audience, density, workflow, and rationale are recorded. Actual usability remains a separate review under UX-002.",
-        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/compact-ui.md",
+        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/workflow.md#choose-the-ui-for-the-task",
         Prototype,
         None,
         false
@@ -112,13 +113,13 @@ pub const RULES: &[Rule] = &[
         false
     ),
     card!(
-        2,
+        3,
         "UX-002",
         "Review the real workflow and accessibility",
         "A density setting cannot prove a screen is usable. Review the actual task with realistic data and error states.",
-        "Use Oracle's compact UI guide to review the implemented primary task with realistic data at intended viewport sizes and input methods. Check comparison, selection scope, search/filter/actions, access to details, keyboard order, focus, labels, zoom/reflow, target sizes, and loading/empty/error states. Treat visible record count as context, not a score to maximize. Attach observations and remaining issues; illustrations and spacing values do not prove usability or accessibility.",
+        "Use the guide matching the screen's task. For a website or small app, review content, navigation, the primary action, forms or outputs, and persistence when promised. For operational screens, review comparison, selection scope, search/filter/actions, and access to details. Use realistic content at intended viewport sizes and input methods. Check keyboard order, focus, labels, zoom/reflow, target sizes, and relevant loading/empty/error states. Keep the review proportional to the features and consequences. Attach observations and remaining issues; illustrations and spacing values do not prove usability or accessibility.",
         "A current review artifact describes the scenario, viewport/input methods, observations, and remaining limitations.",
-        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/compact-ui.md#review-the-implemented-screen",
+        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/workflow.md#choose-the-ui-for-the-task",
         Beta,
         Some(Stage::Beta),
         true
@@ -281,7 +282,7 @@ fn direct(rule: &Rule, c: &Config, s: &Snapshot) -> (Status, String) {
                 if recorded {
                     "Design intent recorded. UX-002 separately reviews actual usability.".into()
                 } else if c.project.audience == Audience::Enterprise {
-                    "Enterprise workflow: start compact, preserve accessibility, and document any density trade-off.".into()
+                    "For comparison or repeated operations, consider compact layouts; public pages may benefit from comfortable spacing. Record the actual task and density rationale.".into()
                 } else {
                     "Record audience, density, primary workflow, and rationale before choosing layout spacing.".into()
                 },
@@ -415,7 +416,7 @@ pub fn assess(root: &Path, config: &Config) -> Result<Report> {
             required,
             detail,
             action: if rule.id == "STACK-001" && !config.stack.prefer_rust {
-                "Compare suitable languages using library maturity, delivery time, deployment needs, and team experience. Preserve a working existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale. This project has disabled the Rust preference."
+                "Choose the smallest implementation that serves the actual feature; a static website may not need a backend. Compare suitable languages using library maturity, delivery time, deployment needs, and team experience. Preserve a working existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale. This project has disabled the Rust preference."
             } else {
                 rule.action
             },

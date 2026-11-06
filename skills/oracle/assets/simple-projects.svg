@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc">
+<title id="title">Oracle simple projects: a portfolio and a packing list</title><desc id="desc">Illustrative website with readable introduction, selected work, and a browse action; a small app with a labeled input, add button, three items, and a clear persistence message. Fictional examples, not interactive apps.</desc>
+<g font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+<rect x="0" y="0" width="960" height="650" rx="12" fill="#f5f8f6"/>
+<text x="24" y="32" font-size="24" fill="#17342f" font-weight="650" text-anchor="start">A small idea, ready to use</text>
+<text x="24" y="55" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Clear content for a website · one useful journey for a small app</text>
+<text x="24" y="90" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Let the content lead</text>
+<text x="572" y="90" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Make one task work</text>
+<rect x="24" y="106" width="516" height="432" rx="8" fill="#fffcf6" stroke="#d8e4df"/>
+<text x="48" y="140" font-size="19" fill="#17342f" font-weight="650" text-anchor="start">mira studio</text>
+<text x="396" y="140" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">Work</text>
+<text x="466" y="140" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">About</text>
+<text x="48" y="202" font-size="30" fill="#17342f" font-weight="650" text-anchor="start">Small spaces.</text>
+<text x="48" y="239" font-size="30" fill="#17342f" font-weight="650" text-anchor="start">Thoughtful design.</text>
+<text x="48" y="275" font-size="15" fill="#526b65" font-weight="400" text-anchor="start">Interior design for everyday living.</text>
+<rect x="48" y="295" width="168" height="36" rx="5" fill="#146653"/>
+<text x="132.0" y="318.0" font-size="14" fill="white" font-weight="600" text-anchor="middle">View selected work</text>
+<text x="48" y="366" font-size="14" fill="#17342f" font-weight="650" text-anchor="start">Selected work</text>
+<rect x="48" y="380" width="224" height="100" rx="5" fill="#eee9df"/>
+<rect x="64" y="392" width="58" height="58" rx="2" fill="#d5e6df"/>
+<path d="M93 392L93 450" stroke="#a7bdb3" fill="none"/>
+<path d="M64 420L122 420" stroke="#a7bdb3" fill="none"/>
+<path d="M48 466L272 466" stroke="#d1c8b7" fill="none"/>
+<rect x="288" y="380" width="224" height="100" rx="5" fill="#eee9df"/>
+<rect x="304" y="392" width="58" height="58" rx="2" fill="#d5e6df"/>
+<path d="M333 392L333 450" stroke="#a7bdb3" fill="none"/>
+<path d="M304 420L362 420" stroke="#a7bdb3" fill="none"/>
+<path d="M288 466L512 466" stroke="#d1c8b7" fill="none"/>
+<rect x="148" y="422" width="106" height="30" rx="6" fill="#b7c9b1"/>
+<rect x="154" y="413" width="93" height="21" rx="6" fill="#b7c9b1"/>
+<path d="M158 451L158 467" stroke="#526b65" fill="none"/>
+<path d="M244 451L244 467" stroke="#526b65" fill="none"/>
+<rect x="386" y="424" width="100" height="7" rx="2" fill="#b39470"/>
+<path d="M395 431L395 466" stroke="#7e694e" fill="none"/>
+<path d="M478 431L478 466" stroke="#7e694e" fill="none"/>
+<rect x="422" y="400" width="43" height="24" rx="3" fill="#5d786c"/>
+<text x="48" y="506" font-size="14" fill="#17342f" font-weight="600" text-anchor="start">Quiet corner</text>
+<text x="288" y="506" font-size="14" fill="#17342f" font-weight="600" text-anchor="start">Flexible workspace</text>
+<rect x="572" y="106" width="364" height="432" rx="8" fill="white" stroke="#d8e4df"/>
+<text x="592" y="143" font-size="22" fill="#17342f" font-weight="650" text-anchor="start">Weekend bag</text>
+<text x="592" y="168" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Packing list · this device</text>
+<text x="592" y="196" font-size="13" fill="#17342f" font-weight="600" text-anchor="start">Add an item</text>
+<rect x="592" y="206" width="238" height="44" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="604" y="234" font-size="15" fill="#526b65" font-weight="400" text-anchor="start">e.g. Rain jacket</text>
+<rect x="842" y="206" width="74" height="44" rx="5" fill="#146653"/>
+<text x="879.0" y="233.0" font-size="14" fill="white" font-weight="600" text-anchor="middle">Add</text>
+<rect x="592" y="270" width="324" height="44" rx="5" fill="#eff8f3"/>
+<rect x="604" y="282" width="20" height="20" rx="3" fill="#146653" stroke="#146653"/>
+<path d="M608 292l4 4 8-9" fill="none" stroke="white" stroke-width="2"/>
+<text x="638" y="298" font-size="15" fill="#17342f" font-weight="400" text-anchor="start">Sunglasses</text>
+<text x="902" y="298" font-size="12" fill="#526b65" font-weight="400" text-anchor="end">Remove</text>
+<path d="M592 318L916 318" stroke="#d8e4df" fill="none"/>
+<rect x="604" y="334" width="20" height="20" rx="3" fill="white" stroke="#7b918a"/>
+<text x="638" y="350" font-size="15" fill="#17342f" font-weight="400" text-anchor="start">Water bottle</text>
+<text x="902" y="350" font-size="12" fill="#526b65" font-weight="400" text-anchor="end">Remove</text>
+<path d="M592 370L916 370" stroke="#d8e4df" fill="none"/>
+<rect x="604" y="386" width="20" height="20" rx="3" fill="white" stroke="#7b918a"/>
+<text x="638" y="402" font-size="15" fill="#17342f" font-weight="400" text-anchor="start">Rain jacket</text>
+<text x="902" y="402" font-size="12" fill="#526b65" font-weight="400" text-anchor="end">Remove</text>
+<path d="M592 422L916 422" stroke="#d8e4df" fill="none"/>
+<text x="592" y="449" font-size="14" fill="#17342f" font-weight="600" text-anchor="start">1 of 3 packed</text>
+<text x="592" y="474" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Changes stay on this device.</text>
+<rect x="592" y="491" width="136" height="32" rx="5" fill="white" stroke="#d8e4df"/>
+<text x="660.0" y="512.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Clear packed</text>
+<text x="24" y="572" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Space that supports reading</text>
+<text x="24" y="596" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">A clear introduction, relevant images, and an obvious next step.</text>
+<text x="572" y="572" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Useful behavior, visible state</text>
+<text x="572" y="596" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Add, complete, correct, and understand storage.</text>
+<text x="24" y="632" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Illustrations · fictional content · choose layout per task, not project size</text>
+</g>
+</svg>

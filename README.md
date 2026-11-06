@@ -6,7 +6,7 @@
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
 <p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="REFERENCE.md">Reference</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.1 · MIT · Local and offline · No model API key required**
+**v1.0.2 · MIT · Local and offline · No model API key required**
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** It combines 13 versioned guidance cards, project context, repository inspection, and evidence tracking in a small native CLI.
 
@@ -18,19 +18,24 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 | --- | --- |
 | The agent picks a stack without explaining it | Consider **Rust first for new services and tools**, then record ecosystem, delivery, deployment, and team trade-offs. Respect a justified existing stack. |
 | An enterprise tool looks like a spacious landing page | Start with **compact, task-oriented UI**. Record audience, density, and workflow; review readability, keyboard use, target sizes, and real data. |
+| A simple website or app gets overbuilt | Start with **clear content and one primary action**. Use responsive layouts and intentional whitespace; test the main journey. Add infrastructure only when a feature needs it. |
 | Dependencies and build output inflate the repository | Inspect tracked generated paths, tracked working-tree size, large files, and local Git object storage. Keep local caches distinct from Git content. |
 | Prototype work gets buried under process | **Prototype → beta → production** profiles introduce checks gradually. Assessment is advisory; blocking checks require `--strict`. |
 | An agent says “done” without evidence | Record a sanitized artifact, outcome, and scope. Mark evidence stale after inspected project contents, artifacts, versions, or freshness change. |
 
-Oracle guides projects written in other languages too. Rust preference is a starting point for a decision, not a requirement to rewrite working software. See the [Rust guidance](https://rust-lang.org/what/cli/) and [Oracle compact UI guide](skills/oracle/references/compact-ui.md) behind these choices.
+Oracle guides projects written in other languages too. Rust preference is a starting point for a decision, not a requirement to rewrite working software or add a backend to a static site. See the [Rust guidance](https://rust-lang.org/what/cli/) and the UI guides below.
 
-## Compact UI, built around the work
+## UI that fits the project
 
-Bring the records and actions people need into view. Use clear alignment, readable text, a restrained toolbar, and details on demand. Density should adapt to the task, input method, and user preference. Oracle's recommendations work with any frontend stack and do not prescribe a component library or enforce pixel budgets.
+**Simple websites and apps:** help someone understand the content or complete one useful task. A portfolio, local-business page, calculator, or personal tracker can use comfortable spacing, expressive visuals, and a small amount of navigation. Give each screen a clear purpose and make its main action work on small screens and with a keyboard. Start with the [simple-project guide and examples](skills/oracle/references/simple-projects.md).
+
+![Illustrative portfolio page with selected work and a clear browse action, alongside a small packing-list app with an input and checklist.](skills/oracle/assets/simple-projects.svg)
+
+**Enterprise workspaces:** bring the records and actions people need into view. Use clear alignment, readable text, a restrained toolbar, and details on demand. Start with the [compact UI guide](skills/oracle/references/compact-ui.md) when comparison and repeated operations are the primary task.
 
 ![Illustrative desktop inventory workspace with search and filters above a compact table, visible selection, and a nearby bulk action.](skills/oracle/assets/compact-workspace.svg)
 
-The [compact UI guide and visual examples](skills/oracle/references/compact-ui.md) cover desktop comparison, narrow-screen review, editable details, accessibility, and a practical review scenario. The guide and both SVG examples are bundled with the installed agent skill for offline use.
+Choose the layout per screen: one product can have a spacious public page and a dense internal workspace. Audience alone does not determine complexity or density. Both guides and all three SVG examples are bundled with the agent skill for offline use. They work with any frontend stack and add no mandatory pixel budgets.
 
 ## Get started
 
@@ -49,10 +54,12 @@ In the application you are building:
 
 ```sh
 cd /path/to/your-project
-oracle init --name my-app --kind web-app --audience enterprise
+oracle init --name my-app --kind web-app --audience consumer
 oracle agent install codex
 oracle next
 ```
+
+Choose the actual audience: `consumer`, `enterprise`, or `developer`. In v1, `web-app` also covers static websites; it does not require a server or database. The [simple-site specification](examples/simple-site/oracle.toml) shows a small starting point. Record the actual deployment stage as the project advances; simple projects can be production projects too.
 
 For Claude Code, use `oracle agent install claude`. The generic adapter uses the same `.agents/skills/oracle` location as Codex. Installation is project-local, repeatable, and refuses to overwrite conflicting or edited skill files. It leaves `AGENTS.md`, `CLAUDE.md`, and client settings untouched.
 
@@ -98,7 +105,7 @@ primary_workflow = "Search stock, compare quantities, and update multiple rows."
 rationale = "Desktop operators compare many records; keep keyboard access and readable controls."
 ```
 
-See the [complete example](examples/oracle.toml) and [configuration reference](REFERENCE.md#configuration). A recorded stack or density decision is not proof that the architecture or screen is good; separate evidence cards address behavior and usability.
+See the [enterprise example](examples/oracle.toml), [simple-site example](examples/simple-site/oracle.toml), and [configuration reference](REFERENCE.md#configuration). A recorded stack or density decision is not proof that the architecture or screen is good; separate evidence cards address behavior and usability.
 
 ## Commands
 

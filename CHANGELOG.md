@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.2 — 2026-11-06
+
+- Simple-website and small-app guidance with a visual example and static-site specification.
+- Task-based UI recommendations for public pages, small utilities, and operational workspaces.
+- Stack guidance clarifies that static websites do not need a backend to satisfy the Rust preference.
+- Both UI approaches are bundled for offline agent use; existing applicability and stage policies remain unchanged.
+
 ## 1.0.1 — 2026-11-06
 
 - Oracle compact UI guidance with desktop and adaptive layout examples, bundled for offline agent use.
