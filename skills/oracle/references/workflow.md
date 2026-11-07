@@ -14,6 +14,10 @@ For a portfolio, informational site, or small single-purpose app, use [simple-pr
 
 Both guides are advisory. Use the existing `ux` fields to record the decision and review the actual behavior under `UX-002`. Static websites use `project.kind = "web-app"` in v1. Declare data needs accurately, and use the actual release stage; a small public site can be production software.
 
+## Realtime features when needed
+
+For chat, presence, collaboration, notifications, or live status, use [the realtime guide](realtime.md). Compare transport choices, evaluate Rust implementations where suitable, and design authorization and recovery before promising live behavior. Record the decision in the existing stack and workflow fields; no new configuration table or always-on realtime requirement is introduced. Use the existing evidence cards for the behavior actually exercised.
+
 ## Evidence
 
 Run or review the relevant scenario using the project's tools within the existing authorization. Save a minimal sanitized report under `.oracle/reports/` describing commands or review steps, environment, scenario, outcomes, and limitations. Do not collect credentials or private user data. Oracle does not execute those steps for you.

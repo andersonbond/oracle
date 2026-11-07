@@ -33,6 +33,8 @@ Add accounts when identity or shared private data is part of the feature. Add a 
 
 Keep only used source and assets in the project. Size images for their use, remove unused starter sections and dependencies when safe, and keep generated output out of Git. A small scope still needs truthful behavior: a contact form must actually deliver or clearly report failure; a save indicator must reflect persistence; a payment or booking flow needs the safeguards its real consequences require.
 
+If a shared list, chat, or status feature needs live updates, use the [realtime guide](realtime.md) to compare polling, SSE, WebSockets, and Socket.IO. A small app can justify realtime behavior; a static portfolio or a list used on one device may not need a persistent server connection.
+
 ## Use Oracle lightly
 
 Use `project.kind = "web-app"` for websites and browser apps in v1; this label does not require a server. Choose the actual audience and release stage. `consumer` describes an audience, not a promise that the app is simple. Record a short rationale in the existing `stack` and `ux` fields. Set the `data` flags from real behavior, including any external services, rather than assuming a small project has no sensitive data.

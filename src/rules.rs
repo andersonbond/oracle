@@ -56,11 +56,11 @@ macro_rules! card {
 
 pub const RULES: &[Rule] = &[
     card!(
-        2,
+        3,
         "STACK-001",
         "Choose the stack deliberately; consider Rust first",
         "Rust is the preferred starting point for new services, CLIs, and systems components. Ownership, explicit errors, and native deployment can help agents build maintainable software. Ecosystem fit and the team's constraints still decide the choice.",
-        "Choose the smallest implementation that serves the actual feature. A static website may need only HTML, CSS, and minimal JavaScript; do not add a backend solely to use Rust. When a new backend or CLI is needed, evaluate Rust first. Use a suitable browser stack and consider Rust/Wasm when a concrete need justifies it. Compare library maturity, delivery time, deployment, and team skills. Keep an effective existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale; prefer_rust=false opts out of the preference.",
+        "Choose the smallest implementation that serves the actual feature. A static website may need only HTML, CSS, and minimal JavaScript; do not add a backend solely to use Rust. When a new backend or CLI is needed, evaluate Rust first. Use a suitable browser stack and consider Rust/Wasm when a concrete need justifies it. For realtime features, use Oracle's realtime guide to compare polling, SSE, WebSockets, and Socket.IO and verify protocol compatibility. Compare library maturity, delivery time, deployment, and team skills. Keep an effective existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale; prefer_rust=false opts out of the preference.",
         "A language and meaningful rationale are recorded. This checks the decision record, not architectural correctness.",
         "https://rust-lang.org/what/cli/",
         Prototype,
@@ -125,10 +125,11 @@ pub const RULES: &[Rule] = &[
         true
     ),
     card!(
+        2,
         "TEST-001",
         "Demonstrate a repeatable build and meaningful tests",
         "Configuration and test files are not proof of a successful build or that important behavior was exercised.",
-        "Run the project's documented build and focused behavioral tests in an authorized environment. For Rust, start with cargo test --locked and cargo build --locked; use the project's own commands for other stacks. Record commands, versions, scope, results, and relevant failures in a small report. Broaden testing when changed behavior warrants it, not after every text edit.",
+        "Run the project's documented build and focused behavioral tests in an authorized environment. For Rust, start with cargo test --locked and cargo build --locked; use the project's own commands for other stacks. If realtime features exist, use Oracle's realtime guide to exercise client/server compatibility, disconnect and resync, duplicate commands, and bounded slow-consumer behavior. Record commands, versions, scope, results, and relevant failures in a small report. Broaden testing when changed behavior warrants it, not after every text edit.",
         "A current report records a successful build and meaningful tests for the stated application scope, with limitations acknowledged.",
         "https://doc.rust-lang.org/book/ch11-00-testing.html",
         Beta,
@@ -136,10 +137,11 @@ pub const RULES: &[Rule] = &[
         true
     ),
     card!(
+        2,
         "SEC-002",
         "Test access to private user-owned records",
         "Sign-in establishes identity; authorization determines which records that identity can access.",
-        "Use two test users. Attempt to read and modify User A's private records as User B through the server API. Include unauthenticated access and relevant administrative roles. Attach results showing denial without private content. Set data.private_user_records accurately; missing evidence alone does not establish a vulnerability.",
+        "Use two test users. Attempt to read and modify User A's private records as User B through the server API. When realtime features exist, include subscriptions, room membership, and message handlers; check session expiry and revoked access during reconnect or recovery. Include unauthenticated access and relevant administrative roles. Attach results showing denial without private content. Set data.private_user_records accurately; missing evidence alone does not establish a vulnerability.",
         "Current evidence covers successful legitimate access and denied cross-user/unauthenticated access to the relevant operations.",
         "https://owasp.org/www-project-application-security-verification-standard/",
         Beta,
@@ -416,7 +418,7 @@ pub fn assess(root: &Path, config: &Config) -> Result<Report> {
             required,
             detail,
             action: if rule.id == "STACK-001" && !config.stack.prefer_rust {
-                "Choose the smallest implementation that serves the actual feature; a static website may not need a backend. Compare suitable languages using library maturity, delivery time, deployment needs, and team experience. Preserve a working existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale. This project has disabled the Rust preference."
+                "Choose the smallest implementation that serves the actual feature; a static website may not need a backend. For realtime features, use Oracle's realtime guide to compare polling, SSE, WebSockets, and Socket.IO and verify protocol compatibility. Compare suitable languages using library maturity, delivery time, deployment needs, and team experience. Preserve a working existing stack unless a migration has a measured benefit. Record stack.language and stack.rationale. This project has disabled the Rust preference."
             } else {
                 rule.action
             },

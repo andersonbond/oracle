@@ -265,6 +265,33 @@ fn disabling_rust_preference_changes_the_next_action_without_passing_the_decisio
 }
 
 #[test]
+fn realtime_example_requires_actual_behavior_and_authorization_evidence_at_beta() {
+    let root = fixture();
+    write(
+        root.path(),
+        "oracle.toml",
+        include_str!("../examples/realtime/oracle.toml"),
+    );
+    let report = assess(root.path());
+    assert_eq!(finding(&report, "STACK-001")["status"], "pass");
+    assert_eq!(finding(&report, "UX-001")["status"], "pass");
+    for id in ["TEST-001", "SEC-002", "DATA-001"] {
+        assert_eq!(finding(&report, id)["status"], "deferred");
+    }
+    ok(root.path(), &["check", "--strict"]);
+    configure(root.path(), |c| c.project.stage = Stage::Beta);
+    let report = assess(root.path());
+    for id in ["TEST-001", "SEC-002", "DATA-001"] {
+        assert_eq!(finding(&report, id)["status"], "unknown");
+        assert_eq!(finding(&report, id)["required"], true);
+    }
+    assert_eq!(
+        run(root.path(), &["check", "--strict"]).status.code(),
+        Some(1)
+    );
+}
+
+#[test]
 fn data_and_interface_applicability_are_explicit() {
     let root = fixture();
     configure(root.path(), |c| {
@@ -489,6 +516,7 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
         "references/workflow.md",
         "references/compact-ui.md",
         "references/simple-projects.md",
+        "references/realtime.md",
         "assets/simple-projects.svg",
         "assets/adaptive-workspace.svg",
     ] {

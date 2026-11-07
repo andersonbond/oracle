@@ -1,0 +1,22 @@
+schema_version = 1
+
+[project]
+name = "shared-task-board"
+kind = "web-app"
+stage = "prototype"
+audience = "enterprise"
+
+[stack]
+prefer_rust = true
+language = "Rust service + browser UI using a compatible Socket.IO client"
+rationale = "Evaluate Socketioxide for scoped task updates and acknowledgements; verify protocol and adapter support, keep durable writes server-side, and resync after reconnect."
+
+[ux]
+density = "adaptive"
+primary_workflow = "Update a shared task, observe authorized peer changes, and recover the current board after reconnecting."
+rationale = "A compact board supports team work; narrow screens and offline states need clear actions and feedback."
+
+[data]
+personal_data = true
+database = true
+private_user_records = true

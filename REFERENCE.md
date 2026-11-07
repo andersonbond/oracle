@@ -35,6 +35,8 @@ The [simple-project guide](skills/oracle/references/simple-projects.md) covers s
 
 In v1, `web-app` also covers static websites and does not require a server or database. See the [simple-site example](examples/simple-site/oracle.toml). A site's size does not determine its stage: use `production` when that is its actual deployment stage. Declare data features accurately; small apps with databases or private records still need the corresponding evidence. No separate simple-project mode bypasses the existing applicability or stage policies.
 
+For realtime features, use the [WebSocket and Socket.IO guide](skills/oracle/references/realtime.md) and [example specification](examples/realtime/oracle.toml). Record transport choices in the existing stack and workflow fields. There is no `[realtime]` table, dependency installation, transport detection, or live connection check. The existing cards accept the relevant supplied behavioral, authorization, and deployment evidence.
+
 ## Checks and stages
 
 | Rule | Earliest stage | Required by default in strict mode | Evaluator |
@@ -114,7 +116,7 @@ oracle agent install codex
 oracle agent install claude
 ```
 
-Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow and UI guides, and three SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
+Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI and realtime guides, and three SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
 
 Every destination is preflighted. Exact matches are left alone; different contents cause an error before mutation. This also protects user edits during removal. `oracle agent remove CLIENT` removes only files identical to the current binary's embedded package and then attempts to remove empty package-owned directories. It leaves client roots and unrelated files alone.
 

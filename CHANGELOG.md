@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3 — 2026-11-07
+
+- Realtime guidance comparing polling, SSE, native WebSockets, and Socket.IO, with Rust implementation candidates.
+- Event authorization, reconnection, missed-update recovery, and multi-server delivery guidance linked to existing evidence cards.
+- Shared task-board specification and an offline agent reference; no networking dependencies or additional release gates.
+
 ## 1.0.2 — 2026-11-06
 
 - Simple-website and small-app guidance with a visual example and static-site specification.

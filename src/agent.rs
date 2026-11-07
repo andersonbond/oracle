@@ -29,6 +29,10 @@ const FILES: &[(&str, &[u8])] = &[
         include_bytes!("../skills/oracle/references/simple-projects.md"),
     ),
     (
+        "references/realtime.md",
+        include_bytes!("../skills/oracle/references/realtime.md"),
+    ),
+    (
         "assets/simple-projects.svg",
         include_bytes!("../skills/oracle/assets/simple-projects.svg"),
     ),
