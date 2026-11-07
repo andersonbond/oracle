@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5 — 2026-11-07
+
+- Pinned MIT-licensed copies of Emil Kowalski's Design Engineering skill and UI cheatsheet, with source attribution and the complete upstream license bundled offline.
+- Shared UI foundation connects component craft and purposeful motion to simple-project and compact-workspace guidance.
+- Recreated all three UI illustrations with clearer hierarchy, tabular quantities, focus, selection, and save-state recovery; updated UX guidance versions while retaining existing stage policies.
+
 ## 1.0.4 — 2026-11-07
 
 - Database design, normalization, indexing, connection pooling, and caching guidance with a relationship diagram and a small reading-list specification.

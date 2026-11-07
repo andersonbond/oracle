@@ -555,6 +555,10 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
         "references/simple-projects.md",
         "references/realtime.md",
         "references/database.md",
+        "references/ui-design.md",
+        "references/emil-design-engineering.md",
+        "references/emil-ui-cheatsheet.md",
+        "references/emil-LICENSE.txt",
         "assets/simple-projects.svg",
         "assets/adaptive-workspace.svg",
     ] {
@@ -605,7 +609,7 @@ fn removing_skill_preserves_modified_and_unrelated_visual_assets() {
 
 #[test]
 fn previous_guidance_rule_evidence_requires_a_new_review() {
-    for (id, version) in [("UX-002", 3), ("DATA-001", 2), ("PERF-001", 2)] {
+    for (id, version) in [("UX-002", 4), ("DATA-001", 2), ("PERF-001", 2)] {
         let root = fixture();
         configure(root.path(), |c| {
             c.project.stage = Stage::Beta;

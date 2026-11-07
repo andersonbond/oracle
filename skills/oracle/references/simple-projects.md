@@ -2,11 +2,11 @@
 
 Start with something useful that a person can understand and use. A portfolio, local-business page, event site, calculator, or personal tracker usually needs a clear purpose, readable content, and a short working journey. Keep the scope small enough to finish and improve from actual use.
 
-This guide is advisory and works with any frontend stack. It adds no rules, dependencies, or release gates. For screens centered on comparing records and repeating actions, use the [compact UI guide](compact-ui.md). A product can use both approaches on different screens.
+Use [UI that fits the project](ui-design.md), including the bundled Emil Kowalski Design Engineering skill and UI cheatsheet, for the shared design foundation. This guide adds small-project scope and layout decisions. It is advisory, works with any frontend stack, and adds no rules, dependencies, or release gates. For screens centered on comparing records and repeating actions, use the [compact UI guide](compact-ui.md). A product can use both approaches on different screens.
 
 ## Two small starting points
 
-![Illustrative portfolio page with a short introduction and selected projects, alongside a packing-list app with a labeled input, add action, and checkable items.](../assets/simple-projects.svg)
+![Illustrative portfolio with editorial typography and selected work, alongside a packing-list app with a focused labeled input, visible progress, checkable items, and a saved-on-device message.](../assets/simple-projects.svg)
 
 These are layout illustrations with fictional content, not templates, interactive apps, or usability-test results.
 
@@ -24,6 +24,7 @@ For the illustrated portfolio, the journey is introduction → selected work →
 - Choose a coherent visual direction through typography, color, and useful imagery. Build sections around the content instead of adding a generic hero, feature grid, testimonials, or pricing table to every site. Use real claims and assets you have permission to publish.
 - Make layouts work across the intended screen sizes. Keep essential content and actions reachable, allow text to wrap and zoom, and keep images proportionate. See [MDN's responsive-design guidance](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design).
 - Use descriptive links, native buttons, labeled inputs, meaningful headings, visible keyboard focus, and useful image alternatives. See [MDN's semantic HTML guidance](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/HTML).
+- Apply the shared foundation to feedback and state: make controls respond promptly, keep focus visible, and show truthful save and error states. Add motion only when it helps the task; a simple website does not need scroll reveals or an animation library by default.
 
 ## Keep the implementation proportional
 

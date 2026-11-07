@@ -17,6 +17,22 @@ pub enum Client {
 const FILES: &[(&str, &[u8])] = &[
     ("SKILL.md", include_bytes!("../skills/oracle/SKILL.md")),
     (
+        "references/ui-design.md",
+        include_bytes!("../skills/oracle/references/ui-design.md"),
+    ),
+    (
+        "references/emil-design-engineering.md",
+        include_bytes!("../skills/oracle/references/emil-design-engineering.md"),
+    ),
+    (
+        "references/emil-ui-cheatsheet.md",
+        include_bytes!("../skills/oracle/references/emil-ui-cheatsheet.md"),
+    ),
+    (
+        "references/emil-LICENSE.txt",
+        include_bytes!("../skills/oracle/references/emil-LICENSE.txt"),
+    ),
+    (
         "references/workflow.md",
         include_bytes!("../skills/oracle/references/workflow.md"),
     ),

@@ -68,13 +68,13 @@ pub const RULES: &[Rule] = &[
         false
     ),
     card!(
-        3,
+        4,
         "UX-001",
         "Match the interface to its purpose",
         "A portfolio, small utility, and inventory desk serve different tasks. Content and a clear main action help simple websites and apps; comparison and repeated operations benefit from compact workspaces. Audience alone does not determine complexity or density.",
-        "Choose per screen using Oracle's simple-project and compact UI guides. For a simple website or small app, prioritize clear content, a primary action, responsive layouts, and intentional whitespace. For operational screens, bring comparison data and repeated actions close together. Adapt density to input method and user preference; compact, comfortable, and adaptive choices are valid. Preserve readable text, keyboard access, and usable targets. Record project.audience, ux.density, ux.primary_workflow, and ux.rationale. Suggestions are advisory, not pixel-based gates or a frontend-stack requirement.",
+        "Start with Oracle's UI that fits the project guide and its bundled Emil Kowalski Design Engineering reference. Reuse the component and interaction foundation, then choose per screen using the simple-project and compact UI guides. For a simple website or small app, prioritize clear content, a primary action, responsive layouts, and intentional whitespace. For operational screens, bring comparison data and repeated actions close together. Adapt density to input method and user preference; compact, comfortable, and adaptive choices are valid. Preserve readable text, keyboard access, and usable targets. Record project.audience, ux.density, ux.primary_workflow, and ux.rationale. Suggestions are advisory, not pixel-based gates or a frontend-stack requirement.",
         "Audience, density, workflow, and rationale are recorded. Actual usability remains a separate review under UX-002.",
-        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/workflow.md#choose-the-ui-for-the-task",
+        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/ui-design.md",
         Prototype,
         None,
         false
@@ -113,13 +113,13 @@ pub const RULES: &[Rule] = &[
         false
     ),
     card!(
-        3,
+        4,
         "UX-002",
         "Review the real workflow and accessibility",
         "A density setting cannot prove a screen is usable. Review the actual task with realistic data and error states.",
-        "Use the guide matching the screen's task. For a website or small app, review content, navigation, the primary action, forms or outputs, and persistence when promised. For operational screens, review comparison, selection scope, search/filter/actions, and access to details. Use realistic content at intended viewport sizes and input methods. Check keyboard order, focus, labels, zoom/reflow, target sizes, and relevant loading/empty/error states. Keep the review proportional to the features and consequences. Attach observations and remaining issues; illustrations and spacing values do not prove usability or accessibility.",
+        "Use Oracle's UI integration guide and the relevant Emil Kowalski reference sections for component details, feedback, and purposeful motion. For a website or small app, review content, navigation, the primary action, forms or outputs, and persistence when promised. For operational screens, review comparison, selection scope, search/filter/actions, and access to details. Use realistic content at intended viewport sizes and input methods. Check keyboard order, focus, labels, zoom/reflow, target sizes, and relevant loading/empty/error states. Verify immediate feedback, retained drafts after failure, and reduced-motion behavior when transitions are present. Keep repeated actions fast. Keep the review proportional to the features and consequences. Attach observations and remaining issues; illustrations and spacing values do not prove usability or accessibility.",
         "A current review artifact describes the scenario, viewport/input methods, observations, and remaining limitations.",
-        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/workflow.md#choose-the-ui-for-the-task",
+        "https://github.com/andersonbond/oracle/blob/main/skills/oracle/references/ui-design.md",
         Beta,
         Some(Stage::Beta),
         true

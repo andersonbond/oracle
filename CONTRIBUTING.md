@@ -20,7 +20,7 @@ The CLI is in `src/main.rs`; configuration, inspection, rules, evidence, and ski
 
 A card needs an explicit criterion, applicability, useful next action, acceptance criteria, an authoritative source, and honest verification limits. Bump its rule version if the meaning changes. Evidence also becomes stale across Oracle versions. Do not count a configuration declaration as behavioral verification or convert an accepted risk into a pass.
 
-Oracle's UI recommendations live in `skills/oracle/references/simple-projects.md` and `skills/oracle/references/compact-ui.md`, alongside bundled visual examples in `skills/oracle/assets/`. Keep recommendations independent of frontend frameworks and distinguish illustrative layouts from tested product behavior.
+Oracle's UI integration starts in `skills/oracle/references/ui-design.md`, with task guidance in `simple-projects.md` and `compact-ui.md` and visual examples in `skills/oracle/assets/`. Keep recommendations independent of frontend frameworks and distinguish illustrative layouts from tested product behavior. The copied Emil Kowalski references remain unchanged; put Oracle-specific interpretation in the integration guide. When updating the upstream snapshot, review the diff, update its pinned revision and source paths, preserve the MIT notice, and verify that the binary and package include every reference and license file.
 
 ## Pull requests
 

@@ -6,7 +6,7 @@
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
 <p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="REFERENCE.md">Reference</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.4 · MIT · Local and offline · No model API key required**
+**v1.0.5 · MIT · Local and offline · No model API key required**
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** It combines 13 versioned guidance cards, project context, repository inspection, and evidence tracking in a small native CLI.
 
@@ -29,15 +29,17 @@ Oracle guides projects written in other languages too. Rust preference is a star
 
 ## UI that fits the project
 
+Oracle builds on [Emil Kowalski's Design Engineering skill](https://github.com/emilkowalski/skills/tree/main/skills/emil-design-eng) and UI cheatsheet for component craft, typography details, feedback, and purposeful motion. A pinned copy is bundled under its MIT license, with [source attribution and Oracle's integration guide](skills/oracle/references/ui-design.md). Oracle supplies the task and density context; agents can reuse the shared foundation instead of inventing a new UI rulebook.
+
 **Simple websites and apps:** help someone understand the content or complete one useful task. A portfolio, local-business page, calculator, or personal tracker can use comfortable spacing, expressive visuals, and a small amount of navigation. Give each screen a clear purpose and make its main action work on small screens and with a keyboard. Start with the [simple-project guide and examples](skills/oracle/references/simple-projects.md).
 
-![Illustrative portfolio page with selected work and a clear browse action, alongside a small packing-list app with an input and checklist.](skills/oracle/assets/simple-projects.svg)
+![Recreated portfolio and packing-list illustrations: editorial typography, purposeful whitespace, a focused input, progress, and saved-on-device feedback.](skills/oracle/assets/simple-projects.svg)
 
 **Enterprise workspaces:** bring the records and actions people need into view. Use clear alignment, readable text, a restrained toolbar, and details on demand. Start with the [compact UI guide](skills/oracle/references/compact-ui.md) when comparison and repeated operations are the primary task.
 
-![Illustrative desktop inventory workspace with search and filters above a compact table, visible selection, and a nearby bulk action.](skills/oracle/assets/compact-workspace.svg)
+![Recreated inventory illustration: restrained navigation, an aligned toolbar, tabular quantities, clear selection, and a nearby review action.](skills/oracle/assets/compact-workspace.svg)
 
-Choose the layout per screen: one product can have a spacious public page and a dense internal workspace. Audience alone does not determine complexity or density. Both guides and all three SVG examples are bundled with the agent skill for offline use. They work with any frontend stack and add no mandatory pixel budgets.
+Choose the layout per screen: one product can have a spacious public page and a dense internal workspace. Audience alone does not determine complexity or density. See the [adaptive example](skills/oracle/assets/adaptive-workspace.svg) for a focused narrow view and a desktop editor with a recoverable save error. The upstream guidance, license, Oracle guides, and all three recreated SVGs are bundled for offline agent use. The illustrations contain fictional content and demonstrate design intent; actual interactions and motion still need testing. Frontend stacks remain a project choice, with no mandatory pixel budgets.
 
 ## Realtime when the feature needs it
 

@@ -1,62 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="700" viewBox="0 0 960 700" role="img" aria-labelledby="title desc">
-<title id="title">Oracle compact UI: adapt to the task and input</title><desc id="desc">Two illustrations of the same inventory task: a narrow screen reviews one item with larger actions; a desktop detail panel keeps list context while editing a single record. Synthetic data, not interactive controls.</desc>
-<g font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
-<rect x="0" y="0" width="960" height="700" rx="12" fill="#f5f8f6"/>
-<text x="24" y="32" font-size="24" fill="#17342f" font-weight="650" text-anchor="start">Keep the task clear as the layout changes</text>
-<text x="24" y="55" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Narrow review and desktop editing · the same item, with a different interaction</text>
-<text x="24" y="93" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Focused review</text>
-<text x="410" y="93" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Details alongside the list</text>
-<rect x="24" y="110" width="342" height="480" rx="8" fill="white" stroke="#d8e4df"/>
-<text x="42" y="140" font-size="20" fill="#17342f" font-weight="650" text-anchor="start">Inventory</text>
-<rect x="280" y="116" width="68" height="44" rx="5" fill="white" stroke="#d8e4df"/>
-<text x="314.0" y="143.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Menu</text>
-<rect x="42" y="166" width="306" height="44" rx="5" fill="white" stroke="#d8e4df"/>
-<text x="56" y="194" font-size="16" fill="#526b65" font-weight="400" text-anchor="start">Search items or SKU</text>
-<text x="42" y="237" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">1 of 12 low-stock items</text>
-<path d="M42 254H348" stroke="#d8e4df"/>
-<text x="42" y="286" font-size="20" fill="#17342f" font-weight="650" text-anchor="start">USB-C cable</text>
-<text x="42" y="311" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">CBL-014 · Harbor warehouse</text>
-<text x="42" y="348" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">On hand</text>
-<text x="348" y="349" font-size="18" fill="#17342f" font-weight="650" text-anchor="end">18 units</text>
-<text x="42" y="384" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Status</text>
-<text x="348" y="384" font-size="14" fill="#86520b" font-weight="600" text-anchor="end">Low stock</text>
-<path d="M42 405H348" stroke="#d8e4df"/>
-<rect x="42" y="424" width="306" height="44" rx="5" fill="#146653"/>
-<text x="195.0" y="451.0" font-size="14" fill="white" font-weight="600" text-anchor="middle">Review item</text>
-<rect x="42" y="480" width="306" height="44" rx="5" fill="white" stroke="#d8e4df"/>
-<text x="195.0" y="507.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Next item</text>
-<text x="42" y="562" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Details remain one explicit action away.</text>
-<rect x="410" y="110" width="526" height="480" rx="8" fill="white" stroke="#d8e4df"/>
-<text x="426" y="141" font-size="20" fill="#17342f" font-weight="650" text-anchor="start">Inventory</text>
-<text x="426" y="172" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">Low stock</text>
-<rect x="426" y="190" width="158" height="55" rx="5" fill="#e4f4ee"/>
-<text x="438" y="213" font-size="14" fill="#146653" font-weight="600" text-anchor="start">USB-C cable</text>
-<text x="438" y="234" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Harbor · 18 units</text>
-<text x="438" y="274" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Power adapter</text>
-<text x="438" y="295" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">North · 6 units</text>
-<text x="438" y="338" font-size="14" fill="#17342f" font-weight="500" text-anchor="start">Display cable</text>
-<text x="438" y="359" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">East · 9 units</text>
-<path d="M602 111L602 589" stroke="#d8e4df"/>
-<text x="620" y="145" font-size="18" fill="#17342f" font-weight="650" text-anchor="start">Review item</text>
-<text x="620" y="172" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">USB-C cable · CBL-014</text>
-<text x="620" y="208" font-size="13" fill="#17342f" font-weight="600" text-anchor="start">Warehouse</text>
-<rect x="620" y="219" width="298" height="36" rx="5" fill="#f5f8f6" stroke="#d8e4df"/>
-<text x="632" y="242" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Harbor</text>
-<text x="620" y="282" font-size="13" fill="#17342f" font-weight="600" text-anchor="start">Reorder threshold (units)</text>
-<rect x="620" y="293" width="298" height="36" rx="5" fill="white" stroke="#146653"/>
-<text x="632" y="316" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">24</text>
-<rect x="617" y="290" width="304" height="42" rx="7" fill="none" stroke="#146653"/>
-<text x="620" y="356" font-size="13" fill="#17342f" font-weight="600" text-anchor="start">Note</text>
-<rect x="620" y="367" width="298" height="60" rx="5" fill="white" stroke="#d8e4df"/>
-<text x="632" y="390" font-size="14" fill="#17342f" font-weight="400" text-anchor="start">Review next shipment</text>
-<text x="620" y="454" font-size="13" fill="#526b65" font-weight="400" text-anchor="start">On hand remains 18 units.</text>
-<rect x="620" y="480" width="146" height="36" rx="5" fill="#146653"/>
-<text x="693.0" y="503.0" font-size="14" fill="white" font-weight="600" text-anchor="middle">Save changes</text>
-<rect x="778" y="480" width="140" height="36" rx="5" fill="white" stroke="#d8e4df"/>
-<text x="848.0" y="503.0" font-size="14" fill="#17342f" font-weight="600" text-anchor="middle">Cancel</text>
-<text x="620" y="562" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Selection stays visible while editing.</text>
-<text x="24" y="623" font-size="16" fill="#17342f" font-weight="650" text-anchor="start">Adapt controls and information order</text>
-<text x="24" y="647" font-size="14" fill="#526b65" font-weight="400" text-anchor="start">Use larger targets for touch. Preserve identifiers, key values, and access to the complete record.</text>
-<text x="24" y="680" font-size="12" fill="#526b65" font-weight="400" text-anchor="start">Illustration · synthetic data · keep a comparison view when side-by-side values are essential</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="850" viewBox="0 0 1120 850" role="img" aria-labelledby="title desc">
+<title id="title">Oracle adaptive workspace: focus and recovery</title><desc id="desc">Original Oracle UI illustrations informed by Emil Kowalski design guidance. A narrow inventory screen preserves item identity, warehouse and quantities with larger controls. A desktop editor retains list selection, shows focus on the reorder threshold, and keeps the draft after a failed save with retry and cancel actions. Synthetic data; static examples.</desc>
+<defs><filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#20362b" flood-opacity="0.04"/><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#20362b" flood-opacity="0.05"/></filter></defs>
+<style>text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.num{font-variant-numeric:tabular-nums}</style>
+<rect x="0" y="0" width="1120" height="850" rx="16" fill="#f6f7f5" />
+<text x="32" y="56" font-size="32" fill="#202526" font-weight="650" text-anchor="start" letter-spacing="-0.8">Same task. A different amount of room.</text>
+<text x="32" y="85" font-size="15" fill="#606a6d" font-weight="400" text-anchor="start" >Preserve context, show focus, and help someone recover without losing their work.</text>
+<text x="32" y="135" font-size="12" fill="#606a6d" font-weight="600" text-anchor="start" letter-spacing="1">01 / FOCUSED REVIEW</text>
+<text x="376" y="135" font-size="12" fill="#606a6d" font-weight="600" text-anchor="start" letter-spacing="1">02 / EDIT WITHOUT LOSING CONTEXT</text>
+<rect x="32" y="156" width="320" height="574" rx="12" fill="white" filter="url(#shadow)"/>
+<rect x="32" y="156" width="320" height="574" rx="12" fill="none" stroke="#e0e5e3" />
+<rect x="376" y="156" width="712" height="574" rx="12" fill="white" filter="url(#shadow)"/>
+<rect x="376" y="156" width="712" height="574" rx="12" fill="none" stroke="#e0e5e3" />
+<text x="56" y="195" font-size="21" fill="#202526" font-weight="650" text-anchor="start" letter-spacing="-0.5">Inventory</text>
+<rect x="272" y="168" width="56" height="36" rx="7" fill="white" stroke="#899590" />
+<text x="300.0" y="191.0" font-size="14" fill="#202526" font-weight="550" text-anchor="middle" >Menu</text>
+<rect x="56" y="220" width="272" height="44" rx="7" fill="white" stroke="#899590" />
+<circle cx="73" cy="240.0" r="5" fill="none" stroke="#606a6d"/>
+<path d="M77 244.0l4 4" stroke="#606a6d" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="90" y="247.0" font-size="14" fill="#606a6d" font-weight="400" text-anchor="start" >Search items or SKU</text>
+<text x="56" y="293" font-size="13" fill="#606a6d" font-weight="400" text-anchor="start" class="num">Low stock · 1 of 12</text>
+<path d="M56 311L328 311" stroke="#e0e5e3" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="56" y="350" font-size="25" fill="#202526" font-weight="600" text-anchor="start" letter-spacing="-0.6">USB-C cable</text>
+<text x="56" y="376" font-size="13" fill="#606a6d" font-weight="400" text-anchor="start" class="num">CBL-014</text>
+<rect x="228" y="358" width="100" height="24" rx="12" fill="#fff5e5" />
+<circle cx="240" cy="370" r="3" fill="#936012"/>
+<text x="249" y="375" font-size="12" fill="#80500c" font-weight="500" text-anchor="start" >Low stock</text>
+<text x="56" y="438" font-size="14" fill="#606a6d" font-weight="400" text-anchor="start" >On hand</text>
+<text x="328" y="443" font-size="25" fill="#202526" font-weight="600" text-anchor="end" class="num">18 units</text>
+<path d="M56 459L328 459" stroke="#e0e5e3" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="56" y="492" font-size="14" fill="#606a6d" font-weight="400" text-anchor="start" >Warehouse</text>
+<text x="328" y="492" font-size="15" fill="#202526" font-weight="500" text-anchor="end" >Harbor</text>
+<text x="56" y="533" font-size="14" fill="#606a6d" font-weight="400" text-anchor="start" >Reorder at</text>
+<text x="328" y="533" font-size="15" fill="#202526" font-weight="500" text-anchor="end" class="num">24 units</text>
+<rect x="56" y="574" width="272" height="44" rx="7" fill="#176b52" stroke="#176b52" />
+<path d="M64 575H320" stroke="#ffffff" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.18"/>
+<text x="192.0" y="601.0" font-size="14" fill="white" font-weight="550" text-anchor="middle" >Review item</text>
+<rect x="56" y="630" width="272" height="44" rx="7" fill="white" stroke="#899590" />
+<text x="192.0" y="657.0" font-size="14" fill="#202526" font-weight="550" text-anchor="middle" >Next item</text>
+<text x="56" y="707" font-size="12" fill="#606a6d" font-weight="400" text-anchor="start" >All item details remain available.</text>
+<text x="400" y="196" font-size="21" fill="#202526" font-weight="650" text-anchor="start" letter-spacing="-0.5">Inventory</text>
+<text x="400" y="224" font-size="13" fill="#606a6d" font-weight="400" text-anchor="start" >Low stock</text>
+<rect x="388" y="244" width="188" height="64" rx="7" fill="#edf6f1" />
+<text x="400" y="270" font-size="14" fill="#176b52" font-weight="550" text-anchor="start" >USB-C cable</text>
+<text x="400" y="292" font-size="12" fill="#606a6d" font-weight="400" text-anchor="start" class="num">Harbor · 18 units</text>
+<text x="400" y="350" font-size="14" fill="#202526" font-weight="550" text-anchor="start" >Power adapter</text>
+<text x="400" y="372" font-size="12" fill="#606a6d" font-weight="400" text-anchor="start" class="num">North · 6 units</text>
+<text x="400" y="430" font-size="14" fill="#202526" font-weight="550" text-anchor="start" >Display cable</text>
+<text x="400" y="452" font-size="12" fill="#606a6d" font-weight="400" text-anchor="start" class="num">East · 9 units</text>
+<text x="400" y="701" font-size="12" fill="#606a6d" font-weight="400" text-anchor="start" >3 items need review</text>
+<path d="M588 156L588 730" stroke="#e0e5e3" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="612" y="198" font-size="22" fill="#202526" font-weight="650" text-anchor="start" letter-spacing="-0.4">Edit item</text>
+<rect x="1000" y="174" width="64" height="32" rx="7" fill="white" stroke="#899590" />
+<text x="1032.0" y="195.0" font-size="14" fill="#202526" font-weight="550" text-anchor="middle" >Close</text>
+<text x="612" y="228" font-size="14" fill="#606a6d" font-weight="400" text-anchor="start" >USB-C cable · CBL-014</text>
+<path d="M612 247L1064 247" stroke="#e0e5e3" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="612" y="277" font-size="13" fill="#202526" font-weight="550" text-anchor="start" >Warehouse</text>
+<rect x="612" y="288" width="452" height="40" rx="7" fill="#f8faf8" stroke="#e0e5e3" />
+<text x="626" y="314" font-size="15" fill="#606a6d" font-weight="400" text-anchor="start" >Harbor</text>
+<text x="612" y="362" font-size="13" fill="#202526" font-weight="550" text-anchor="start" >Reorder threshold (units)</text>
+<rect x="609" y="372" width="458" height="50" rx="10" fill="none" stroke="#176b52" stroke-width="2"/>
+<rect x="612" y="375" width="452" height="44" rx="7" fill="white" stroke="#899590" />
+<text x="626" y="403" font-size="16" fill="#202526" font-weight="400" text-anchor="start" class="num">24</text>
+<path d="M647 387v20" stroke="#176b52" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="612" y="441" font-size="12" fill="#606a6d" font-weight="400" text-anchor="start" >Alerts appear when stock falls below this value.</text>
+<text x="612" y="479" font-size="13" fill="#202526" font-weight="550" text-anchor="start" >Note</text>
+<rect x="612" y="491" width="452" height="62" rx="7" fill="white" stroke="#899590" />
+<text x="626" y="517" font-size="15" fill="#202526" font-weight="400" text-anchor="start" >Review the next shipment.</text>
+<rect x="612" y="573" width="452" height="57" rx="7" fill="#fff3f0" />
+<circle cx="630" cy="591" r="7" fill="none" stroke="#b42318"/>
+<text x="630" y="595" font-size="10" fill="#b42318" font-weight="600" text-anchor="middle" >!</text>
+<text x="646" y="595" font-size="13" fill="#a3261e" font-weight="550" text-anchor="start" >Couldn’t save your changes.</text>
+<text x="646" y="616" font-size="12" fill="#943d32" font-weight="400" text-anchor="start" >Your draft is kept. Try again when connected.</text>
+<rect x="612" y="650" width="118" height="40" rx="7" fill="#176b52" stroke="#176b52" />
+<path d="M620 651H722" stroke="#ffffff" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.18"/>
+<text x="671.0" y="675.0" font-size="14" fill="white" font-weight="550" text-anchor="middle" >Retry save</text>
+<rect x="742" y="650" width="86" height="40" rx="7" fill="white" stroke="#899590" />
+<text x="785.0" y="675.0" font-size="14" fill="#202526" font-weight="550" text-anchor="middle" >Cancel</text>
+<text x="1064" y="676" font-size="12" fill="#606a6d" font-weight="400" text-anchor="end" >Unsaved changes</text>
+<text x="32" y="778" font-size="16" fill="#202526" font-weight="600" text-anchor="start" >Adapt the view, keep the meaning</text>
+<text x="32" y="803" font-size="13" fill="#606a6d" font-weight="400" text-anchor="start" >Larger controls and essential values stay within reach.</text>
+<text x="612" y="778" font-size="16" fill="#202526" font-weight="600" text-anchor="start" >Make recovery part of the design</text>
+<text x="612" y="803" font-size="13" fill="#606a6d" font-weight="400" text-anchor="start" >The selected record, focused field, and draft stay visible.</text>
+<text x="32" y="835" font-size="12" fill="#606a6d" font-weight="400" text-anchor="start" >Original Oracle illustrations · synthetic data · preserve a comparison view when columns must be seen together</text>
 </svg>

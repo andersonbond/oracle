@@ -10,7 +10,7 @@ Prototype checks focus on stack decisions, UI intent, repository size/hygiene, a
 
 ## Choose the UI for the task
 
-For a portfolio, informational site, or small single-purpose app, use [simple-project guidance](simple-projects.md): clear content, a main action, and a short working journey. For screens where comparing records and repeating actions matters, use [compact UI guidance](compact-ui.md). Choose per screen; an enterprise audience does not automatically need a dense interface, and a consumer app can have complex workflows.
+Start with [UI that fits the project](ui-design.md), which connects the bundled Emil Kowalski design guidance to Oracle's task and density choices. For a portfolio, informational site, or small single-purpose app, use [simple-project guidance](simple-projects.md): clear content, a main action, and a short working journey. For screens where comparing records and repeating actions matters, use [compact UI guidance](compact-ui.md). Choose per screen; an enterprise audience does not automatically need a dense interface, and a consumer app can have complex workflows.
 
 Both guides are advisory. Use the existing `ux` fields to record the decision and review the actual behavior under `UX-002`. Static websites use `project.kind = "web-app"` in v1. Declare data needs accurately, and use the actual release stage; a small public site can be production software.
 

@@ -2,7 +2,7 @@
 
 Help people see the information they need and complete their work with fewer unnecessary steps. For enterprise screens centered on comparing records or repeated operations, begin with a compact workspace, then adjust it for the actual task, input method, and user preference. For a public page or small single-purpose app, start with the [simple-project guide](simple-projects.md). Choose per screen rather than applying one density to an entire product.
 
-This is Oracle's framework-independent guidance. It does not require a UI library, create new configuration fields, or impose pixel-based release gates. A comfortable or adaptive layout with a clear rationale is a valid choice. The illustrations use synthetic data and demonstrate layout intent; they are not interactive components or usability-test results.
+Use [UI that fits the project](ui-design.md) as the shared foundation, including the bundled Emil Kowalski Design Engineering skill and UI cheatsheet. This guide adds task and density decisions for operational screens. It does not require a UI library, create new configuration fields, or impose pixel-based release gates. A comfortable or adaptive layout with a clear rationale is a valid choice. The illustrations use synthetic data and demonstrate layout intent; they are not interactive components or usability-test results.
 
 ## Begin with a task
 
@@ -21,7 +21,7 @@ rationale = "Compact rows support comparison; larger controls support touch and 
 
 ## Example 1: compare and act on desktop
 
-![Desktop inventory illustration: short page heading, integrated search and warehouse filter, eight aligned inventory rows, two selected records, and a nearby review-adjustment action.](../assets/compact-workspace.svg)
+![Desktop inventory illustration: restrained navigation, aligned search and filters, eight rows with tabular quantities, two selected records, and a nearby review-adjustment action.](../assets/compact-workspace.svg)
 
 The work area starts near the top of the screen. Search and filters sit next to the records they affect. Product names remain readable; quantities align for comparison. Selection has a visible count and a scoped action. Navigation is secondary to the table.
 
@@ -29,9 +29,9 @@ Use this pattern for repeated desktop comparison and batch work. Keep the most i
 
 ## Example 2: adapt the workflow and expose details
 
-![Adaptive inventory illustration: a narrow view shows item, warehouse, quantity, and a full-width review action; a desktop detail panel shows labeled fields and an explicit save action beside the item list.](../assets/adaptive-workspace.svg)
+![Adaptive inventory illustration: a narrow view preserves item, warehouse, quantity, and a review action; a desktop editor keeps list context, shows field focus, and retains the draft after a failed save.](../assets/adaptive-workspace.svg)
 
-On a narrow screen, this task becomes a focused item review. Preserve the identifier, location, quantity, and next action. The desktop detail panel keeps the list context visible while someone edits one record. Labels remain above fields; save and cancel actions are explicit.
+On a narrow screen, this task becomes a focused item review. Preserve the identifier, location, quantity, and next action. The desktop detail panel keeps the list context visible while someone edits one record. Labels remain above fields; focus is visible, and a failed save preserves the draft with explicit retry and cancel actions.
 
 Choose this adaptation only when sequential review still supports the task. If comparing columns is essential, retain a labeled horizontally scrollable table or provide a comparison view; do not silently remove critical fields. Make omitted details available through a clear action. Keep destructive and bulk actions distinct from ordinary navigation.
 
@@ -50,7 +50,7 @@ Reduce decorative padding and repeated containers before reducing text size. Use
 
 ## Density is adjustable
 
-For a desktop prototype, **32–36 CSS px single-line rows and controls, 14–16 CSS px primary text, and 12–16 CSS px work-area padding** are reasonable values to try. These are Oracle design suggestions, not accessibility thresholds or mandatory tokens. Allow rows and fields to grow for wrapped text, validation messages, localization, zoom, and user font settings. Avoid fixed heights that clip content.
+Choose row and control spacing around readable type, content, input method, and the values people need to compare. Use the bundled [UI cheatsheet](emil-ui-cheatsheet.md) for details such as tabular numerals and text measure. Allow rows and fields to grow for wrapped text, validation messages, localization, zoom, and user font settings. Avoid fixed heights that clip content.
 
 Offer compact and comfortable settings where frequent use justifies the choice. Preserve the user's selection, and keep the same data and capabilities available. Touch-oriented layouts can start with larger controls, around 44 CSS px, while retaining a concise page structure. Adapt to available space and input capabilities rather than assuming that every small screen uses touch or every large screen uses a mouse.
 
@@ -70,6 +70,7 @@ Record what was actually observed:
 - Whether important values can be compared and actions found; note unnecessary scrolling, ambiguous selections, and mistakes. Visible row count is context, not a score to maximize.
 - Keyboard order, focus visibility, labels, target behavior, zoom/reflow, and access to details.
 - Loading, empty, validation, and failure behavior; unresolved issues and untested cases.
+- Immediate feedback for repeated actions and keyboard use, plus reduced-motion behavior when transitions are present. Use the shared [design foundation](ui-design.md) to review component details.
 
 Keep a short sanitized review in `.oracle/reports/ux-review.md`; screenshots may help explain observations. Record `UX-002` evidence only after performing the review, using `--result fail` when the criterion failed. Oracle verifies provenance and freshness, not the truth of a screenshot or report.
 
