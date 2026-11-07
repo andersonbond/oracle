@@ -16,7 +16,7 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 
 | Common problem | Oracle's approach |
 | --- | --- |
-| The agent picks a stack without explaining it | Consider **Rust first for new services and tools**, then record ecosystem, delivery, deployment, and team trade-offs. Respect a justified existing stack. |
+| The agent picks a stack without explaining it | Consider **Rust first for new services and tools**: compile-time type and ownership checks catch many errors early, giving developers and coding agents concrete feedback. Memory-efficient native binaries and a consistent build, test, formatting, and linting toolchain support maintainable services. Weigh ecosystem, delivery, deployment, and team trade-offs; respect a justified existing stack. |
 | An enterprise tool looks like a spacious landing page | For comparison and repeated operations, start with **compact, task-oriented UI**. Record audience, density, and workflow; review readability, keyboard use, target sizes, and real data. |
 | A simple website or app gets overbuilt | Start with **clear content and one primary action**. Use responsive layouts and intentional whitespace; test the main journey. Add infrastructure only when a feature needs it. |
 | An app needs live updates but loses state or exposes private events | Choose **WebSockets or Socket.IO when realtime behavior helps**; consider polling or SSE for simpler needs. Plan authorization, reconnect, missed updates, and delivery across servers. |
@@ -25,7 +25,7 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 | Prototype work gets buried under process | **Prototype → beta → production** profiles introduce checks gradually. Assessment is advisory; blocking checks require `--strict`. |
 | An agent says “done” without evidence | Record a sanitized artifact, outcome, and scope. Mark evidence stale after inspected project contents, artifacts, versions, or freshness change. |
 
-Oracle guides projects written in other languages too. Rust preference is a starting point for a decision, not a requirement to rewrite working software or add a backend to a static site. See the [Rust guidance](https://rust-lang.org/what/cli/) and the UI guides below.
+Oracle guides projects written in other languages too. Rust preference is a starting point for a decision, not a requirement to rewrite working software or add a backend to a static site. See [Rust's performance, reliability, and tooling overview](https://rust-lang.org/) and the UI guides below.
 
 ## UI that fits the project
 
