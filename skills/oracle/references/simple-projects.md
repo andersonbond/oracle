@@ -31,6 +31,8 @@ A static site can start with HTML, CSS, and the JavaScript its interactions need
 
 Add accounts when identity or shared private data is part of the feature. Add a database when the persistence and query needs justify one. Add caching, containers, and scaling machinery in response to deployment needs or measured problems. A form may need a service or a provider even when the rest of the site is static; browser code must not contain private credentials.
 
+When records need a database, use the [database guide](database.md) for a small schema, useful constraints, query-driven indexes, and bounded connections. SQLite or an existing suitable database may be enough. Keep application data caching optional; a simple app does not automatically need Redis, a separate pooler, or replicas.
+
 Keep only used source and assets in the project. Size images for their use, remove unused starter sections and dependencies when safe, and keep generated output out of Git. A small scope still needs truthful behavior: a contact form must actually deliver or clearly report failure; a save indicator must reflect persistence; a payment or booking flow needs the safeguards its real consequences require.
 
 If a shared list, chat, or status feature needs live updates, use the [realtime guide](realtime.md) to compare polling, SSE, WebSockets, and Socket.IO. A small app can justify realtime behavior; a static portfolio or a list used on one device may not need a persistent server connection.

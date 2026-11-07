@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4 — 2026-11-07
+
+- Database design, normalization, indexing, connection pooling, and caching guidance with a relationship diagram and a small reading-list specification.
+- Versioned schema and performance cards cover query-driven indexes, bounded connections, and measured cache decisions while preserving existing stage policies.
+- Database guidance is bundled for offline agents; simple apps can start with one suitable database and no application cache or separate pooler.
+
 ## 1.0.3 — 2026-11-07
 
 - Realtime guidance comparing polling, SSE, native WebSockets, and Socket.IO, with Rust implementation candidates.

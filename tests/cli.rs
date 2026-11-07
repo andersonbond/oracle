@@ -292,6 +292,43 @@ fn realtime_example_requires_actual_behavior_and_authorization_evidence_at_beta(
 }
 
 #[test]
+fn small_database_example_keeps_performance_advisory_and_restore_required_at_production() {
+    let root = fixture();
+    write(
+        root.path(),
+        "oracle.toml",
+        include_str!("../examples/simple-data/oracle.toml"),
+    );
+    let report = assess(root.path());
+    assert_eq!(finding(&report, "STACK-001")["status"], "pass");
+    assert_eq!(finding(&report, "UX-001")["status"], "pass");
+    for id in ["DATA-001", "DATA-002", "PERF-001", "SEC-002"] {
+        assert_eq!(finding(&report, id)["status"], "deferred");
+    }
+    ok(root.path(), &["check", "--strict"]);
+    for stage in [Stage::Beta, Stage::Production] {
+        configure(root.path(), |c| c.project.stage = stage);
+        let report = assess(root.path());
+        for id in ["DATA-001", "SEC-002"] {
+            assert_eq!(finding(&report, id)["status"], "unknown");
+            assert_eq!(finding(&report, id)["required"], true);
+        }
+        assert_eq!(finding(&report, "PERF-001")["status"], "unknown");
+        assert_eq!(finding(&report, "PERF-001")["required"], false);
+        let production = stage == Stage::Production;
+        assert_eq!(finding(&report, "DATA-002")["required"], production);
+        assert_eq!(
+            finding(&report, "DATA-002")["status"],
+            if production { "unknown" } else { "deferred" }
+        );
+        assert_eq!(
+            run(root.path(), &["check", "--strict"]).status.code(),
+            Some(1)
+        );
+    }
+}
+
+#[test]
 fn data_and_interface_applicability_are_explicit() {
     let root = fixture();
     configure(root.path(), |c| {
@@ -517,6 +554,7 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
         "references/compact-ui.md",
         "references/simple-projects.md",
         "references/realtime.md",
+        "references/database.md",
         "assets/simple-projects.svg",
         "assets/adaptive-workspace.svg",
     ] {
@@ -566,40 +604,45 @@ fn removing_skill_preserves_modified_and_unrelated_visual_assets() {
 }
 
 #[test]
-fn previous_ux_rule_evidence_requires_a_new_review() {
-    let root = fixture();
-    configure(root.path(), |c| c.project.stage = Stage::Beta);
-    write(
-        root.path(),
-        ".oracle/reports/ux.txt",
-        "Synthetic UX review fixture.",
-    );
-    ok(
-        root.path(),
-        &[
-            "evidence",
-            "record",
-            "UX-002",
-            "--result",
-            "pass",
-            "--summary",
-            "Synthetic review for testing evidence version changes",
-            "--artifact",
-            ".oracle/reports/ux.txt",
-        ],
-    );
-    assert_eq!(finding(&assess(root.path()), "UX-002")["status"], "pass");
-    let path = fs::read_dir(root.path().join(".oracle/evidence/UX-002"))
-        .unwrap()
-        .next()
-        .unwrap()
-        .unwrap()
-        .path();
-    let mut record: Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
-    assert_eq!(record["rule_version"], 3);
-    record["rule_version"] = 2.into();
-    fs::write(path, serde_json::to_vec(&record).unwrap()).unwrap();
-    assert_eq!(finding(&assess(root.path()), "UX-002")["status"], "stale");
+fn previous_guidance_rule_evidence_requires_a_new_review() {
+    for (id, version) in [("UX-002", 3), ("DATA-001", 2), ("PERF-001", 2)] {
+        let root = fixture();
+        configure(root.path(), |c| {
+            c.project.stage = Stage::Beta;
+            c.data.database = true;
+        });
+        write(
+            root.path(),
+            ".oracle/reports/review.txt",
+            "Synthetic review fixture.",
+        );
+        ok(
+            root.path(),
+            &[
+                "evidence",
+                "record",
+                id,
+                "--result",
+                "pass",
+                "--summary",
+                "Synthetic review for testing evidence version changes",
+                "--artifact",
+                ".oracle/reports/review.txt",
+            ],
+        );
+        assert_eq!(finding(&assess(root.path()), id)["status"], "pass");
+        let path = fs::read_dir(root.path().join(format!(".oracle/evidence/{id}")))
+            .unwrap()
+            .next()
+            .unwrap()
+            .unwrap()
+            .path();
+        let mut record: Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+        assert_eq!(record["rule_version"], version);
+        record["rule_version"] = (version - 1).into();
+        fs::write(path, serde_json::to_vec(&record).unwrap()).unwrap();
+        assert_eq!(finding(&assess(root.path()), id)["status"], "stale");
+    }
 }
 
 #[test]

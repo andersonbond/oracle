@@ -1,0 +1,22 @@
+schema_version = 1
+
+[project]
+name = "small-reading-list"
+kind = "web-app"
+stage = "prototype"
+audience = "consumer"
+
+[stack]
+prefer_rust = true
+language = "Rust service + simple browser UI"
+rationale = "One service with SQLite on durable local storage for private reading lists. Keep ownership, book records, and list entries explicit; use short transactions and bounded connections. No application cache or separate pooler until measurements justify one."
+
+[ux]
+density = "comfortable"
+primary_workflow = "Sign in, save a book, update reading progress, and find it after returning."
+rationale = "A short list and clear save feedback suit the task; support narrow screens and keyboard navigation."
+
+[data]
+personal_data = true
+database = true
+private_user_records = true

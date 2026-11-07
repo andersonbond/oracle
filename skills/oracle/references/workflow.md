@@ -18,6 +18,10 @@ Both guides are advisory. Use the existing `ux` fields to record the decision an
 
 For chat, presence, collaboration, notifications, or live status, use [the realtime guide](realtime.md). Compare transport choices, evaluate Rust implementations where suitable, and design authorization and recovery before promising live behavior. Record the decision in the existing stack and workflow fields; no new configuration table or always-on realtime requirement is introduced. Use the existing evidence cards for the behavior actually exercised.
 
+## Database work at the right scale
+
+Use [the database guide](database.md) for schema design, normalization, indexing, connection pooling, and caching. Start from the app's reads, writes, ownership, and invariants. Keep a small schema and one suitable database when sufficient; measure before adding a cache or separate pooler. Set the existing data flags accurately, then record schema/migration evidence under `DATA-001`, restore evidence under `DATA-002`, and applicable measurements under the advisory `PERF-001` card. These guides do not add required checks or database infrastructure.
+
 ## Evidence
 
 Run or review the relevant scenario using the project's tools within the existing authorization. Save a minimal sanitized report under `.oracle/reports/` describing commands or review steps, environment, scenario, outcomes, and limitations. Do not collect credentials or private user data. Oracle does not execute those steps for you.

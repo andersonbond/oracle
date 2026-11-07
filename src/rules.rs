@@ -149,11 +149,12 @@ pub const RULES: &[Rule] = &[
         true
     ),
     card!(
+        2,
         "DATA-001",
         "Verify schema constraints and migrations",
         "A schema should enforce the application's data invariants. Normalization, constraints, and migrations need to fit the actual relationships and change path.",
-        "Review ownership, keys, uniqueness, required values, and normalization against real writes and queries. Test migrations on a disposable representative database, including failure/recovery behavior. Inspect query plans before adding indexes; balance write cost and read benefit. Record what was tested, never production data.",
-        "Current evidence describes schema invariants, migration results, and recovery behavior for a representative database.",
+        "Use Oracle's database guide to model ownership, relationships, keys, uniqueness, required values, and transactions around real reads and writes. Normalize to prevent conflicting facts; explain deliberate snapshots or duplication. Keep a small app's schema small. Test fresh setup and upgrades on a disposable representative database, including invalid data and failure/recovery behavior. Review relevant query plans before adding indexes; balance read benefit against write and storage cost. Record what was tested, never private records.",
+        "Current evidence describes schema invariants, normalization decisions, migration results, recovery behavior, and relevant index choices for a representative database. A declaration alone does not verify these properties.",
         "https://www.postgresql.org/docs/current/ddl-constraints.html",
         Beta,
         Some(Stage::Beta),
@@ -193,11 +194,12 @@ pub const RULES: &[Rule] = &[
         true
     ),
     card!(
+        2,
         "PERF-001",
-        "Measure before pooling, caching, or scaling",
-        "Caching, connection pools, and additional replicas each introduce limits and failure modes. They should address an observed workload and bottleneck.",
-        "Define a representative workload and latency/error/resource budgets. Run bounded load tests only against an authorized environment. Inspect queries and pool saturation. Add caching with explicit freshness and invalidation rules. Compare vertical and horizontal scaling against measurements, state sharing, cost, and recovery needs.",
-        "A current performance report records workload, environment, measurements, bottlenecks, and justified next steps. This advisory card does not require scaling every app.",
+        "Bound connections; measure before caching or scaling",
+        "A small shared connection pool can suit a concurrent server from the start. Larger pools, caches, separate poolers, and replicas should address measured needs because each adds limits and failure modes.",
+        "Use Oracle's database guide for query, pool, and cache decisions. Define a representative workload and latency/error/resource budgets; run bounded tests only in an authorized environment. Inspect query plans and pool wait time. Share bounded pools across handlers, budget connections across instances, and keep transactions short; a WebSocket must not reserve a database connection for its lifetime. Add caching only for a measured benefit, with scoped keys, freshness, invalidation, size bounds, and failure behavior. Compare scaling options against measurements, state sharing, cost, and recovery needs.",
+        "A current report records workload, environment, measurements, bottlenecks, relevant pool/cache behavior, and justified next steps. This advisory card does not require a cache, separate pooler, or scaling every app.",
         "https://sre.google/sre-book/monitoring-distributed-systems/",
         Beta,
         None,

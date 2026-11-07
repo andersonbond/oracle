@@ -43,6 +43,8 @@ sequenceDiagram
 
 Give messages explicit names and schemas. Include identifiers, schema versions, and record revisions where useful. Distinguish temporary signals such as typing or presence from durable actions such as sending a message or editing a record. A room is a routing group, not an authorization boundary. Collaborative editing also needs a conflict-resolution model; a transport alone does not resolve concurrent edits.
 
+Use the [database guide](database.md) for durable records, atomic writes, indexes, and cache invalidation. Acquire database connections only while doing database work; do not dedicate one to each long-lived socket.
+
 For state notifications, fetch initial state and resynchronize on reconnect. Reconcile changes that race with the initial snapshot using revisions or a buffered subscription. If notifications may be lost, provide an appropriate refresh path while still connected, such as focus or periodic refresh. Show connecting, offline, retrying, and stale states honestly; a connected socket does not prove the displayed data is current.
 
 ## Reconnection is not guaranteed delivery

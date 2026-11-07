@@ -3,7 +3,7 @@ name: oracle
 description: Use Oracle to choose a project's next engineering action, review stack and UI-density decisions, inspect repository hygiene, or assess release evidence. Apply to engineering planning and readiness work, not every routine edit.
 license: MIT
 metadata:
-  version: "1.0.3"
+  version: "1.0.4"
 ---
 
 # Oracle
@@ -18,6 +18,7 @@ For a relevant finding, use `oracle explain RULE-ID` and supply a focused task, 
 - For a simple website or small app, read [the simple-project guide](references/simple-projects.md). Focus on content, one useful journey, responsive layout, and working interactions. Keep infrastructure proportional; a static site does not need a backend merely to use Rust.
 - For comparison-heavy or repetitive operational screens, read [Oracle's compact UI guide](references/compact-ui.md). Choose layout per task, not audience alone; public pages and internal workspaces can differ within one product. Both guides include illustrative examples and supply recommendations, not mandatory dimensions or a frontend stack.
 - For chat, collaboration, live status, or other realtime features, read [the realtime guide](references/realtime.md). Compare polling, SSE, native WebSockets, and Socket.IO against the actual need. Verify client/server compatibility, authorization, reconnect, and missed-event recovery. Keep Rust in consideration without assuming Socket.IO is the plain WebSocket protocol.
+- For persistent records or slow data access, read [the database guide](references/database.md). Design relationships and constraints, normalize conflicting facts, and index actual queries. Keep connections bounded and introduce caching only with a measured benefit and an invalidation plan; simple apps can start with one database and no cache.
 - Distinguish tracked content, Git history, and ignored build caches. Never delete files or rewrite history merely because Oracle reports size.
 - Keep prototype work lightweight. Use stage-appropriate checks and focused tests. Do not add blocking CI gates, infrastructure, or a comprehensive audit for every small change. Use `check --strict` only when release enforcement is part of the task.
 

@@ -37,6 +37,8 @@ In v1, `web-app` also covers static websites and does not require a server or da
 
 For realtime features, use the [WebSocket and Socket.IO guide](skills/oracle/references/realtime.md) and [example specification](examples/realtime/oracle.toml). Record transport choices in the existing stack and workflow fields. There is no `[realtime]` table, dependency installation, transport detection, or live connection check. The existing cards accept the relevant supplied behavioral, authorization, and deployment evidence.
 
+For persistent records or slow data access, use the [database guide](skills/oracle/references/database.md) and [small reading-list specification](examples/simple-data/oracle.toml). Describe storage choices in `stack.rationale` and set the existing data flags from actual behavior. No additional database, pooling, or caching fields are introduced. `DATA-001` accepts schema/migration and relevant index-review evidence, `DATA-002` covers restore, and `PERF-001` remains advisory. Oracle does not inspect a live schema or execute queries; a small app can use one database without a cache or separate pooler.
+
 ## Checks and stages
 
 | Rule | Earliest stage | Required by default in strict mode | Evaluator |
@@ -116,7 +118,7 @@ oracle agent install codex
 oracle agent install claude
 ```
 
-Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI and realtime guides, and three SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
+Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI, realtime, and database guides, and three SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
 
 Every destination is preflighted. Exact matches are left alone; different contents cause an error before mutation. This also protects user edits during removal. `oracle agent remove CLIENT` removes only files identical to the current binary's embedded package and then attempts to remove empty package-owned directories. It leaves client roots and unrelated files alone.
 
