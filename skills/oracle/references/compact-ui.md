@@ -8,6 +8,10 @@ Use [UI that fits the project](ui-design.md) as the shared foundation, including
 
 Describe one primary workflow before choosing spacing. For example: **find low-stock items, compare quantities across warehouses, select two records, and prepare a stock adjustment**. Identify what must be visible together, what can wait until selection, and what needs confirmation before it changes data.
 
+For repeated comparison, budget the whole working view around those records and controls. Tall headings, summary panels, and stacked toolbars can crowd out the task even when table rows are compact. Put secondary counts or context inline, collapse them, or omit them when they do not help the current decision; reduce that surrounding chrome before shrinking text or targets.
+
+Check the assembled page at its intended working viewport: can the operator compare the relevant records and reach the next action without first scrolling through introductory content? Use the actual workflow to judge this, not a universal row-count or pixel target. If browser inspection is unavailable, report whole-page density as unverified rather than inferring it from CSS or a DOM stub.
+
 Record the intent using Oracle's existing specification:
 
 ```toml

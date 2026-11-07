@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.7 — 2026-11-07
+
+- Made the UI cheatsheet and relevant Design Engineering sections explicit in the skill entrypoint, alongside task-based layout selection.
+- Clarified whole-page density review so headings, summaries, and toolbars leave room for the operational comparison task.
+- Added focus continuity guidance for controls replaced during interactive updates.
+- Added optional live-agent trial prompts and an isolated fixture helper for simple apps and enterprise tools, with guidance for independent behavioral verification.
+
 ## 1.0.6 — 2026-11-07
 
 - Skill discovery now covers UI creation, refinement, and review for simple apps and enterprise tools.

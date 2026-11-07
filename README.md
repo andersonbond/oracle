@@ -93,6 +93,8 @@ Open a fresh agent session in that project and ask:
 
 The adapters use the documented [Codex skill location](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) and [Claude Code project skill location](https://code.claude.com/docs/en/skills#choose-where-skills-load). Installation behavior is covered by automated tests; client discovery still depends on your installed client's settings and workspace trust.
 
+To check an agent's actual behavior, use the optional [live-agent trials](CONTRIBUTING.md#live-agent-trials) for a simple app and an inventory workspace. They separate skill discovery, reference reading, and independent checks of the generated app; installation alone does not prove that guidance was followed.
+
 ### Use the UI guides directly
 
 For UI work, `oracle agent install codex` (or `claude`) works without `oracle init`. If you only want the guides and do not have the binary, copy the complete `skills/oracle/` directory from this checkout into the relevant project skill location above, preserving references, images, and the upstream license. Do not overwrite an existing customized skill; follow the [update instructions](REFERENCE.md#agent-installation-and-updates).
