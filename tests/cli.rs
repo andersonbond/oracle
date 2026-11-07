@@ -548,6 +548,100 @@ fn skill_install_is_idempotent_and_remove_preserves_unrelated_files() {
 }
 
 #[test]
+fn ui_guides_are_reachable_without_configuration_or_active_ux_findings() {
+    for (client, dir) in [
+        ("codex", ".agents"),
+        ("claude", ".claude"),
+        ("generic", ".agents"),
+    ] {
+        let root = tempfile::tempdir().unwrap();
+        ok(root.path(), &["agent", "install", client]);
+        ok(root.path(), &["explain", "UX-001"]);
+        assert!(!root.path().join("oracle.toml").exists());
+        assert!(!root.path().join(".oracle").exists());
+
+        let installed = root
+            .path()
+            .join(format!("{dir}/skills/oracle"))
+            .canonicalize()
+            .unwrap();
+        let mut pending = vec![installed.join("SKILL.md")];
+        let mut reachable = std::collections::HashSet::new();
+        // Follow the actual inline Markdown links from the installed entry point.
+        // Files merely existing in the bundle is not enough for an agent to find them.
+        while let Some(file) = pending.pop() {
+            if !reachable.insert(file.clone()) || file.extension().is_none_or(|e| e != "md") {
+                continue;
+            }
+            let content = fs::read_to_string(&file).unwrap();
+            let mut in_code = false;
+            for line in content.lines() {
+                if line.trim_start().starts_with("```") {
+                    in_code = !in_code;
+                    continue;
+                }
+                if in_code {
+                    continue;
+                }
+                for link in line.split("](").skip(1) {
+                    let target = link.split(')').next().unwrap().split('#').next().unwrap();
+                    if target.is_empty() || target.contains(':') {
+                        continue;
+                    }
+                    let path = file.parent().unwrap().join(target);
+                    let path = path.canonicalize().unwrap_or_else(|e| {
+                        panic!("broken installed link {} -> {target}: {e}", file.display())
+                    });
+                    assert!(
+                        path.starts_with(&installed),
+                        "link escapes the skill bundle"
+                    );
+                    pending.push(path);
+                }
+            }
+        }
+        for resource in [
+            "references/ui-design.md",
+            "references/simple-projects.md",
+            "references/compact-ui.md",
+            "references/emil-design-engineering.md",
+            "references/emil-ui-cheatsheet.md",
+            "references/emil-LICENSE.txt",
+            "assets/simple-projects.svg",
+            "assets/compact-workspace.svg",
+            "assets/adaptive-workspace.svg",
+        ] {
+            assert!(
+                reachable.contains(&installed.join(resource)),
+                "unreachable: {resource}"
+            );
+        }
+
+        for example in [
+            include_str!("../examples/simple-site/oracle.toml"),
+            include_str!("../examples/oracle.toml"),
+        ] {
+            write(root.path(), "oracle.toml", example);
+            let report = assess(root.path());
+            assert_eq!(finding(&report, "UX-001")["status"], "pass");
+            assert_eq!(finding(&report, "UX-002")["status"], "deferred");
+            let next: Value = serde_json::from_slice(
+                &ok(root.path(), &["next", "--limit", "13", "--format", "json"]).stdout,
+            )
+            .unwrap();
+            assert!(
+                next["actions"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .all(|f| { f["id"] != "UX-001" && f["id"] != "UX-002" })
+            );
+            assert!(installed.join("references/ui-design.md").is_file());
+        }
+    }
+}
+
+#[test]
 fn skill_conflicts_are_preflighted_without_partial_installation() {
     for resource in [
         "references/workflow.md",
@@ -609,7 +703,7 @@ fn removing_skill_preserves_modified_and_unrelated_visual_assets() {
 
 #[test]
 fn previous_guidance_rule_evidence_requires_a_new_review() {
-    for (id, version) in [("UX-002", 4), ("DATA-001", 2), ("PERF-001", 2)] {
+    for (id, version) in [("UX-002", 5), ("DATA-001", 2), ("PERF-001", 2)] {
         let root = fixture();
         configure(root.path(), |c| {
             c.project.stage = Stage::Beta;

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.6 — 2026-11-07
+
+- Skill discovery now covers UI creation, refinement, and review for simple apps and enterprise tools.
+- Direct UI guidance works without CLI initialization or an active UX finding; layout routing follows the screen's task rather than audience alone.
+- Clarified how to apply copied upstream references within Oracle's workflow, with explicit client invocation and offline reference-link coverage.
+
 ## 1.0.5 — 2026-11-07
 
 - Pinned MIT-licensed copies of Emil Kowalski's Design Engineering skill and UI cheatsheet, with source attribution and the complete upstream license bundled offline.

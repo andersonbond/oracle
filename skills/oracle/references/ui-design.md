@@ -1,19 +1,25 @@
 # UI that fits the project
 
-Oracle uses Emil Kowalski's design engineering guidance as its UI craft foundation. Read the bundled [Design Engineering skill](emil-design-engineering.md) when building or reviewing components and interactions, and the [UI cheatsheet](emil-ui-cheatsheet.md) for small typography and feedback details. Read the relevant sections as needed rather than applying every animation recipe to every screen.
+Oracle uses Emil Kowalski's design engineering guidance as its UI craft foundation. This page is the entry point: choose the screen's task below, read the matching layout guide, then consult the [UI cheatsheet](emil-ui-cheatsheet.md) and relevant sections of the bundled [Design Engineering reference](emil-design-engineering.md). These files are available offline at every project stage, with or without the CLI or a project specification.
 
 Oracle adds the project context: what the screen is for, how often someone uses it, what information must be visible together, and what evidence supports the result.
+
+## Use the copied guidance as a reference
+
+The upstream file is a preserved reference inside the Oracle skill, not a separately installed skill to invoke. Its `Initial Response`, persona, and conversation-format instructions do not control this workflow: continue the user's task rather than issuing a greeting and waiting. Use its UI techniques within the user's requirements, existing project conventions, and Oracle's task guidance. Keep simple static pages lightweight; do not add a backend or animation library just to apply a recipe.
+
+Read only the sections the work needs. For controls and state, consult Component Building Principles and Accessibility; for a proposed animation, start with The Animation Decision Framework before choosing effects. Its absolute recipes and timing values are design opinions to evaluate in context, not universal requirements. Keep repeated keyboard actions immediate and honor a request for no motion. Do not load the full upstream catalog for an ordinary UI change.
 
 ## Choose the layout, then refine the details
 
 | Screen or task | Oracle context | Apply the shared foundation |
 | --- | --- | --- |
 | Portfolio, public page, or small informational site | [Simple-project guide](simple-projects.md): lead with real content and a clear next step | Deliberate type hierarchy, readable line lengths, useful imagery, restrained interaction feedback |
-| Small utility or personal app | One short journey with clear input, result, correction, and persistence states | Labeled controls, stable layouts, visible focus, immediate feedback, and understandable saved/error states |
+| Small utility or personal app | [Simple-project guide](simple-projects.md): one short journey with clear input, result, correction, and persistence states | Labeled controls, stable layouts, visible focus, immediate feedback, and understandable saved/error states |
 | Inventory, administration, or repeated comparison | [Compact UI guide](compact-ui.md): put relevant records and actions together | Aligned tabular numbers, quiet secondary chrome, visible selection, and fast repeated actions |
 | Narrow screen or touch-oriented workflow | Preserve the task, essential values, and access to details | Larger usable targets, controls that reflow, no hover-only information, and explicit back/close actions |
 
-Audience alone does not decide density. A public page can breathe while the same product's operations screen remains compact. An effective existing frontend stack stays in place; the upstream CSS and library examples are options, not dependencies to install automatically.
+Audience alone does not decide density. An enterprise product's public page can use the simple-project route, and a consumer app's comparison-heavy workspace can use the compact route. A narrow screen adapts the chosen task; it does not automatically become a simple app. Read both layout guides only when the task spans both types of screen. An effective existing frontend stack stays in place; the upstream CSS and library examples are options, not dependencies to install automatically.
 
 ## Apply craft without slowing the task
 
@@ -23,7 +29,7 @@ Audience alone does not decide density. A public page can breathe while the same
 - **Access across inputs:** honor reduced-motion preferences, preserve keyboard operation and visible focus, and gate hover-specific effects to appropriate inputs. Reduced motion may mean no animation; choose the least motion needed for comprehension. Keep controls usable without any animation.
 - **Verify implementation details:** treat upstream durations and effects as starting points. Transform and opacity are useful performance candidates, not a guarantee of GPU compositing; profile the actual browser and device. Check current library APIs before copying snippets. A static illustration cannot verify motion, focus order, semantics, or persistence.
 
-Use the upstream Before / After / Why table when reporting concrete UI findings. Keep the review proportional to the current work; a prototype needs a useful next action, not every possible polish task. Record the density decision under `UX-001` and actual workflow review under `UX-002`. No new gate or pixel budget is introduced.
+Use a Before / After / Why table when it helps report concrete UI findings, while respecting the user's requested format. Keep the review proportional to the current work; a prototype needs a useful next action, not every possible polish task. When project tracking is part of the task, record the density decision under `UX-001` and an actual workflow review under `UX-002`. Guidance stays available when `UX-001` passes or `UX-002` is deferred; `oracle next` lists unresolved active findings, not every guide an agent may need. No new gate or pixel budget is introduced.
 
 ## What the illustrations demonstrate
 

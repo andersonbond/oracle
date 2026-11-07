@@ -29,7 +29,7 @@ Unknown TOML fields and invalid enums fail clearly instead of silently changing 
 
 The context is user-declared. Oracle does not infer that a project has no database or private records just because those declarations are absent. Review these defaults during initialization with your agent. A well-formed declaration can still be wrong.
 
-Rust is preferred for a new service or tool when its ecosystem, deployment, and delivery costs fit. A browser UI may use another language, and an established stack should not be rewritten simply to satisfy a preference. Likewise, enterprise compactness is a useful starting point; a recorded comfortable/adaptive choice with a rationale is valid.
+Rust is preferred for a new service or tool when its ecosystem, deployment, and delivery costs fit. A browser UI may use another language, and an established stack should not be rewritten simply to satisfy a preference. For comparison and repeated operations, compactness is a useful starting point; a recorded comfortable/adaptive choice with a rationale is valid regardless of audience.
 
 [UI that fits the project](skills/oracle/references/ui-design.md) connects a pinned MIT-licensed copy of Emil Kowalski's Design Engineering skill and UI cheatsheet to Oracle's task choices. The [simple-project guide](skills/oracle/references/simple-projects.md) covers small websites and apps; the [compact UI guide](skills/oracle/references/compact-ui.md) covers comparison and repeated operations. Choose per task and screen, not audience alone. These references supply guidance and illustrative layouts, not extra schema fields or automated pixel checks. `UX-001` checks the recorded decision; `UX-002` accepts a supplied review of the actual workflow, feedback, and relevant motion/accessibility behavior.
 
@@ -119,6 +119,10 @@ oracle agent install claude
 ```
 
 Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI, realtime, and database guides, the pinned Emil Kowalski references and license, and three SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
+
+Installation requires an existing destination directory, but no Git repository or `oracle.toml`. For guidance without the CLI, copy the complete source skill into the appropriate location while preserving existing customizations. Only `SKILL.md` is the Oracle discovery entry point; copied upstream Markdown files are supporting references. UI tasks route directly to `references/ui-design.md`, then the applicable layout guide and relevant upstream sections. CLI assessment is optional for UI work, including when `UX-001` already passes or `UX-002` is deferred.
+
+Codex can select skills from their descriptions; in Codex CLI/IDE, use an explicit `$oracle` mention or `/skills`. Claude Code supports explicit `/oracle` invocation. If discovery fails, check the installed skill location, client settings, and skill selector, or ask the agent to read the installed `SKILL.md` directly. See the [Codex discovery documentation](https://learn.chatgpt.com/docs/build-skills) and [Claude Code skill documentation](https://code.claude.com/docs/en/skills). Oracle does not register the copied Emil reference as a second skill or change the client's automatic-invocation settings.
 
 Every destination is preflighted. Exact matches are left alone; different contents cause an error before mutation. This also protects user edits during removal. `oracle agent remove CLIENT` removes only files identical to the current binary's embedded package and then attempts to remove empty package-owned directories. It leaves client roots and unrelated files alone.
 

@@ -6,7 +6,7 @@
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
 <p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="REFERENCE.md">Reference</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.5 · MIT · Local and offline · No model API key required**
+**v1.0.6 · MIT · Local and offline · No model API key required**
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** It combines 13 versioned guidance cards, project context, repository inspection, and evidence tracking in a small native CLI.
 
@@ -17,7 +17,7 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 | Common problem | Oracle's approach |
 | --- | --- |
 | The agent picks a stack without explaining it | Consider **Rust first for new services and tools**, then record ecosystem, delivery, deployment, and team trade-offs. Respect a justified existing stack. |
-| An enterprise tool looks like a spacious landing page | Start with **compact, task-oriented UI**. Record audience, density, and workflow; review readability, keyboard use, target sizes, and real data. |
+| An enterprise tool looks like a spacious landing page | For comparison and repeated operations, start with **compact, task-oriented UI**. Record audience, density, and workflow; review readability, keyboard use, target sizes, and real data. |
 | A simple website or app gets overbuilt | Start with **clear content and one primary action**. Use responsive layouts and intentional whitespace; test the main journey. Add infrastructure only when a feature needs it. |
 | An app needs live updates but loses state or exposes private events | Choose **WebSockets or Socket.IO when realtime behavior helps**; consider polling or SSE for simpler needs. Plan authorization, reconnect, missed updates, and delivery across servers. |
 | Data becomes inconsistent or every slow page leads to another cache | Design **clear relationships and constraints**, normalize conflicting facts, and index actual queries. Bound database connections; add caching with measured benefit and an invalidation plan. Keep simple apps to one suitable database when sufficient. |
@@ -92,6 +92,19 @@ Open a fresh agent session in that project and ask:
 > Use Oracle to review this project and help me address the most useful next action. Explain the trade-off before changing the architecture.
 
 The adapters use the documented [Codex skill location](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) and [Claude Code project skill location](https://code.claude.com/docs/en/skills#choose-where-skills-load). Installation behavior is covered by automated tests; client discovery still depends on your installed client's settings and workspace trust.
+
+### Use the UI guides directly
+
+For UI work, `oracle agent install codex` (or `claude`) works without `oracle init`. If you only want the guides and do not have the binary, copy the complete `skills/oracle/` directory from this checkout into the relevant project skill location above, preserving references, images, and the upstream license. Do not overwrite an existing customized skill; follow the [update instructions](REFERENCE.md#agent-installation-and-updates).
+
+Agents discover the `oracle` skill from its name and description, then follow `SKILL.md` to [UI that fits the project](skills/oracle/references/ui-design.md). The copied Emil reference is loaded through that guide, not invoked as a separate installed skill. UI guidance is available even when no UX action appears in `oracle next`.
+
+To choose Oracle explicitly in Codex CLI/IDE, mention `$oracle` or select it from `/skills`; in Claude Code, use `/oracle`, followed by the task. For example:
+
+- “Use Oracle to refine this personal tracker. Keep it simple and make input, save, and error states clear.”
+- “Use Oracle to improve this inventory workspace for comparing records and batch actions. Preserve keyboard access.”
+
+For a generic agent, ask it to read the installed `.agents/skills/oracle/SKILL.md` and follow the UI route; automatic discovery depends on the host. Review the actual screen's task: enterprise public pages can be comfortable, while a consumer comparison tool can be compact.
 
 ## Start light. Add rigor when it matters.
 
