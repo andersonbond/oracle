@@ -1,0 +1,40 @@
+# Disposable, unauthenticated local fixture. No host ports or durable volumes.
+# A deployed Redis service needs its own ACL, TLS, storage, and network decisions.
+services:
+  redis:
+    image: ${REDIS_IMAGE:-redis:8-bookworm}
+    user: "999:999"
+    command: [redis-server, --bind, "0.0.0.0", --protected-mode, "yes", --save, "", --appendonly, "no", --maxmemory, 32mb, --maxmemory-policy, allkeys-lru]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 128m
+    cpus: 0.5
+    pids_limit: 64
+    tmpfs:
+      - /data:rw,noexec,nosuid,size=16m,uid=999,gid=999,mode=0700
+    healthcheck:
+      test: [CMD, redis-cli, -e, ping]
+      interval: 1s
+      timeout: 1s
+      retries: 20
+    networks: [cache]
+  demo:
+    image: ${ORACLE_CACHE_IMAGE:-oracle-cache-example:local}
+    pull_policy: never
+    build: .
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      redis:
+        condition: service_healthy
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 128m
+    cpus: 0.5
+    pids_limit: 64
+    networks: [cache]
+networks:
+  cache:
+    internal: true

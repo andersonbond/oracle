@@ -548,7 +548,7 @@ fn skill_install_is_idempotent_and_remove_preserves_unrelated_files() {
 }
 
 #[test]
-fn skill_guides_are_reachable_without_configuration_or_active_ux_findings() {
+fn skill_guides_are_reachable_without_configuration_or_active_findings() {
     for (client, dir) in [
         ("codex", ".agents"),
         ("claude", ".claude"),
@@ -605,6 +605,14 @@ fn skill_guides_are_reachable_without_configuration_or_active_ux_findings() {
             "references/image-uploads.md",
             "references/security.md",
             "references/containerization.md",
+            "references/caching.md",
+            "assets/caching/Cargo.toml.example",
+            "assets/caching/Cargo.lock.example",
+            "assets/caching/main.rs",
+            "assets/caching/Dockerfile",
+            "assets/caching/Dockerfile.dockerignore",
+            "assets/caching/compose.yaml",
+            "assets/caching/verify.py",
             "assets/containerization/Dockerfile",
             "assets/containerization/Dockerfile.dockerignore",
             "assets/containerization/compose.yaml",
@@ -658,6 +666,14 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
         "references/image-uploads.md",
         "references/security.md",
         "references/containerization.md",
+        "references/caching.md",
+        "assets/caching/Cargo.toml.example",
+        "assets/caching/Cargo.lock.example",
+        "assets/caching/main.rs",
+        "assets/caching/Dockerfile",
+        "assets/caching/Dockerfile.dockerignore",
+        "assets/caching/compose.yaml",
+        "assets/caching/verify.py",
         "assets/containerization/Dockerfile",
         "assets/containerization/Dockerfile.dockerignore",
         "assets/containerization/compose.yaml",

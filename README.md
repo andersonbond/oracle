@@ -6,11 +6,11 @@
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
 <p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="#use-the-guides-directly">Agent guidance</a> · <a href="REFERENCE.md">Reference</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.10 · MIT · Local and offline · No model API key required**
+**v1.0.11 · MIT · Local and offline · No model API key required**
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** Use it for a simple website, a small app, or an enterprise workspace, from prototype to a dependable release.
 
-- **Give your coding agent useful guidance:** a portable skill with UI examples and security, realtime, database, image-upload, and containerization references. Use the guides directly, without a project specification or CLI assessment.
+- **Give your coding agent useful guidance:** a portable skill with UI examples and security, realtime, database, caching, image-upload, and containerization references. Use the guides directly, without a project specification or CLI assessment.
 - **Track decisions and evidence when needed:** a small Rust CLI combines 13 versioned cards, an `oracle.toml` specification, repository inspection, and evidence tracking. Checks grow with the project's stage and actual features.
 
 Oracle itself runs locally and offline; model access is handled by your coding agent.
@@ -26,6 +26,7 @@ Oracle itself runs locally and offline; model access is handled by your coding a
 | A simple website or app gets overbuilt | Start with **clear content and one primary action**. Use responsive layouts and intentional whitespace; test the main journey. Add infrastructure only when a feature needs it. |
 | An app needs live updates but loses state or exposes private events | Choose **WebSockets or Socket.IO when realtime behavior helps**; consider polling or SSE for simpler needs. Plan authorization, reconnect, missed updates, and delivery across servers. |
 | Data becomes inconsistent or every slow page leads to another cache | Design **clear relationships and constraints**, normalize conflicting facts, and index actual queries. Bound database connections; add caching with measured benefit and an invalidation plan. Keep simple apps to one suitable database when sufficient. |
+| Cached pages show old data, leak private results, or overload the database when Redis fails | Choose the **right caching layer**, define freshness and access scope, and test invalidation and outages. Use HTTP caching for suitable public content; add an application cache only when useful. |
 | Uploaded images consume storage unnecessarily | **Optimize display copies** of PNG, JPEG, and other supported images. Resize and compress for their use, measure the savings, and set quotas and cleanup policies. Let the user decide **whether and where to retain originals**. |
 | Sign-in works, but private data is still exposed | Apply **security that fits the feature**: protect secrets, enforce server permissions, handle untrusted input, and verify both allowed and denied access. Include private files, exports, caches, and realtime events when present. |
 | A container builds locally but fails elsewhere or loses data | Verify the **runtime, architecture, final image, and durable storage**. Use Docker Desktop, Colima, or Linux Engine deliberately; test real behavior and recovery. Keep native/static deployment when sufficient. |
@@ -70,6 +71,14 @@ The [database guide](skills/oracle/references/database.md) covers five decisions
 | Caching | Start without an application data cache; define freshness and invalidation when measurements justify one |
 
 A small app can use SQLite or an existing suitable database without adding Redis, a separate pooler, or replicas. See the [small reading-list specification](examples/simple-data/oracle.toml). The guide is bundled for offline agent use and expands the existing database and performance cards; Oracle does not connect to your database or add new required gates.
+
+## Caching that fits the project
+
+The [caching guide](skills/oracle/references/caching.md) covers browser/CDN policies, cached UI data, in-process Rust caches, and **Redis as an optional shared cache**. Start from measured expensive work and the acceptable age of each result. Define access scope, expiry, update/delete invalidation, memory limits, and behavior when the cache is unavailable. A small app can keep one suitable database and no application cache.
+
+The guide includes public-asset HTTP examples and a [standalone Rust/Redis example](skills/oracle/assets/caching/main.rs), with a [Compose recipe](skills/oracle/assets/caching/compose.yaml) and [verification helper](skills/oracle/assets/caching/verify.py) for Docker or Colima's Docker runtime. It exercises hits, misses, expiry, invalidation, startup failure, a live Redis outage, and a fresh client after restart. The origin is a synthetic in-memory fixture; its timings do not establish application performance, concurrency safety, or private-data authorization.
+
+All example resources ship with the offline agent skill. The guide works without an active performance finding; running examples is a separate action. Redis remains optional, and Oracle itself gains no Redis dependency, new configuration fields, or mandatory cache checks. See [caching example validation](CONTRIBUTING.md#caching-examples) for native and container requirements.
 
 ## Image uploads that stay manageable
 
@@ -141,7 +150,7 @@ To check an agent's actual behavior, use the optional [live-agent trials](CONTRI
 
 If you only want the guides and do not have the binary, clone this repository and copy the complete `skills/oracle/` directory into the relevant project skill location above. This route needs no Rust toolchain. Preserve references, images, and the upstream license; review and merge any existing customizations instead of overwriting them.
 
-The [`SKILL.md` entrypoint](skills/oracle/SKILL.md) routes the agent to references relevant to the task. UI work follows [UI that fits the project](skills/oracle/references/ui-design.md), one applicable layout guide, the UI cheatsheet, and relevant Design Engineering sections. Security, realtime, database, image-upload, and containerization work have their own linked guides. The copied Emil reference is supporting material within Oracle's skill. Guides remain available even when `oracle next` has no related finding; that command lists unresolved active cards, not every available reference.
+The [`SKILL.md` entrypoint](skills/oracle/SKILL.md) routes the agent to references relevant to the task. UI work follows [UI that fits the project](skills/oracle/references/ui-design.md), one applicable layout guide, the UI cheatsheet, and relevant Design Engineering sections. Security, realtime, database, caching, image-upload, and containerization work have their own linked guides. The copied Emil reference is supporting material within Oracle's skill. Guides remain available even when `oracle next` has no related finding; that command lists unresolved active cards, not every available reference.
 
 To choose Oracle explicitly in Codex CLI/IDE, mention `$oracle` or select it from `/skills`; in Claude Code, use `/oracle`, followed by the task. For example:
 
@@ -150,6 +159,7 @@ To choose Oracle explicitly in Codex CLI/IDE, mention `$oracle` or select it fro
 - “Use Oracle to package this Rust service for Colima locally and Linux in production. Verify runtime dependencies and preserve application data.”
 - “Use Oracle to choose realtime delivery for this task board and plan reconnect recovery.”
 - “Use Oracle to review this small app's schema, indexes, and connection usage before adding a cache.”
+- “Use Oracle to assess caching for this slow dashboard. Compare HTTP, local, and Redis options, then test freshness and cache outages.”
 - “Use Oracle to add image uploads with optimized display copies. Help me decide whether and where to keep originals.”
 - “Use Oracle to review access to private records and uploads. Test legitimate access and attempts by another user.”
 
@@ -271,7 +281,7 @@ cargo test --locked
 cargo build --release --locked
 ```
 
-CI runs behavioral tests and release builds on Linux, macOS, and Windows, including a Rust 1.85 compatibility job. Stable-toolchain jobs also check formatting and linting. Manual runs can additionally build and exercise the container examples on native Linux x64 and ARM64; those checks do not validate Colima's macOS VM or shared-folder behavior. See the [workflow and current run results](https://github.com/andersonbond/oracle/actions/workflows/ci.yml) for each revision.
+CI runs behavioral tests and release builds on Linux, macOS, and Windows, including a Rust 1.85 compatibility job. Stable-toolchain jobs also check formatting and linting. Manual runs can additionally build and exercise the container and Rust/Redis examples on native Linux x64 and ARM64; those checks do not validate Colima's macOS VM or shared-folder behavior. See the [workflow and current run results](https://github.com/andersonbond/oracle/actions/workflows/ci.yml) for each revision.
 
 V1 provides general engineering guidance and bounded local checks. Database, security, performance, and operations cards accept supplied evidence; they are not live scanners or infrastructure integrations. Future improvements should follow real usage: sharper applicability, structured report importers, and more precise evidence invalidation.
 

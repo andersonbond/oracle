@@ -77,6 +77,38 @@ const FILES: &[(&str, &[u8])] = &[
         include_bytes!("../skills/oracle/assets/containerization/compose.yaml"),
     ),
     (
+        "references/caching.md",
+        include_bytes!("../skills/oracle/references/caching.md"),
+    ),
+    (
+        "assets/caching/Cargo.toml.example",
+        include_bytes!("../skills/oracle/assets/caching/Cargo.toml.example"),
+    ),
+    (
+        "assets/caching/Cargo.lock.example",
+        include_bytes!("../skills/oracle/assets/caching/Cargo.lock.example"),
+    ),
+    (
+        "assets/caching/main.rs",
+        include_bytes!("../skills/oracle/assets/caching/main.rs"),
+    ),
+    (
+        "assets/caching/Dockerfile",
+        include_bytes!("../skills/oracle/assets/caching/Dockerfile"),
+    ),
+    (
+        "assets/caching/Dockerfile.dockerignore",
+        include_bytes!("../skills/oracle/assets/caching/Dockerfile.dockerignore"),
+    ),
+    (
+        "assets/caching/compose.yaml",
+        include_bytes!("../skills/oracle/assets/caching/compose.yaml"),
+    ),
+    (
+        "assets/caching/verify.py",
+        include_bytes!("../skills/oracle/assets/caching/verify.py"),
+    ),
+    (
         "assets/simple-projects.svg",
         include_bytes!("../skills/oracle/assets/simple-projects.svg"),
     ),

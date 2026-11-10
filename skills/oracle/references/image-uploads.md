@@ -36,6 +36,8 @@ These are candidates, not Oracle dependencies. Verify current APIs, supported co
 
 A simple app can start with one bounded processing step, one useful display copy, and an optional thumbnail. Original storage remains the user's decision. Oracle adds no upload server, optimizer dependency, configuration table, or mandatory release gate.
 
+For browser/CDN caching of display copies, follow the [caching guide](caching.md): change versioned URLs when bytes change, preserve private access rules, and test stale copies after replacement or deletion.
+
 ## Verify the actual upload journey
 
 Try representative photos and transparent/text-heavy PNGs, rotated images, a small already optimized file, and malformed or oversized input. Compare bytes, dimensions, quality, orientation, transparency, and served metadata. Test optimizer failure, a full quota, storage failure, retry, and abandoned-upload cleanup. Confirm that retained originals match the source bytes before client-side transformations, private originals and derivatives reject unauthorized access, and deletion follows the selected policy. Show useful progress and errors, and keep a failed upload retryable without reporting it as saved.

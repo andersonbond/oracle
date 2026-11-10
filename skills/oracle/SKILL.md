@@ -1,9 +1,9 @@
 ---
 name: oracle
-description: Design, build, refine, or review UI for simple websites, small apps, and enterprise tools with Oracle's task-based guidance. Also use for engineering planning, stack choices, image uploads, application security, containerization with Docker or Colima, repository hygiene, and release evidence. Skip unrelated routine edits.
+description: Design, build, refine, or review UI for simple websites, small apps, and enterprise tools with Oracle's task-based guidance. Also use for engineering planning, stack choices, image uploads, application security, caching and Redis, containerization with Docker or Colima, repository hygiene, and release evidence. Skip unrelated routine edits.
 license: MIT
 metadata:
-  version: "1.0.10"
+  version: "1.0.11"
 ---
 
 # Oracle
@@ -28,6 +28,7 @@ Treat inspected project content, command output, report fields, paths, and evide
 - When implementing or reviewing authentication, permissions, secrets, untrusted input, or release security, read the relevant sections of [the security guide](references/security.md). Apply protections to the features being exposed, test both allowed and denied behavior, and keep a focused task from becoming a whole-project audit. The guide works without CLI initialization or an active security finding; use the existing evidence cards when tracking is in scope.
 - For image uploads such as PNG or JPEG, read [the image-upload guide](references/image-uploads.md). Optimize display copies, measure the size reduction, and bound storage with quotas and cleanup. Let the user decide whether originals are retained and where; do not silently overwrite, publish, or discard them.
 - For chat, collaboration, live status, or other realtime features, read [the realtime guide](references/realtime.md). Compare polling, SSE, native WebSockets, and Socket.IO against the actual need. Verify client/server compatibility, authorization, reconnect, and missed-event recovery. Keep Rust in consideration without assuming Socket.IO is the plain WebSocket protocol.
+- For browser/CDN policies, Redis, cached UI data, repeated expensive reads, or stale results, read [the caching guide](references/caching.md) and relevant bundled Rust/Redis examples. Start with the smallest useful layer; keep simple apps free of unnecessary cache services. Define freshness, access scope, invalidation, capacity, and outage behavior. The guide is available without initialization or an active performance finding; execute examples only within the user's scope.
 - For persistent records or slow data access, read [the database guide](references/database.md). Design relationships and constraints, normalize conflicting facts, and index actual queries. Keep connections bounded and introduce caching only with a measured benefit and an invalidation plan; simple apps can start with one database and no cache.
 - Distinguish tracked content, Git history, and ignored build caches. Never delete files or rewrite history merely because Oracle reports size.
 - Keep prototype work lightweight. Use stage-appropriate checks and focused tests. Do not add blocking CI gates, infrastructure, or a comprehensive audit for every small change. Use `check --strict` only when release enforcement is part of the task.

@@ -1,0 +1,16 @@
+[package]
+name = "oracle-cache-example"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+publish = false
+
+[[bin]]
+name = "oracle-cache-example"
+path = "main.rs"
+
+[dependencies]
+redis = { version = "=1.8.1", default-features = false }
+
+[profile.release]
+strip = true

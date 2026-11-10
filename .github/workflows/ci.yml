@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       containers:
-        description: Build and test container examples on native Linux x64 and ARM64
+        description: Build and test container and Redis examples on native Linux x64 and ARM64
         type: boolean
         default: false
 
@@ -29,6 +29,8 @@ jobs:
           persist-credentials: false
       - name: Build and exercise final image and Compose recipe
         run: python3 tests/container_smoke.py
+      - name: Exercise Rust and Redis caching with outage and restart
+        run: python3 skills/oracle/assets/caching/verify.py
 
   verify:
     name: ${{ matrix.os }} / Rust ${{ matrix.rust }}

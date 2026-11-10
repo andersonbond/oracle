@@ -63,6 +63,25 @@ Check the intended context/profile first; starting or changing a shared runtime 
 
 For native Linux x64 and ARM64 validation, enable `containers` in a manual CI run (`gh workflow run ci.yml -f containers=true`). These optional jobs avoid adding a container requirement to every change. Native Linux results do not establish Colima VM, macOS sharing, or emulation behavior; report the engine and architecture actually tested.
 
+### Caching examples
+
+The offline [caching guide](skills/oracle/references/caching.md) links the complete standalone Rust/Redis example under `skills/oracle/assets/caching/`. Its manifest and lockfile use `.example` suffixes so the resources remain in Oracle's source package without creating a nested Cargo package. Keep all resource links and installer/package coverage intact.
+
+From an Oracle checkout, use Python 3.11+ on Unix:
+
+```sh
+# Local Docker engine, Buildx, and Compose:
+python3 skills/oracle/assets/caching/verify.py
+# Existing Colima Docker profile:
+python3 skills/oracle/assets/caching/verify.py --context colima
+# Or local Rust 1.88+ and Redis; creates its own private Unix-socket server:
+python3 skills/oracle/assets/caching/verify.py --native
+```
+
+The helper owns the disposable Redis instance, tests cache behavior and outages, restarts it, and cleans up only its resources. Native mode also checks example formatting, Clippy, and unit tests in a temporary Cargo project. Container builds run the example's unit tests before building the final binary; the helper exercises that image and verifies that Redis publishes no host ports and creates no durable volumes. Do not point examples at shared application data.
+
+Manual CI with `containers=true` runs both the Oracle CLI container checks and the Rust/Redis scenarios on native Linux x64/ARM64. Keep these optional. Record Redis version/image identity, architecture, cold/warm observations, and origin-read counts; the fixture includes an artificial delay and is not a benchmark. No concurrency, HTTP/CDN, tenant-authorization, or live Colima VM claim follows from these tests.
+
 ## Pull requests
 
 Describe the problem, resulting behavior, and validation. Include a small reproduction for bugs. Do not include build directories, credentials, private reports, large generated artifacts, or unrelated formatting changes. Keep the friendly identity and compact, readable documentation.

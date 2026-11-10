@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.11 — 2026-11-10
+
+- Added caching guidance for browser/CDN policies, cached UI data, Rust, and optional Redis, with freshness, authorization, invalidation, capacity, and outage considerations.
+- Bundled a standalone Rust/Redis example and isolated native/Docker/Colima verification helper covering hits, misses, expiry, invalidation, outages, and a new client after restart.
+- Linked caching guidance from the README and agent entrypoint and extended optional native Linux x64/ARM64 container validation without adding required infrastructure or Oracle dependencies.
+
 ## 1.0.10 — 2026-11-10
 
 - Added proportional containerization guidance for Docker Desktop, Colima, and Linux Engine, including contexts, architectures, image builds, secrets, storage, and recovery.

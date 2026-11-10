@@ -69,6 +69,8 @@ SQLite's concurrency needs different treatment: more connections do not create m
 
 ## Cache only an identified expensive read
 
+For HTTP/browser caching, Rust clients, Redis, and runnable examples, read [caching that fits the project](caching.md). Use this section for the database relationship and consistency boundaries.
+
 First measure the uncached path and improve the query. If caching helps, define the acceptable stale interval, cache key and user/tenant scope, size bound, expiry, and update/delete invalidation. A small bounded in-process cache may suffice; several instances introduce separate cache copies and invalidation concerns. Cache-aside does not guarantee consistency with the database. See [Microsoft's cache-aside guidance](https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside).
 
 Keep durable records in the database. Invalidate or refresh cached views after a successful commit, and test concurrent read/write races; a TTL limits ordinary staleness but does not provide immediate consistency. For decisions that require current state, such as authorization or stock reservation, check the authoritative path. Cache keys alone are not authorization. Account for expiry bursts, failed refreshes, cache outages, and database overload during fallback; bound retries and concurrent rebuilds.

@@ -58,7 +58,7 @@ Features that fetch user-supplied URLs, run commands, or accept filesystem paths
 
 - **Images:** follow the [image-upload guide](image-uploads.md) for bounded decoding, optimized copies, original retention, and cleanup. Keep private thumbnails and originals protected. Never publish an unprocessed upload as an automatic error fallback.
 - **WebSockets and Socket.IO:** follow the [realtime guide](realtime.md). Authorize room/subscription access and each action, validate browser origins as appropriate, and handle expired/revoked sessions on existing connections and reconnection. Limit message sizes, rates, and concurrent work. A connected socket is not unrestricted access; see [OWASP WebSocket security](https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html).
-- **Databases and caches:** follow the [database guide](database.md) for ownership constraints, bounded connections, scoped cache keys, and recovery. A cache key is not an authorization check; private cached responses must obey the same access rules as uncached reads. Keep database and storage credentials limited to necessary operations.
+- **Databases and caches:** follow the [database guide](database.md) and [caching guide](caching.md) for ownership constraints, bounded connections, scoped cache keys, and recovery. A cache key is not an authorization check; private cached responses must obey the same access rules as uncached reads. Keep database and storage credentials limited to necessary operations.
 
 ## Review dependencies and deployment
 
