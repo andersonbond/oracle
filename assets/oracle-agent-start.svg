@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="684" viewBox="0 0 840 684" role="img" aria-labelledby="title description">
+  <title id="title">Bring Oracle to Claude Code or Codex</title>
+  <desc id="description">In your project, ask Claude Code or Codex to set up Oracle from https://github.com/andersonbond/oracle. The agent copies the complete skill into its project-local skills folder. Then give it a task and ask it to use the relevant Oracle guidance. The guides need no Rust installation; the CLI is optional.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0faf5"/>
+      <stop offset="1" stop-color="#f8f6f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="840" height="684" rx="28" fill="url(#background)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="36" y="30" width="171" height="40" rx="20" fill="#f1e5dd"/>
+    <text x="121.5" y="57" text-anchor="middle" font-size="22" font-weight="700" fill="#754b38">Claude Code</text>
+    <rect x="217" y="30" width="113" height="40" rx="20" fill="#e1e9e5"/>
+    <text x="273.5" y="57" text-anchor="middle" font-size="22" font-weight="700" fill="#243e35">Codex</text>
+    <text x="36" y="128" font-size="42" font-weight="700" fill="#172f27" letter-spacing="-1">Your agent. Meet Oracle.</text>
+    <text x="36" y="166" font-size="28" fill="#476457">Share the link. Build with guidance.</text>
+
+    <!-- A small, friendly O companion; original Oracle artwork. -->
+    <g transform="translate(721 34)">
+      <rect width="80" height="80" rx="28" fill="#9ce6c4"/>
+      <circle cx="40" cy="38" r="22" fill="#f5fcf8"/>
+      <circle cx="32" cy="36" r="3" fill="#174b39"/>
+      <circle cx="48" cy="36" r="3" fill="#174b39"/>
+      <path d="M33 45 Q40 51 47 45" fill="none" stroke="#174b39" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <path d="M62 255 V566" fill="none" stroke="#b3d6c5" stroke-width="3"/>
+    <g fill="#ffffff" stroke="#d2e3d9" stroke-width="1.5">
+      <rect x="102" y="202" width="702" height="150" rx="18"/>
+      <rect x="102" y="374" width="702" height="108" rx="18"/>
+      <rect x="102" y="504" width="702" height="108" rx="18"/>
+    </g>
+    <g fill="#12745a">
+      <circle cx="62" cy="249" r="25"/>
+      <circle cx="62" cy="428" r="25"/>
+      <circle cx="62" cy="558" r="25"/>
+    </g>
+    <g fill="#ffffff" font-size="26" font-weight="700" text-anchor="middle">
+      <text x="62" y="258">1</text>
+      <text x="62" y="437">2</text>
+      <text x="62" y="567">3</text>
+    </g>
+    <text x="126" y="246" fill="#172f27" font-size="29" font-weight="700">Share the link in your project</text>
+    <text x="126" y="281" fill="#476457" font-size="28">“Set up Oracle from this repository.”</text>
+    <rect x="126" y="299" width="654" height="32" rx="8" fill="#e9f6ef"/>
+    <text x="139" y="322" fill="#126047" font-family="Menlo, Consolas, monospace" font-size="27">https://github.com/andersonbond/oracle</text>
+
+    <text x="126" y="416" fill="#172f27" font-size="29" font-weight="700">Your agent adds the Oracle skill</text>
+    <text x="126" y="454" fill="#476457" font-size="28">Relevant guides, in your project.</text>
+
+    <text x="126" y="546" fill="#172f27" font-size="29" font-weight="700">Give it something to build</text>
+    <text x="126" y="584" fill="#476457" font-size="28">“Use Oracle to build a simple app.”</text>
+
+    <circle cx="44" cy="648" r="5" fill="#12745a"/>
+    <text x="61" y="656" fill="#476457" font-size="28">No Rust needed for guides. CLI optional.</text>
+  </g>
+</svg>

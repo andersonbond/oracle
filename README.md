@@ -3,10 +3,52 @@
 </p>
 <h1 align="center">Oracle</h1>
 <p align="center"><strong>Build with intuition. Ship with evidence.</strong></p>
-<p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
-<p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="#use-the-guides-directly">Agent guidance</a> · <a href="REFERENCE.md">Reference</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
+<p align="center">Practical engineering guidance for your coding agent.</p>
+<p align="center"><a href="#get-started">Use with Claude or Codex</a> · <a href="#what-oracle-does">Features</a> · <a href="#manual-setup-and-optional-cli">CLI &amp; manual setup</a> · <a href="REFERENCE.md">Reference</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
 **v1.0.11 · MIT · Local and offline · No model API key required**
+
+## Get started
+
+**Open your project in Claude Code or Codex and paste this:**
+
+```text
+Set up Oracle in this project:
+https://github.com/andersonbond/oracle
+
+Follow the agent setup in its README.
+Use Oracle's guidance as we build.
+```
+
+**No Rust installation is needed for the guides.** Your agent needs access to the repository and your project files to complete setup. This workflow is for Claude Code or Codex working in your project, with local skill support enabled.
+
+![Start with Claude Code or Codex: share Oracle's GitHub link, let your agent install the project skill, then ask it to build with the relevant guidance.](assets/oracle-agent-start.svg)
+
+Once setup is complete, give it a task:
+
+> Use Oracle to help me build a simple app. Start with the main user journey and keep the implementation lightweight.
+
+For an existing product, try “Use Oracle to improve this inventory screen for comparing records and batch actions.” If the skill does not appear, open a fresh session in the same project or ask the agent to read the installed `SKILL.md` directly. See [explicit skill invocation and more task examples](#use-the-guides-directly).
+
+<details>
+<summary><strong>Agent setup instructions (no Rust required)</strong></summary>
+
+1. Fetch this repository into a temporary checkout outside the application project. Read its `skills/oracle/SKILL.md`.
+2. Copy the **complete** `skills/oracle/` directory, including references, assets, and license notices, into the application's project-local skill directory:
+
+   | Agent | Destination in the application project |
+   | --- | --- |
+   | Claude Code | `.claude/skills/oracle/` |
+   | Codex | `.agents/skills/oracle/` |
+
+3. Preserve existing files and customizations. If the destination already exists, compare it before making changes; follow the [update instructions](REFERENCE.md#agent-installation-and-updates) for an older or customized installation. Keep the application's existing agent instructions and settings.
+4. Verify that the destination contains `SKILL.md` and its linked resources, then report the actual install location. Read the entrypoint and the guides relevant to the user's task. File installation alone does not prove that the client discovered or applied the skill.
+
+These project-local locations follow the [Claude Code skill documentation](https://code.claude.com/docs/en/skills#choose-where-skills-load) and [Codex skill documentation](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills). If Oracle's CLI is already installed, `oracle agent install claude` or `oracle agent install codex` from the application project performs the copy with conflict checks. The [optional CLI](#manual-setup-and-optional-cli) adds project assessment and evidence tracking later.
+
+</details>
+
+## What Oracle does
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** Use it for a simple website, a small app, or an enterprise workspace, from prototype to a dependable release.
 
@@ -16,8 +58,6 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 Oracle itself runs locally and offline; model access is handled by your coding agent.
 
 ![Oracle's workflow: understand the project, choose an action, build with your agent, and check the evidence.](assets/oracle-workflow.svg)
-
-## What Oracle does
 
 | Common problem | Oracle's approach |
 | --- | --- |
@@ -106,7 +146,7 @@ Start with the [multi-stage Rust Dockerfile](skills/oracle/assets/containerizati
 
 Use containers when they solve a concrete packaging or deployment need. A native Rust binary or static host remains a valid choice. Oracle runs without a container engine and does not start VMs or deploy applications. See [optional container validation](CONTRIBUTING.md#container-examples) for checks against a selected local engine, including Colima.
 
-## Get started
+## Manual setup and optional CLI
 
 ### Install the CLI
 
