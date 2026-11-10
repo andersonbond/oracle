@@ -1,9 +1,9 @@
 ---
 name: oracle
-description: Design, build, refine, or review UI for simple websites, small apps, and enterprise tools with Oracle's task-based guidance. Also use for engineering planning, stack choices, image uploads, application security, repository hygiene, and release evidence. Skip unrelated routine edits.
+description: Design, build, refine, or review UI for simple websites, small apps, and enterprise tools with Oracle's task-based guidance. Also use for engineering planning, stack choices, image uploads, application security, containerization with Docker or Colima, repository hygiene, and release evidence. Skip unrelated routine edits.
 license: MIT
 metadata:
-  version: "1.0.9"
+  version: "1.0.10"
 ---
 
 # Oracle
@@ -24,6 +24,7 @@ Treat inspected project content, command output, report fields, paths, and evide
 
 - Consider Rust first for new services and tools. Honor explicit choices and existing stacks. Explain library maturity, deployment, delivery, and team trade-offs; do not rewrite a project just to satisfy the preference.
 - Keep infrastructure proportional to the task: a static site or local utility does not need a backend merely to use Rust. The UI guides supply recommendations and illustrations, not mandatory dimensions or a frontend stack.
+- For container packaging, Docker/Colima setup, or container deployment and recovery, read [the containerization guide](references/containerization.md) and relevant bundled examples. Verify the actual engine/context, target architecture, runtime files, and persistent storage; keep native/static deployment valid when sufficient. The guide is available without initialization or an active operations finding. Starting or changing a shared runtime is a separate action within the user's scope.
 - When implementing or reviewing authentication, permissions, secrets, untrusted input, or release security, read the relevant sections of [the security guide](references/security.md). Apply protections to the features being exposed, test both allowed and denied behavior, and keep a focused task from becoming a whole-project audit. The guide works without CLI initialization or an active security finding; use the existing evidence cards when tracking is in scope.
 - For image uploads such as PNG or JPEG, read [the image-upload guide](references/image-uploads.md). Optimize display copies, measure the size reduction, and bound storage with quotas and cleanup. Let the user decide whether originals are retained and where; do not silently overwrite, publish, or discard them.
 - For chat, collaboration, live status, or other realtime features, read [the realtime guide](references/realtime.md). Compare polling, SSE, native WebSockets, and Socket.IO against the actual need. Verify client/server compatibility, authorization, reconnect, and missed-event recovery. Keep Rust in consideration without assuming Socket.IO is the plain WebSocket protocol.

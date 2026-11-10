@@ -122,7 +122,7 @@ oracle agent install codex
 oracle agent install claude
 ```
 
-Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI, realtime, database, image-upload, and security guides, the pinned Emil Kowalski references and license, and three SVG layout examples. It does not require a source checkout or network access at runtime. All adapters share the same instructions and respect the user's scope.
+Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI, realtime, database, image-upload, security, and containerization guides, the pinned Emil Kowalski references and license, three SVG layout examples, and three container recipe files. It does not require a source checkout or network access at runtime. All adapters share the same instructions and respect the user's scope.
 
 Installation requires an existing destination directory, but no Git repository or `oracle.toml`. For guidance without the CLI, copy the complete source skill into the appropriate location while preserving existing customizations. Only `SKILL.md` is the Oracle discovery entry point; copied upstream Markdown files are supporting references. UI tasks route directly to `references/ui-design.md`, then the applicable layout guide and relevant upstream sections. CLI assessment is optional for UI work, including when `UX-001` already passes or `UX-002` is deferred.
 
@@ -132,10 +132,12 @@ Every destination is preflighted. Exact matches are left alone; different conten
 
 For upgrades with changed skill content, review and back up your existing skill, remove the old unmodified package using the old binary, then install the new one. Merge custom changes manually. V1 does not provide forced overwrites or global installation. Restart the client session if needed and check its skill selector; automated adapter tests do not establish live model behavior or universal client support.
 
+For container packaging and local runtimes, the bundle includes [containerization guidance](skills/oracle/references/containerization.md) and three recipe files for Oracle's CLI: a Dockerfile, its context ignore file, and Compose configuration. Agents can use the guide directly without an operations finding. Docker Desktop, Colima's Docker runtime, and Linux Engine are supported example environments; verify actual context, architecture, mounts, and behavior. The recipes require Oracle source to build, while Oracle and its installed guidance remain usable without a container engine. No configuration fields or required cards are added.
+
 ## Building, packaging, and publication
 
 `cargo install --path . --locked` builds the CLI from this checkout. `cargo build --release --locked` leaves a native binary at `target/release/oracle` (`oracle.exe` on Windows). `cargo package --locked --allow-dirty` can verify a local source package during development; review all included files before publication.
 
-CI is configured on Linux, macOS, and Windows with an additional Rust 1.85 compatibility job. Manual workflow runs upload native binary artifacts. There is no automatic registry publish, GitHub release, deployment, or Git history modification. Publishing is a separate maintainer action.
+CI is configured on Linux, macOS, and Windows with an additional Rust 1.85 compatibility job. Manual workflow runs upload native binary artifacts; the optional `containers` input also runs native Linux x64/ARM64 image and Compose checks. See [container validation](CONTRIBUTING.md#container-examples) for local Docker or Colima execution and its limits. There is no automatic registry publish, GitHub release, deployment, or Git history modification. Publishing is a separate maintainer action.
 
 Check the [CI results](https://github.com/andersonbond/oracle/actions/workflows/ci.yml) for a particular revision. Filesystem adapter tests do not establish live agent behavior, and illustrative layouts do not establish usability in a real application.

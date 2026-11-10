@@ -22,6 +22,10 @@ For chat, presence, collaboration, notifications, or live status, use [the realt
 
 Use [the database guide](database.md) for schema design, normalization, indexing, connection pooling, and caching. Start from the app's reads, writes, ownership, and invariants. Keep a small schema and one suitable database when sufficient; measure before adding a cache or separate pooler. Set the existing data flags accurately, then record schema/migration evidence under `DATA-001`, restore evidence under `DATA-002`, and applicable measurements under the advisory `PERF-001` card. These guides do not add required checks or database infrastructure.
 
+## Container packaging and runtimes
+
+For image builds, Docker or Colima setup, and container deployment/recovery, use [the containerization guide](containerization.md) and its linked Rust/Compose examples. Check the intended engine/context, architecture, runtime dependencies, and durable storage before changing configuration. Keep native/static deployment valid, protect shared VM data, and distinguish a parsed configuration, a built image, and verified runtime behavior. The guide applies without an active operations finding; use existing evidence cards for the actual scope tested.
+
 ## Evidence
 
 For security-related work, read the relevant sections of [security that fits the project](security.md). Apply protections before exposing the feature, even when evidence cards are deferred. Verify allowed and denied behavior within the authorized scope; keep focused work proportional and use the existing cards for evidence recording.

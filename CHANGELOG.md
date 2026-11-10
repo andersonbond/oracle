@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.10 — 2026-11-10
+
+- Added proportional containerization guidance for Docker Desktop, Colima, and Linux Engine, including contexts, architectures, image builds, secrets, storage, and recovery.
+- Bundled a multi-stage Rust Dockerfile, build-context ignore file, and Compose recipe for offline agent use, with optional native Linux x64/ARM64 container checks.
+- Fixed skill removal to clean empty nested resource directories while preserving modified and unrelated files.
+
 ## 1.0.9 — 2026-11-10
 
 - Added proportional security guidance covering secrets, sessions, authorization, input, uploads/realtime/data boundaries, dependencies, deployment, and coding-agent use, with verification examples and OWASP sources.

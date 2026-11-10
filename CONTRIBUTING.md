@@ -47,6 +47,22 @@ Review the tool trace for selection of Oracle, reading `SKILL.md` and `ui-design
 
 Make narrow changes supported by observed failures, then repeat affected trials in fresh workspaces. Avoid tests that merely match generated wording or require a particular component implementation.
 
+### Container examples
+
+The container guide and recipes live under `skills/oracle/` so installed agents receive the same offline resources. Verify their links and packaging when editing them. Build and exercise the actual final image when changing a recipe; a parsed Compose file or a successful builder stage is insufficient.
+
+From an Oracle source checkout, use Python 3.11+, Git, Docker CLI/Buildx, Compose, and a running local Docker engine. Run as a non-root Unix user; bind mounts must reach the checkout. The helper downloads build dependencies, creates a disposable project under ignored `.oracle/`, and removes only containers and the image tag bearing its unique ownership label. Shared base images and build cache remain.
+
+```sh
+python3 tests/container_smoke.py
+# Or select an existing Colima Docker context explicitly:
+python3 tests/container_smoke.py --context colima
+```
+
+Check the intended context/profile first; starting or changing a shared runtime is a separate action. The helper rejects remote endpoints and verifies the CLI version, runtime Git dependency, non-root user, read-only root, Compose execution, host file ownership, and persisted data across fresh containers. It does not test web readiness, graceful shutdown, backups, or production rollback.
+
+For native Linux x64 and ARM64 validation, enable `containers` in a manual CI run (`gh workflow run ci.yml -f containers=true`). These optional jobs avoid adding a container requirement to every change. Native Linux results do not establish Colima VM, macOS sharing, or emulation behavior; report the engine and architecture actually tested.
+
 ## Pull requests
 
 Describe the problem, resulting behavior, and validation. Include a small reproduction for bugs. Do not include build directories, credentials, private reports, large generated artifacts, or unrelated formatting changes. Keep the friendly identity and compact, readable documentation.

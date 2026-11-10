@@ -6,11 +6,11 @@
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
 <p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="#use-the-guides-directly">Agent guidance</a> · <a href="REFERENCE.md">Reference</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.9 · MIT · Local and offline · No model API key required**
+**v1.0.10 · MIT · Local and offline · No model API key required**
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** Use it for a simple website, a small app, or an enterprise workspace, from prototype to a dependable release.
 
-- **Give your coding agent useful guidance:** a portable skill with UI examples and security, realtime, database, and image-upload references. Use the guides directly, without a project specification or CLI assessment.
+- **Give your coding agent useful guidance:** a portable skill with UI examples and security, realtime, database, image-upload, and containerization references. Use the guides directly, without a project specification or CLI assessment.
 - **Track decisions and evidence when needed:** a small Rust CLI combines 13 versioned cards, an `oracle.toml` specification, repository inspection, and evidence tracking. Checks grow with the project's stage and actual features.
 
 Oracle itself runs locally and offline; model access is handled by your coding agent.
@@ -28,6 +28,7 @@ Oracle itself runs locally and offline; model access is handled by your coding a
 | Data becomes inconsistent or every slow page leads to another cache | Design **clear relationships and constraints**, normalize conflicting facts, and index actual queries. Bound database connections; add caching with measured benefit and an invalidation plan. Keep simple apps to one suitable database when sufficient. |
 | Uploaded images consume storage unnecessarily | **Optimize display copies** of PNG, JPEG, and other supported images. Resize and compress for their use, measure the savings, and set quotas and cleanup policies. Let the user decide **whether and where to retain originals**. |
 | Sign-in works, but private data is still exposed | Apply **security that fits the feature**: protect secrets, enforce server permissions, handle untrusted input, and verify both allowed and denied access. Include private files, exports, caches, and realtime events when present. |
+| A container builds locally but fails elsewhere or loses data | Verify the **runtime, architecture, final image, and durable storage**. Use Docker Desktop, Colima, or Linux Engine deliberately; test real behavior and recovery. Keep native/static deployment when sufficient. |
 | Dependencies and build output inflate the repository | Inspect tracked generated paths, tracked working-tree size, large files, and local Git object storage. Keep local caches distinct from Git content. |
 | Prototype work gets buried under process | **Prototype → beta → production** profiles introduce checks gradually. Assessment is advisory; blocking checks require `--strict`. |
 | An agent says “done” without evidence | Record a sanitized artifact, outcome, and scope. Mark evidence stale after inspected project contents, artifacts, versions, or freshness change. |
@@ -88,6 +89,14 @@ A static site starts with published content, dependencies, hosting access, and H
 
 The guide works offline without initialization or an active security finding. Use existing evidence cards when tracking is useful. `SEC-001` is a bounded filename check; `SEC-002` records supplied authorization evidence. Neither is a complete security assessment, and this guide adds no scanner, configuration fields, or mandatory gates.
 
+## Containerization that fits the project
+
+The [containerization guide](skills/oracle/references/containerization.md) covers **Docker Desktop, Colima with the Docker runtime, and Linux Docker Engine**. It separates client tools, engine contexts, and macOS VMs, with checks for Apple Silicon targets, Compose/Buildx availability, shared paths, and persistent storage. Colima's containerd runtime needs its own compatible tooling.
+
+Start with the [multi-stage Rust Dockerfile](skills/oracle/assets/containerization/Dockerfile), its [build-context ignore file](skills/oracle/assets/containerization/Dockerfile.dockerignore), and the [Compose example](skills/oracle/assets/containerization/compose.yaml). They package Oracle's actual CLI, demonstrate non-root execution and a persisted project mount, and ship with the offline skill. Run them from an Oracle source checkout using the guide's commands. The guide also covers secrets, service readiness, graceful shutdown, backups, and deployment recovery; the one-shot CLI example does not demonstrate every service concern.
+
+Use containers when they solve a concrete packaging or deployment need. A native Rust binary or static host remains a valid choice. Oracle runs without a container engine and does not start VMs or deploy applications. See [optional container validation](CONTRIBUTING.md#container-examples) for checks against a selected local engine, including Colima.
+
 ## Get started
 
 ### Install the CLI
@@ -132,12 +141,13 @@ To check an agent's actual behavior, use the optional [live-agent trials](CONTRI
 
 If you only want the guides and do not have the binary, clone this repository and copy the complete `skills/oracle/` directory into the relevant project skill location above. This route needs no Rust toolchain. Preserve references, images, and the upstream license; review and merge any existing customizations instead of overwriting them.
 
-The [`SKILL.md` entrypoint](skills/oracle/SKILL.md) routes the agent to references relevant to the task. UI work follows [UI that fits the project](skills/oracle/references/ui-design.md), one applicable layout guide, the UI cheatsheet, and relevant Design Engineering sections. Security, realtime, database, and image-upload work have their own linked guides. The copied Emil reference is supporting material within Oracle's skill. Guides remain available even when `oracle next` has no related finding; that command lists unresolved active cards, not every available reference.
+The [`SKILL.md` entrypoint](skills/oracle/SKILL.md) routes the agent to references relevant to the task. UI work follows [UI that fits the project](skills/oracle/references/ui-design.md), one applicable layout guide, the UI cheatsheet, and relevant Design Engineering sections. Security, realtime, database, image-upload, and containerization work have their own linked guides. The copied Emil reference is supporting material within Oracle's skill. Guides remain available even when `oracle next` has no related finding; that command lists unresolved active cards, not every available reference.
 
 To choose Oracle explicitly in Codex CLI/IDE, mention `$oracle` or select it from `/skills`; in Claude Code, use `/oracle`, followed by the task. For example:
 
 - “Use Oracle to refine this personal tracker. Keep it simple and make input, save, and error states clear.”
 - “Use Oracle to improve this inventory workspace for comparing records and batch actions. Preserve keyboard access.”
+- “Use Oracle to package this Rust service for Colima locally and Linux in production. Verify runtime dependencies and preserve application data.”
 - “Use Oracle to choose realtime delivery for this task board and plan reconnect recovery.”
 - “Use Oracle to review this small app's schema, indexes, and connection usage before adding a cache.”
 - “Use Oracle to add image uploads with optimized display copies. Help me decide whether and where to keep originals.”
@@ -261,7 +271,7 @@ cargo test --locked
 cargo build --release --locked
 ```
 
-CI runs behavioral tests and release builds on Linux, macOS, and Windows, including a Rust 1.85 compatibility job. Stable-toolchain jobs also check formatting and linting. See the [workflow and current run results](https://github.com/andersonbond/oracle/actions/workflows/ci.yml) for each revision.
+CI runs behavioral tests and release builds on Linux, macOS, and Windows, including a Rust 1.85 compatibility job. Stable-toolchain jobs also check formatting and linting. Manual runs can additionally build and exercise the container examples on native Linux x64 and ARM64; those checks do not validate Colima's macOS VM or shared-folder behavior. See the [workflow and current run results](https://github.com/andersonbond/oracle/actions/workflows/ci.yml) for each revision.
 
 V1 provides general engineering guidance and bounded local checks. Database, security, performance, and operations cards accept supplied evidence; they are not live scanners or infrastructure integrations. Future improvements should follow real usage: sharper applicability, structured report importers, and more precise evidence invalidation.
 

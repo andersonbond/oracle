@@ -1,0 +1,18 @@
+# Dockerfile-specific allowlist for the Oracle source-root build context.
+# Keep this file beside Dockerfile when copying the example.
+**
+!Cargo.toml
+!Cargo.lock
+!src/
+!src/**
+!skills/
+!skills/**
+# Do not include accidentally nested credentials or generated state either.
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/.git
+**/.oracle
+**/target
+**/node_modules

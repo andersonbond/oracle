@@ -604,6 +604,10 @@ fn skill_guides_are_reachable_without_configuration_or_active_ux_findings() {
             "references/ui-design.md",
             "references/image-uploads.md",
             "references/security.md",
+            "references/containerization.md",
+            "assets/containerization/Dockerfile",
+            "assets/containerization/Dockerfile.dockerignore",
+            "assets/containerization/compose.yaml",
             "references/simple-projects.md",
             "references/compact-ui.md",
             "references/emil-design-engineering.md",
@@ -653,6 +657,10 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
         "references/database.md",
         "references/image-uploads.md",
         "references/security.md",
+        "references/containerization.md",
+        "assets/containerization/Dockerfile",
+        "assets/containerization/Dockerfile.dockerignore",
+        "assets/containerization/compose.yaml",
         "references/ui-design.md",
         "references/emil-design-engineering.md",
         "references/emil-ui-cheatsheet.md",
@@ -678,31 +686,45 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
 }
 
 #[test]
-fn removing_skill_preserves_modified_and_unrelated_visual_assets() {
+fn removing_skill_preserves_modified_and_unrelated_resources() {
     let root = tempfile::tempdir().unwrap();
     ok(root.path(), &["agent", "install", "claude"]);
     let installed = root.path().join(".claude/skills/oracle");
-    let asset = installed.join("assets/compact-workspace.svg");
-    let original = fs::read(&asset).unwrap();
-    fs::write(&asset, "custom illustration").unwrap();
-    assert_eq!(
-        run(root.path(), &["agent", "remove", "claude"])
-            .status
-            .code(),
-        Some(2)
-    );
-    assert!(installed.join("SKILL.md").exists());
-    assert!(installed.join("references/compact-ui.md").exists());
-    assert_eq!(fs::read_to_string(&asset).unwrap(), "custom illustration");
-    fs::write(&asset, original).unwrap();
-    fs::write(installed.join("assets/custom.svg"), "user asset").unwrap();
+    for resource in [
+        "assets/compact-workspace.svg",
+        "assets/containerization/Dockerfile",
+    ] {
+        let asset = installed.join(resource);
+        let original = fs::read(&asset).unwrap();
+        fs::write(&asset, "custom resource").unwrap();
+        assert_eq!(
+            run(root.path(), &["agent", "remove", "claude"])
+                .status
+                .code(),
+            Some(2)
+        );
+        assert!(installed.join("SKILL.md").exists());
+        assert!(installed.join("references/compact-ui.md").exists());
+        assert_eq!(fs::read_to_string(&asset).unwrap(), "custom resource");
+        fs::write(&asset, original).unwrap();
+    }
+    for resource in ["assets/custom.svg", "assets/containerization/custom.txt"] {
+        fs::write(installed.join(resource), "user asset").unwrap();
+    }
     ok(root.path(), &["agent", "remove", "claude"]);
     assert!(!installed.join("SKILL.md").exists());
-    assert!(!asset.exists());
-    assert_eq!(
-        fs::read_to_string(installed.join("assets/custom.svg")).unwrap(),
-        "user asset"
+    assert!(!installed.join("assets/compact-workspace.svg").exists());
+    assert!(
+        !installed
+            .join("assets/containerization/Dockerfile")
+            .exists()
     );
+    for resource in ["assets/custom.svg", "assets/containerization/custom.txt"] {
+        assert_eq!(
+            fs::read_to_string(installed.join(resource)).unwrap(),
+            "user asset"
+        );
+    }
 }
 
 #[test]

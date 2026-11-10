@@ -4,11 +4,32 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      containers:
+        description: Build and test container examples on native Linux x64 and ARM64
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
 jobs:
+  containers:
+    if: github.event_name == 'workflow_dispatch' && inputs.containers
+    name: Containers / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Build and exercise final image and Compose recipe
+        run: python3 tests/container_smoke.py
+
   verify:
     name: ${{ matrix.os }} / Rust ${{ matrix.rust }}
     runs-on: ${{ matrix.os }}

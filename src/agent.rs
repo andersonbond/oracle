@@ -61,6 +61,22 @@ const FILES: &[(&str, &[u8])] = &[
         include_bytes!("../skills/oracle/references/security.md"),
     ),
     (
+        "references/containerization.md",
+        include_bytes!("../skills/oracle/references/containerization.md"),
+    ),
+    (
+        "assets/containerization/Dockerfile",
+        include_bytes!("../skills/oracle/assets/containerization/Dockerfile"),
+    ),
+    (
+        "assets/containerization/Dockerfile.dockerignore",
+        include_bytes!("../skills/oracle/assets/containerization/Dockerfile.dockerignore"),
+    ),
+    (
+        "assets/containerization/compose.yaml",
+        include_bytes!("../skills/oracle/assets/containerization/compose.yaml"),
+    ),
+    (
         "assets/simple-projects.svg",
         include_bytes!("../skills/oracle/assets/simple-projects.svg"),
     ),
@@ -115,8 +131,15 @@ pub fn install(root: &Path, client: Client, remove: bool, dry_run: bool) -> Resu
         }
         if remove {
             let parent = project::safe_path(root, &dir)?;
-            // Only remove empty package-owned directories, never client roots.
-            for path in [parent.join("references"), parent.join("assets"), parent] {
+            // Derive owned directories from the bundle and remove children first.
+            // remove_dir preserves directories containing unrelated user files.
+            let mut directories = std::collections::BTreeSet::new();
+            for (name, _) in FILES {
+                for directory in Path::new(name).ancestors().skip(1) {
+                    directories.insert(parent.join(directory));
+                }
+            }
+            for path in directories.into_iter().rev() {
                 let _ = fs::remove_dir(path);
             }
         }

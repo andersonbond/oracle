@@ -1,0 +1,24 @@
+# Optional convenience wrapper for the one-shot Oracle CLI, not a web stack.
+services:
+  oracle:
+    image: ${ORACLE_IMAGE:-oracle-guide:local}
+    pull_policy: never # Build/load the intended local image first.
+    user: "${ORACLE_UID:-10001}:${ORACLE_GID:-10001}"
+    working_dir: /workspace
+    read_only: true
+    network_mode: none
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    # Example CLI limits; measure before applying them to another application.
+    mem_limit: 256m
+    cpus: 1.0
+    pids_limit: 64
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    volumes:
+      - type: bind
+        source: ${ORACLE_PROJECT_PATH:?Set an absolute path to an existing project}
+        target: /workspace
+        bind:
+          create_host_path: false
+    restart: "no"
