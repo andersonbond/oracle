@@ -24,6 +24,8 @@ Use [the database guide](database.md) for schema design, normalization, indexing
 
 ## Evidence
 
+For security-related work, read the relevant sections of [security that fits the project](security.md). Apply protections before exposing the feature, even when evidence cards are deferred. Verify allowed and denied behavior within the authorized scope; keep focused work proportional and use the existing cards for evidence recording.
+
 Run or review the relevant scenario using the project's tools within the existing authorization. Save a minimal sanitized report under `.oracle/reports/` describing commands or review steps, environment, scenario, outcomes, and limitations. Do not collect credentials or private user data. Oracle does not execute those steps for you.
 
 Record the actual result:

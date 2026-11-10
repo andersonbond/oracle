@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.9 — 2026-11-10
+
+- Added proportional security guidance covering secrets, sessions, authorization, input, uploads/realtime/data boundaries, dependencies, deployment, and coding-agent use, with verification examples and OWASP sources.
+- Bundled and linked the security guide for offline agent use without new configuration fields or required gates.
+- Refreshed the README with direct skill installation, optional project tracking, task examples, and a clearer architecture diagram.
+
 ## 1.0.8 — 2026-11-10
 
 - Added offline image-upload guidance for optimized display copies, bounded processing/storage, and user-chosen original retention and destinations.

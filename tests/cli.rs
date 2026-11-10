@@ -548,7 +548,7 @@ fn skill_install_is_idempotent_and_remove_preserves_unrelated_files() {
 }
 
 #[test]
-fn ui_guides_are_reachable_without_configuration_or_active_ux_findings() {
+fn skill_guides_are_reachable_without_configuration_or_active_ux_findings() {
     for (client, dir) in [
         ("codex", ".agents"),
         ("claude", ".claude"),
@@ -603,6 +603,7 @@ fn ui_guides_are_reachable_without_configuration_or_active_ux_findings() {
         for resource in [
             "references/ui-design.md",
             "references/image-uploads.md",
+            "references/security.md",
             "references/simple-projects.md",
             "references/compact-ui.md",
             "references/emil-design-engineering.md",
@@ -651,6 +652,7 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
         "references/realtime.md",
         "references/database.md",
         "references/image-uploads.md",
+        "references/security.md",
         "references/ui-design.md",
         "references/emil-design-engineering.md",
         "references/emil-ui-cheatsheet.md",

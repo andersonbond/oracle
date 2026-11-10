@@ -4,11 +4,16 @@
 <h1 align="center">Oracle</h1>
 <p align="center"><strong>Build with intuition. Ship with evidence.</strong></p>
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
-<p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="REFERENCE.md">Reference</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
+<p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="#use-the-guides-directly">Agent guidance</a> · <a href="REFERENCE.md">Reference</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.8 · MIT · Local and offline · No model API key required**
+**v1.0.9 · MIT · Local and offline · No model API key required**
 
-Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** It combines 13 versioned guidance cards, project context, repository inspection, and evidence tracking in a small native CLI.
+Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** Use it for a simple website, a small app, or an enterprise workspace, from prototype to a dependable release.
+
+- **Give your coding agent useful guidance:** a portable skill with UI examples and security, realtime, database, and image-upload references. Use the guides directly, without a project specification or CLI assessment.
+- **Track decisions and evidence when needed:** a small Rust CLI combines 13 versioned cards, an `oracle.toml` specification, repository inspection, and evidence tracking. Checks grow with the project's stage and actual features.
+
+Oracle itself runs locally and offline; model access is handled by your coding agent.
 
 ![Oracle's workflow: understand the project, choose an action, build with your agent, and check the evidence.](assets/oracle-workflow.svg)
 
@@ -22,6 +27,7 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 | An app needs live updates but loses state or exposes private events | Choose **WebSockets or Socket.IO when realtime behavior helps**; consider polling or SSE for simpler needs. Plan authorization, reconnect, missed updates, and delivery across servers. |
 | Data becomes inconsistent or every slow page leads to another cache | Design **clear relationships and constraints**, normalize conflicting facts, and index actual queries. Bound database connections; add caching with measured benefit and an invalidation plan. Keep simple apps to one suitable database when sufficient. |
 | Uploaded images consume storage unnecessarily | **Optimize display copies** of PNG, JPEG, and other supported images. Resize and compress for their use, measure the savings, and set quotas and cleanup policies. Let the user decide **whether and where to retain originals**. |
+| Sign-in works, but private data is still exposed | Apply **security that fits the feature**: protect secrets, enforce server permissions, handle untrusted input, and verify both allowed and denied access. Include private files, exports, caches, and realtime events when present. |
 | Dependencies and build output inflate the repository | Inspect tracked generated paths, tracked working-tree size, large files, and local Git object storage. Keep local caches distinct from Git content. |
 | Prototype work gets buried under process | **Prototype → beta → production** profiles introduce checks gradually. Assessment is advisory; blocking checks require `--strict`. |
 | An agent says “done” without evidence | Record a sanitized artifact, outcome, and scope. Mark evidence stale after inspected project contents, artifacts, versions, or freshness change. |
@@ -41,6 +47,8 @@ Oracle builds on [Emil Kowalski's Design Engineering skill](https://github.com/e
 ![Recreated inventory illustration: restrained navigation, an aligned toolbar, tabular quantities, clear selection, and a nearby review action.](skills/oracle/assets/compact-workspace.svg)
 
 Choose the layout per screen: one product can have a spacious public page and a dense internal workspace. Audience alone does not determine complexity or density. See the [adaptive example](skills/oracle/assets/adaptive-workspace.svg) for a focused narrow view and a desktop editor with a recoverable save error. The upstream guidance, license, Oracle guides, and all three recreated SVGs are bundled for offline agent use. The illustrations contain fictional content and demonstrate design intent; actual interactions and motion still need testing. Frontend stacks remain a project choice, with no mandatory pixel budgets.
+
+Review the whole screen with realistic content: headings and toolbars should leave room for the main task. Check repeated keyboard actions, focus after rows or controls update, and essential actions on a phone. The [shared UI guide](skills/oracle/references/ui-design.md) connects these checks to the bundled UI cheatsheet and relevant Design Engineering sections.
 
 ## Realtime when the feature needs it
 
@@ -64,11 +72,25 @@ A small app can use SQLite or an existing suitable database without adding Redis
 
 ## Image uploads that stay manageable
 
-Use an image optimizer for uploaded photos, avatars, screenshots, and product images. Serve appropriately sized copies and keep only the variants the app needs. The [image-upload guide](skills/oracle/references/image-uploads.md) covers Rust and existing-stack options, quality checks, upload limits, and cleanup.
+Use an image optimizer for uploaded photos, avatars, screenshots, and product images. Serve appropriately sized copies and keep only the variants the app needs. The [image-upload guide](skills/oracle/references/image-uploads.md) covers Rust candidates such as `image` and `oxipng`, `sharp` for existing Node.js apps, and the trade-offs in quality, formats, processing limits, and cleanup. Measure the result: an already optimized image may not get smaller.
 
 **Original storage is the user's choice:** keep originals on their device, retain them in private application storage, or use an approved object store/archive. Make retention and deletion explicit. Optimization and storage quotas work together; keeping originals and every generated variant can still grow storage. Simple apps can use one processing step and existing suitable storage.
 
+Preserve the source bytes before client-side compression when originals must be retained. Apply the intended access policy to originals and display copies, including thumbnails. Explain the chosen retention policy in the UI; offer individual storage choices only when the project supports them. Show useful progress and recoverable errors, and report success only after the required copies are stored.
+
+## Security that fits the project
+
+The [security guide](skills/oracle/references/security.md) connects common mistakes to implementation choices and observable checks. It covers secrets, authentication and sessions, server authorization, untrusted input, dependencies, deployment, and safe coding-agent use. It builds on OWASP sources and links to the existing upload, realtime, and database guides, with a small diagram showing where client requests become authorized operations.
+
+A static site starts with published content, dependencies, hosting access, and HTTPS. Accounts and private data add session and permission checks; tenant and privileged workflows add their corresponding boundaries. Apply relevant protections before exposing a feature, even in a prototype. For example:
+
+> User A can use their private record. User B cannot read, change, export, or subscribe to it by changing the record ID or calling the API directly.
+
+The guide works offline without initialization or an active security finding. Use existing evidence cards when tracking is useful. `SEC-001` is a bounded filename check; `SEC-002` records supplied authorization evidence. Neither is a complete security assessment, and this guide adds no scanner, configuration fields, or mandatory gates.
+
 ## Get started
+
+### Install the CLI
 
 Install from this source checkout with [Rust](https://rust-lang.org/tools/install/) 1.85+ and Git:
 
@@ -81,39 +103,58 @@ oracle --version
 
 The Cargo package is named `oracle-guide`; the executable is **`oracle`**. Use the source-install command above, not an unrelated package named `oracle`. Ensure Cargo's `bin` directory is on your PATH. No registry publication or prebuilt download is required for this route.
 
-In the application you are building:
+### Add guidance to your agent
+
+From the application you are building, install the bundled skill:
 
 ```sh
 cd /path/to/your-project
-oracle init --name my-app --kind web-app --audience consumer
 oracle agent install codex
-oracle next
 ```
 
-Choose the actual audience: `consumer`, `enterprise`, or `developer`. In v1, `web-app` also covers static websites; it does not require a server or database. The [simple-site specification](examples/simple-site/oracle.toml) shows a small starting point. Record the actual deployment stage as the project advances; simple projects can be production projects too.
+| Agent | Install command | Project-local skill directory |
+| --- | --- | --- |
+| Codex | `oracle agent install codex` | `.agents/skills/oracle/` |
+| Claude Code | `oracle agent install claude` | `.claude/skills/oracle/` |
+| Generic agent | `oracle agent install generic` | `.agents/skills/oracle/` |
 
-For Claude Code, use `oracle agent install claude`. The generic adapter uses the same `.agents/skills/oracle` location as Codex. Installation is project-local, repeatable, and refuses to overwrite conflicting or edited skill files. It leaves `AGENTS.md`, `CLAUDE.md`, and client settings untouched.
+Installation needs an existing project directory, but no Git repository or `oracle.toml`. It is repeatable and refuses to overwrite conflicting or edited skill files. It leaves `AGENTS.md`, `CLAUDE.md`, and client settings untouched. When upgrading, follow the [skill update instructions](REFERENCE.md#agent-installation-and-updates) to preserve customizations and replace an older bundle.
 
 Open a fresh agent session in that project and ask:
 
-> Use Oracle to review this project and help me address the most useful next action. Explain the trade-off before changing the architecture.
+> Use Oracle to review this screen's layout and interaction states. Keep the changes proportional to the task.
 
 The adapters use the documented [Codex skill location](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) and [Claude Code project skill location](https://code.claude.com/docs/en/skills#choose-where-skills-load). Installation behavior is covered by automated tests; client discovery still depends on your installed client's settings and workspace trust.
 
 To check an agent's actual behavior, use the optional [live-agent trials](CONTRIBUTING.md#live-agent-trials) for a simple app and an inventory workspace. They separate skill discovery, reference reading, and independent checks of the generated app; installation alone does not prove that guidance was followed.
 
-### Use the UI guides directly
+### Use the guides directly
 
-For UI work, `oracle agent install codex` (or `claude`) works without `oracle init`. If you only want the guides and do not have the binary, copy the complete `skills/oracle/` directory from this checkout into the relevant project skill location above, preserving references, images, and the upstream license. Do not overwrite an existing customized skill; follow the [update instructions](REFERENCE.md#agent-installation-and-updates).
+If you only want the guides and do not have the binary, clone this repository and copy the complete `skills/oracle/` directory into the relevant project skill location above. This route needs no Rust toolchain. Preserve references, images, and the upstream license; review and merge any existing customizations instead of overwriting them.
 
-Agents discover the `oracle` skill from its name and description, then follow `SKILL.md` to [UI that fits the project](skills/oracle/references/ui-design.md). The copied Emil reference is loaded through that guide, not invoked as a separate installed skill. UI guidance is available even when no UX action appears in `oracle next`.
+The [`SKILL.md` entrypoint](skills/oracle/SKILL.md) routes the agent to references relevant to the task. UI work follows [UI that fits the project](skills/oracle/references/ui-design.md), one applicable layout guide, the UI cheatsheet, and relevant Design Engineering sections. Security, realtime, database, and image-upload work have their own linked guides. The copied Emil reference is supporting material within Oracle's skill. Guides remain available even when `oracle next` has no related finding; that command lists unresolved active cards, not every available reference.
 
 To choose Oracle explicitly in Codex CLI/IDE, mention `$oracle` or select it from `/skills`; in Claude Code, use `/oracle`, followed by the task. For example:
 
 - “Use Oracle to refine this personal tracker. Keep it simple and make input, save, and error states clear.”
 - “Use Oracle to improve this inventory workspace for comparing records and batch actions. Preserve keyboard access.”
+- “Use Oracle to choose realtime delivery for this task board and plan reconnect recovery.”
+- “Use Oracle to review this small app's schema, indexes, and connection usage before adding a cache.”
+- “Use Oracle to add image uploads with optimized display copies. Help me decide whether and where to keep originals.”
+- “Use Oracle to review access to private records and uploads. Test legitimate access and attempts by another user.”
 
-For a generic agent, ask it to read the installed `.agents/skills/oracle/SKILL.md` and follow the UI route; automatic discovery depends on the host. Review the actual screen's task: enterprise public pages can be comfortable, while a consumer comparison tool can be compact.
+For a generic agent, ask it to read the installed `.agents/skills/oracle/SKILL.md` and follow the relevant task guidance; automatic discovery depends on the host. The guides inform implementation choices. Oracle does not install an application framework, database, realtime service, or image optimizer for you.
+
+### Track decisions and release evidence
+
+When you want project assessment as well as guidance, initialize the specification and review the next actions:
+
+```sh
+oracle init --name my-app --kind web-app --audience consumer
+oracle next
+```
+
+Choose the actual audience: `consumer`, `enterprise`, or `developer`. Review `oracle.toml`, record known stack and UI decisions, and declare database and private-record features when present. In v1, `web-app` also covers static websites; it does not require a server or database. The [simple-site specification](examples/simple-site/oracle.toml) shows a small starting point. Record the actual deployment stage as the project advances; simple projects can be production projects too.
 
 ## Start light. Add rigor when it matters.
 
@@ -199,15 +240,12 @@ The artifact must already exist. Use `--result fail` when the criterion failed, 
 ## How it fits together
 
 ```mermaid
-flowchart LR
-    Context["Project intent + repository"] --> Core["Oracle · Rust CLI"]
-    Cards["13 guidance cards"] --> Core
-    Core --> Task["Next action + acceptance criteria"]
-    Task --> Agent["You + coding agent"]
-    Agent --> Work["Implementation + tests or review"]
-    Work --> Proof["Sanitized evidence artifact"]
+flowchart TD
+    Context["Project context + repository<br/>13 versioned cards"] --> Core["Oracle · Rust CLI<br/>Next actions + evidence status"]
+    Guides["Bundled skill + task guides"] --> Agent["You + coding agent<br/>Build, test + review"]
+    Core --> Agent
+    Agent --> Proof["Sanitized evidence artifacts"]
     Proof --> Core
-    Core --> State["Current, missing or stale evidence"]
 ```
 
 The core stays offline. Only explicit `init`, `agent install/remove`, and `evidence record` operations write project files. Assessments do not run project scripts, install dependencies, call model APIs, deploy, delete caches, or rewrite Git history.

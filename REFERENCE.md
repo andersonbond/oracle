@@ -41,6 +41,8 @@ For persistent records or slow data access, use the [database guide](skills/orac
 
 For PNG, JPEG, and other supported image uploads, use the [image-upload guide](skills/oracle/references/image-uploads.md). Optimize and serve display copies, bound processing and retained storage, and let the user decide whether and where originals are kept. This is bundled agent guidance; Oracle does not process images, select a storage provider, or add an upload configuration table or rule. Existing evidence cards can record checks of the implemented upload journey.
 
+For authentication, permissions, secrets, untrusted input, or security before exposing a feature, use [security that fits the project](skills/oracle/references/security.md). Choose sections from actual features and consequences, including during prototypes. The offline guide links implementation decisions to verification examples and the existing evidence cards. It adds no scanner, configuration fields, or required gates; `SEC-001` remains a filename heuristic and `SEC-002` remains supplied private-record authorization evidence.
+
 ## Checks and stages
 
 | Rule | Earliest stage | Required by default in strict mode | Evaluator |
@@ -120,7 +122,7 @@ oracle agent install codex
 oracle agent install claude
 ```
 
-Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI, realtime, and database guides, the pinned Emil Kowalski references and license, and three SVG layout examples. It does not require a source checkout or network access at runtime. Both adapters share the same instructions and respect the user's scope.
+Codex/generic uses `.agents/skills/oracle/`; Claude Code uses `.claude/skills/oracle/`. The binary embeds the short skill, workflow, UI, realtime, database, image-upload, and security guides, the pinned Emil Kowalski references and license, and three SVG layout examples. It does not require a source checkout or network access at runtime. All adapters share the same instructions and respect the user's scope.
 
 Installation requires an existing destination directory, but no Git repository or `oracle.toml`. For guidance without the CLI, copy the complete source skill into the appropriate location while preserving existing customizations. Only `SKILL.md` is the Oracle discovery entry point; copied upstream Markdown files are supporting references. UI tasks route directly to `references/ui-design.md`, then the applicable layout guide and relevant upstream sections. CLI assessment is optional for UI work, including when `UX-001` already passes or `UX-002` is deferred.
 
