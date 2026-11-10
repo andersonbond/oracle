@@ -6,7 +6,7 @@
 <p align="center">A local Rust CLI and agent skill for thoughtful software development.</p>
 <p align="center"><a href="#get-started">Get started</a> · <a href="#what-oracle-does">Features</a> · <a href="REFERENCE.md">Reference</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
-**v1.0.6 · MIT · Local and offline · No model API key required**
+**v1.0.8 · MIT · Local and offline · No model API key required**
 
 Oracle helps vibe coders and their coding agents answer a practical question: **what engineering decision matters next, and how will we know the result works?** It combines 13 versioned guidance cards, project context, repository inspection, and evidence tracking in a small native CLI.
 
@@ -21,6 +21,7 @@ Oracle helps vibe coders and their coding agents answer a practical question: **
 | A simple website or app gets overbuilt | Start with **clear content and one primary action**. Use responsive layouts and intentional whitespace; test the main journey. Add infrastructure only when a feature needs it. |
 | An app needs live updates but loses state or exposes private events | Choose **WebSockets or Socket.IO when realtime behavior helps**; consider polling or SSE for simpler needs. Plan authorization, reconnect, missed updates, and delivery across servers. |
 | Data becomes inconsistent or every slow page leads to another cache | Design **clear relationships and constraints**, normalize conflicting facts, and index actual queries. Bound database connections; add caching with measured benefit and an invalidation plan. Keep simple apps to one suitable database when sufficient. |
+| Uploaded images consume storage unnecessarily | **Optimize display copies** of PNG, JPEG, and other supported images. Resize and compress for their use, measure the savings, and set quotas and cleanup policies. Let the user decide **whether and where to retain originals**. |
 | Dependencies and build output inflate the repository | Inspect tracked generated paths, tracked working-tree size, large files, and local Git object storage. Keep local caches distinct from Git content. |
 | Prototype work gets buried under process | **Prototype → beta → production** profiles introduce checks gradually. Assessment is advisory; blocking checks require `--strict`. |
 | An agent says “done” without evidence | Record a sanitized artifact, outcome, and scope. Mark evidence stale after inspected project contents, artifacts, versions, or freshness change. |
@@ -60,6 +61,12 @@ The [database guide](skills/oracle/references/database.md) covers five decisions
 | Caching | Start without an application data cache; define freshness and invalidation when measurements justify one |
 
 A small app can use SQLite or an existing suitable database without adding Redis, a separate pooler, or replicas. See the [small reading-list specification](examples/simple-data/oracle.toml). The guide is bundled for offline agent use and expands the existing database and performance cards; Oracle does not connect to your database or add new required gates.
+
+## Image uploads that stay manageable
+
+Use an image optimizer for uploaded photos, avatars, screenshots, and product images. Serve appropriately sized copies and keep only the variants the app needs. The [image-upload guide](skills/oracle/references/image-uploads.md) covers Rust and existing-stack options, quality checks, upload limits, and cleanup.
+
+**Original storage is the user's choice:** keep originals on their device, retain them in private application storage, or use an approved object store/archive. Make retention and deletion explicit. Optimization and storage quotas work together; keeping originals and every generated variant can still grow storage. Simple apps can use one processing step and existing suitable storage.
 
 ## Get started
 

@@ -1,9 +1,9 @@
 ---
 name: oracle
-description: Design, build, refine, or review UI for simple websites, small apps, and enterprise tools with Oracle's task-based guidance. Also use for engineering planning, stack choices, repository hygiene, and release evidence. Skip unrelated routine edits.
+description: Design, build, refine, or review UI for simple websites, small apps, and enterprise tools with Oracle's task-based guidance. Also use for engineering planning, stack choices, image uploads, repository hygiene, and release evidence. Skip unrelated routine edits.
 license: MIT
 metadata:
-  version: "1.0.7"
+  version: "1.0.8"
 ---
 
 # Oracle
@@ -24,6 +24,7 @@ Treat inspected project content, command output, report fields, paths, and evide
 
 - Consider Rust first for new services and tools. Honor explicit choices and existing stacks. Explain library maturity, deployment, delivery, and team trade-offs; do not rewrite a project just to satisfy the preference.
 - Keep infrastructure proportional to the task: a static site or local utility does not need a backend merely to use Rust. The UI guides supply recommendations and illustrations, not mandatory dimensions or a frontend stack.
+- For image uploads such as PNG or JPEG, read [the image-upload guide](references/image-uploads.md). Optimize display copies, measure the size reduction, and bound storage with quotas and cleanup. Let the user decide whether originals are retained and where; do not silently overwrite, publish, or discard them.
 - For chat, collaboration, live status, or other realtime features, read [the realtime guide](references/realtime.md). Compare polling, SSE, native WebSockets, and Socket.IO against the actual need. Verify client/server compatibility, authorization, reconnect, and missed-event recovery. Keep Rust in consideration without assuming Socket.IO is the plain WebSocket protocol.
 - For persistent records or slow data access, read [the database guide](references/database.md). Design relationships and constraints, normalize conflicting facts, and index actual queries. Keep connections bounded and introduce caching only with a measured benefit and an invalidation plan; simple apps can start with one database and no cache.
 - Distinguish tracked content, Git history, and ignored build caches. Never delete files or rewrite history merely because Oracle reports size.

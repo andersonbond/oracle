@@ -39,6 +39,8 @@ For realtime features, use the [WebSocket and Socket.IO guide](skills/oracle/ref
 
 For persistent records or slow data access, use the [database guide](skills/oracle/references/database.md) and [small reading-list specification](examples/simple-data/oracle.toml). Describe storage choices in `stack.rationale` and set the existing data flags from actual behavior. No additional database, pooling, or caching fields are introduced. `DATA-001` accepts schema/migration and relevant index-review evidence, `DATA-002` covers restore, and `PERF-001` remains advisory. Oracle does not inspect a live schema or execute queries; a small app can use one database without a cache or separate pooler.
 
+For PNG, JPEG, and other supported image uploads, use the [image-upload guide](skills/oracle/references/image-uploads.md). Optimize and serve display copies, bound processing and retained storage, and let the user decide whether and where originals are kept. This is bundled agent guidance; Oracle does not process images, select a storage provider, or add an upload configuration table or rule. Existing evidence cards can record checks of the implemented upload journey.
+
 ## Checks and stages
 
 | Rule | Earliest stage | Required by default in strict mode | Evaluator |

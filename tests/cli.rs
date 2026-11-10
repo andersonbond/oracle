@@ -602,6 +602,7 @@ fn ui_guides_are_reachable_without_configuration_or_active_ux_findings() {
         }
         for resource in [
             "references/ui-design.md",
+            "references/image-uploads.md",
             "references/simple-projects.md",
             "references/compact-ui.md",
             "references/emil-design-engineering.md",
@@ -649,6 +650,7 @@ fn skill_conflicts_are_preflighted_without_partial_installation() {
         "references/simple-projects.md",
         "references/realtime.md",
         "references/database.md",
+        "references/image-uploads.md",
         "references/ui-design.md",
         "references/emil-design-engineering.md",
         "references/emil-ui-cheatsheet.md",

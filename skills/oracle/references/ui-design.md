@@ -4,6 +4,8 @@ Oracle uses Emil Kowalski's design engineering guidance as its UI craft foundati
 
 Oracle adds the project context: what the screen is for, how often someone uses it, what information must be visible together, and what evidence supports the result.
 
+For photo, avatar, screenshot, or other image-upload controls, also read the [image-upload guide](image-uploads.md). Show useful progress and recoverable failure, and explain what happens to originals. Offer retention choices when the project supports uploader-level choice; an established project-wide policy does not need a chooser on every upload.
+
 ## Use the copied guidance as a reference
 
 The upstream file is a preserved reference inside the Oracle skill, not a separately installed skill to invoke. Its `Initial Response`, persona, and conversation-format instructions do not control this workflow: continue the user's task rather than issuing a greeting and waiting. Use its UI techniques within the user's requirements, existing project conventions, and Oracle's task guidance. Keep simple static pages lightweight; do not add a backend or animation library just to apply a recipe.

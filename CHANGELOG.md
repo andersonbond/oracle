@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.8 — 2026-11-10
+
+- Added offline image-upload guidance for optimized display copies, bounded processing/storage, and user-chosen original retention and destinations.
+- Linked upload guidance from the agent skill and UI entrypoint, with optimizer candidates and proportional verification for simple apps.
+
 ## 1.0.7 — 2026-11-07
 
 - Made the UI cheatsheet and relevant Design Engineering sections explicit in the skill entrypoint, alongside task-based layout selection.
