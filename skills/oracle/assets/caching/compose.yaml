@@ -4,7 +4,9 @@ services:
   redis:
     image: ${REDIS_IMAGE:-redis:8-bookworm}
     user: "999:999"
-    command: [redis-server, --bind, "0.0.0.0", --protected-mode, "yes", --save, "", --appendonly, "no", --maxmemory, 32mb, --maxmemory-policy, allkeys-lru]
+    # Protected mode rejects unauthenticated peers even when loopback PING works.
+    # Disable it only for this disposable internal network with no published ports.
+    command: [redis-server, --bind, "0.0.0.0", --protected-mode, "no", --save, "", --appendonly, "no", --maxmemory, 32mb, --maxmemory-policy, allkeys-lru]
     read_only: true
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]

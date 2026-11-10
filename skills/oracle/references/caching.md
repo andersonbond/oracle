@@ -109,6 +109,8 @@ Follow the [containerization guide](containerization.md) to verify context/profi
 
 The recipe builds the Rust client with tests, runs it without root, and starts a disposable Redis service on an internal network with **no published ports**. Redis uses temporary storage, persistence disabled, a 32 MiB cache budget, and a 128 MiB container limit. These are fixture settings, not measured production recommendations. The client disables optional features and uses plaintext within this isolated fixture; TLS requires the appropriate client features and configuration. The unauthenticated fixture is only for this isolated example; deployments need their own ACL, TLS, capacity, persistence, and network decisions. Supply reviewed base images/digests when controlling a release; defaults are maintained mutable tags.
 
+Protected mode is disabled only in that disposable container fixture so its unauthenticated peer client can connect. A loopback health probe alone would not prove peer access. Keep protected mode and appropriate authentication for a deployed service; do not copy the fixture's access policy or publish its port. The verifier checks the runtime network is internal and Redis has no host port bindings or durable volumes.
+
 For native verification, install Rust 1.88+ and Redis and run:
 
 ```sh

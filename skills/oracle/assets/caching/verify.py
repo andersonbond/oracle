@@ -159,6 +159,11 @@ def containers(context):
         metadata = json.loads(run([*command, "inspect", identifier], env=env).stdout)[0]
         assert not metadata["HostConfig"]["PortBindings"]
         assert not any(m["Type"] == "volume" for m in metadata["Mounts"])
+        networks = metadata["NetworkSettings"]["Networks"]
+        assert len(networks) == 1
+        network = json.loads(run([*command, "network", "inspect", next(iter(networks))],
+                                 env=env).stdout)[0]
+        assert network["Internal"]
         print("Redis fixture image: " + metadata["Image"], flush=True)
         verify(demo, env, "verify", "PASS cache:")
         outage(demo, env, lambda: run([*compose, "stop", "redis"], env=env))
